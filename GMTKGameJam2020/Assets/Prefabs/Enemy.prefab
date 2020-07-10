@@ -96,6 +96,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyType: 0
   sprites:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   bullet: {fileID: 0}

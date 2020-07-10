@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Numerics;
 using UnityEngine;
+using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
 
 public enum Enemies
@@ -20,11 +21,11 @@ public class Enemy : MonoBehaviour
     public Sprite[] sprites;
     public GameObject bullet;
 
-    private float chargerSpeed = 0.5f;
-    private float gunnerSpeed = 0.4f;
+    private float chargerSpeed = 3f;
+    private float gunnerSpeed = 3f;
 
-    private float gunnerMinDist = 2f;
-    private float gunnerMaxDist = 5f;
+    private float gunnerMinDist = 0.4f;
+    private float gunnerMaxDist = 0.8f;
 
     // Start is called before the first frame update
     void Start()
@@ -68,7 +69,7 @@ public class Enemy : MonoBehaviour
         Vector3 playerPos = player.transform.position;
         Vector3 myPos = this.transform.position;
         Vector3 directionToPlayer = new Vector3(playerPos.x - myPos.x, playerPos.y - myPos.y, 0);
-        Vector3 velocityToAdd = directionToPlayer.normalized * chargerSpeed;
+        Vector3 velocityToAdd = directionToPlayer.normalized * chargerSpeed * Time.deltaTime;
 
         this.transform.position = new Vector3(myPos.x + velocityToAdd.x, myPos.y + velocityToAdd.y, 0);
     }
@@ -85,13 +86,13 @@ public class Enemy : MonoBehaviour
         if(directionToPlayer.magnitude > gunnerMaxDist)
         {
             //Need to move into range!
-            velocityToAdd = directionToPlayer.normalized * gunnerSpeed;
+            velocityToAdd = directionToPlayer.normalized * gunnerSpeed * Time.deltaTime;
             this.transform.position = new Vector3(myPos.x + velocityToAdd.x, myPos.y + velocityToAdd.y, 0);
         }
         else if(directionToPlayer.magnitude < gunnerMinDist)
         {
             //Need to get away!
-            velocityToAdd = directionToPlayer.normalized * -gunnerSpeed;
+            velocityToAdd = directionToPlayer.normalized * -gunnerSpeed * Time.deltaTime;
             this.transform.position = new Vector3(myPos.x + velocityToAdd.x, myPos.y + velocityToAdd.y, 0);
         }
         else
@@ -102,14 +103,14 @@ public class Enemy : MonoBehaviour
             {
                 //Have a clear shot... fire!
                 shotCounter = 0;
-                GameObject projectile = bullet;
-                Instantiate(projectile, this.gameObject.transform);
+                GameObject projectile = Instantiate(bullet, this.transform.position, Quaternion.identity);
                 projectile.GetComponent<EnemyBullet>().setTrajectory(directionToPlayer);
             }
             else
             {
                 //Strafe around the player.
                 velocityToAdd = Vector3.Cross(directionToPlayer, new Vector3(0, 0, 1));
+                velocityToAdd = velocityToAdd.normalized * gunnerSpeed * Time.deltaTime;
 
                 if(Random.Range(0, 1) == 0)
                 {

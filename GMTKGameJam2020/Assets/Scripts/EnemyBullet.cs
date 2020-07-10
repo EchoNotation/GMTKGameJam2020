@@ -28,6 +28,23 @@ public class EnemyBullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        switch (collision.collider.tag)
+        {
+            case "Enemy":
+            case "EnemyBullet":
+                break;
+            case "Wall":
+            case "Forcefield":
+                Destroy(this.gameObject);
+                break;
+            case "Bullet":
+            case "Player":
+                Destroy(collision.collider.gameObject);
+                Destroy(this.gameObject);
+                break;
+            default:
+                Debug.Log("Unrecognized tag in Bullet! Collider tag: " + collision.collider.tag);
+                break;
+        }
     }
 }

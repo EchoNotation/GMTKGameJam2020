@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class PiercingBullet : MonoBehaviour
 {
     private Vector3 direction;
     private float speed = 0.2f;
+    private int numberOfObjectsPierced, maxNumberOfPierces;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        numberOfObjectsPierced = 0;
+        maxNumberOfPierces = 3;
     }
 
     // Update is called once per frame
@@ -27,12 +29,14 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        switch(collision.collider.tag)
+        switch (collision.collider.tag)
         {
             case "Enemy":
             case "EnemyBullet":
                 Destroy(collision.collider.gameObject);
-                Destroy(this.gameObject);
+                numberOfObjectsPierced++;
+
+                if (numberOfObjectsPierced >= maxNumberOfPierces) Destroy(this.gameObject);
                 break;
             case "Wall":
             case "Forcefield":

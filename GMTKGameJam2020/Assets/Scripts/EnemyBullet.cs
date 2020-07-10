@@ -28,8 +28,6 @@ public class EnemyBullet : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log(collision.collider.tag);
-
         switch (collision.collider.tag)
         {
             case "Enemy":
@@ -41,8 +39,7 @@ public class EnemyBullet : MonoBehaviour
                 break;
             case "Bullet":
             case "Player":
-                Debug.Log("Enemy bullet collided with player!");
-                Destroy(collision.collider.gameObject);
+                //Destroy(collision.collider.gameObject);
                 Destroy(this.gameObject);
                 break;
             default:

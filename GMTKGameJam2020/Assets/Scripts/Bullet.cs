@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     private Vector3 direction;
-    private float speed = 0.2f;
+    private float speed = 2f;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +17,7 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         Vector3 current = this.transform.position;
-        Vector3 velocityToAdd = direction.normalized * speed;
+        Vector3 velocityToAdd = direction.normalized * speed * Time.deltaTime;
         this.transform.position = new Vector3(current.x + velocityToAdd.x, current.y + velocityToAdd.y, 0);
     }
     public void setTrajectory(Vector3 direction)

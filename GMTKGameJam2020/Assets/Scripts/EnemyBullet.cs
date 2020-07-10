@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyBullet : MonoBehaviour
 {
     private Vector3 direction;
-    private float speed = 0.2f;
+    private float speed = 2f;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +17,7 @@ public class EnemyBullet : MonoBehaviour
     void Update()
     {
         Vector3 current = this.transform.position;
-        Vector3 velocityToAdd = direction.normalized * speed;
+        Vector3 velocityToAdd = direction.normalized * speed * Time.deltaTime;
         this.transform.position = new Vector3(current.x + velocityToAdd.x, current.y + velocityToAdd.y, 0);
     }
 
@@ -26,8 +26,10 @@ public class EnemyBullet : MonoBehaviour
         this.direction = direction;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log(collision.collider.tag);
+
         switch (collision.collider.tag)
         {
             case "Enemy":
@@ -39,6 +41,7 @@ public class EnemyBullet : MonoBehaviour
                 break;
             case "Bullet":
             case "Player":
+                Debug.Log("Enemy bullet collided with player!");
                 Destroy(collision.collider.gameObject);
                 Destroy(this.gameObject);
                 break;

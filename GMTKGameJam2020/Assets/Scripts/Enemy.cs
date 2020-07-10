@@ -1,0 +1,144 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Numerics;
+using UnityEngine;
+using Vector3 = UnityEngine.Vector3;
+
+public enum Enemies
+{
+    CHARGER,
+    GUNNER,
+}
+
+public class Enemy : MonoBehaviour
+{
+    public Enemies enemyType;
+    private int logicCounter, counterReq;
+    private int shotCounter, shotReq;
+
+    //0: Charger, 1: Gunner
+    public Sprite[] sprites;
+    public GameObject bullet;
+
+    private float chargerSpeed = 0.5f;
+    private float gunnerSpeed = 0.4f;
+
+    private float gunnerMinDist = 2f;
+    private float gunnerMaxDist = 5f;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        counterReq = 3;
+        logicCounter = 0;
+        shotCounter = 0;
+        shotReq = 30;
+        updateSprite();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if(logicCounter >= counterReq)
+        {
+            logicCounter = 0;
+
+            switch(enemyType)
+            {
+                case Enemies.CHARGER:
+                    chargerLogic();
+                    break;
+                case Enemies.GUNNER:
+                    gunnerLogic();
+                    break;
+                default:
+                    Debug.Log("Invalid enemyType encountered during logic update! enemyType: " + enemyType);
+                    break;
+            }
+        }
+        else
+        {
+            logicCounter++;
+        }
+    }
+
+    void chargerLogic()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        Vector3 playerPos = player.transform.position;
+        Vector3 myPos = this.transform.position;
+        Vector3 directionToPlayer = new Vector3(playerPos.x - myPos.x, playerPos.y - myPos.y, 0);
+        Vector3 velocityToAdd = directionToPlayer.normalized * chargerSpeed;
+
+        this.transform.position = new Vector3(myPos.x + velocityToAdd.x, myPos.y + velocityToAdd.y, 0);
+    }
+
+    void gunnerLogic()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        Vector3 playerPos = player.transform.position;
+        Vector3 myPos = this.transform.position;
+        Vector3 directionToPlayer = new Vector3(playerPos.x - myPos.x, playerPos.y - myPos.y, 0);
+        Vector3 velocityToAdd = new Vector3();
+        shotCounter++;
+
+        if(directionToPlayer.magnitude > gunnerMaxDist)
+        {
+            //Need to move into range!
+            velocityToAdd = directionToPlayer.normalized * gunnerSpeed;
+            this.transform.position = new Vector3(myPos.x + velocityToAdd.x, myPos.y + velocityToAdd.y, 0);
+        }
+        else if(directionToPlayer.magnitude < gunnerMinDist)
+        {
+            //Need to get away!
+            velocityToAdd = directionToPlayer.normalized * -gunnerSpeed;
+            this.transform.position = new Vector3(myPos.x + velocityToAdd.x, myPos.y + velocityToAdd.y, 0);
+        }
+        else
+        {
+            RaycastHit2D hit = Physics2D.Raycast(myPos, directionToPlayer);
+
+            if(hit.collider.CompareTag("Player") && shotCounter >= shotReq)
+            {
+                //Have a clear shot... fire!
+                shotCounter = 0;
+                GameObject projectile = bullet;
+                Instantiate(projectile, this.gameObject.transform);
+                projectile.GetComponent<EnemyBullet>().setTrajectory(directionToPlayer);
+            }
+            else
+            {
+                //Strafe around the player.
+                velocityToAdd = Vector3.Cross(directionToPlayer, new Vector3(0, 0, 1));
+
+                if(Random.Range(0, 1) == 0)
+                {
+                    velocityToAdd = -velocityToAdd;
+                }
+
+                this.transform.position = new Vector3(myPos.x + velocityToAdd.x, myPos.y + velocityToAdd.y, 0);
+            }
+        }
+    }
+
+    void updateSprite()
+    {
+        switch(enemyType)
+        {
+            case Enemies.CHARGER:
+                this.GetComponent<SpriteRenderer>().sprite = sprites[0];
+                break;
+            case Enemies.GUNNER:
+                this.GetComponent<SpriteRenderer>().sprite = sprites[1];
+                break;
+            default:
+                Debug.Log("Invalid enemyType in updateSprite! enemyType: " + enemyType);
+                break;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        //Make sound or play particle effect or something.   
+    }
+}

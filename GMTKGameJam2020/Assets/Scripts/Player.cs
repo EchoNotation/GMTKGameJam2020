@@ -17,6 +17,9 @@ public class Player : MonoBehaviour
     //Player Input
     private Vector3 screenCenter;
 
+    //Map Size Controls
+    public int mapSize = 40;
+
     // Start is called before the first frame update
     void Start()
     {

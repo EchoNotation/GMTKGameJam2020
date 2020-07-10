@@ -99,7 +99,7 @@ MonoBehaviour:
   sprites:
   - {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   - {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  bullet: {fileID: 0}
+  bullet: {fileID: 2811384657760440921, guid: 9af2a994e213f29468247d44617a1c76, type: 3}
 --- !u!61 &-7672041716614601225
 BoxCollider2D:
   m_ObjectHideFlags: 0

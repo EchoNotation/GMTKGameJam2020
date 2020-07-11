@@ -7,7 +7,7 @@ public class Gamecontroller : MonoBehaviour
     private int waveNumber, waveEnemyCount;
     private ArrayList enemiesActive;
     private float halfWidth, waveSpawnThreshold;
-    public Camera mainCamera;
+    private Camera mainCamera;
     public GameObject Charger, Gunner, Bombmer;
     private int[] waveEnemyMix;
     private bool gamePaused;
@@ -20,21 +20,20 @@ public class Gamecontroller : MonoBehaviour
         enemiesActive = new ArrayList();
         waveSpawnThreshold = 0.25f;
         waveEnemyMix = new int[] {3, 0, 0};
+        waveEnemyCount = 3;
         Reset();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (mainCamera == null) {
+        if (GameObject.FindGameObjectWithTag("Player") != null) {
             mainCamera = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Camera>();
-            if (mainCamera != null) {
-                halfWidth = mainCamera.orthographicSize * mainCamera.aspect;
-            }
+            halfWidth = mainCamera.orthographicSize * mainCamera.aspect;
+            Debug.Log("Camera Locked with mesure of :" + halfWidth);
         }
         else if (!gamePaused) {
-            Debug.Log("GameC update");
-            Debug.Log(enemiesActive.Count / waveEnemyCount < waveSpawnThreshold);
+            Debug.Log("GameC update | " + (enemiesActive.Count / waveEnemyCount < waveSpawnThreshold));
             if (enemiesActive.Count / waveEnemyCount < waveSpawnThreshold) {
                 SpawNextWave();
             }
@@ -43,9 +42,11 @@ public class Gamecontroller : MonoBehaviour
 
     public void Reset() {
         waveNumber = 0;
+        Pause();
     }
 
     private void SpawNextWave() {
+        waveEnemyCount = 0;
         for (int i = 0; i < 10; i++) {
             Instantiate(Gunner, SpawnLocation(), Quaternion.identity);
             waveEnemyCount++;

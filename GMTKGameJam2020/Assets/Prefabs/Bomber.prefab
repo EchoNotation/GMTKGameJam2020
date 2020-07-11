@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6ce87fb15e25134babee368f28c056b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bomb: {fileID: 6976062635539888731, guid: a8db73ee30f4f244f8c51567523dc25e, type: 3}
+  bomb: {fileID: 7539134827005026634, guid: 743b19251eb61fd46a4972c945478e58, type: 3}
   speed: 1
   waitTime: 3
   maxBombs: 5

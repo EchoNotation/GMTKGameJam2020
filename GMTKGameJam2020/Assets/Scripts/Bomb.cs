@@ -9,20 +9,27 @@ public class Bomb : MonoBehaviour
     public float maxTime = 5f;
     public float minTime = 3f;
 
-    float startTime;
+    public float killRadius = 2f;
+
+    float currentTime = 0f;
 
     private float explodeTime;
 
+    GameObject indicator;
+
     private void Start()
     {
-        startTime = Time.fixedTime;
         explodeTime = Random.Range(minTime, maxTime);
+        indicator = transform.GetChild(0).gameObject;
     }
 
     private void FixedUpdate()
     {
-        //transform.localScale *= Mathf.Lerp(endRadius, startRadius, transform.localScale.magnitude / time);
-        if(Time.fixedTime - startTime > explodeTime)
+        indicator.transform.localScale = Vector3.one * Mathf.Lerp(startRadius, endRadius, currentTime / explodeTime);
+
+        currentTime += Time.deltaTime;
+
+        if(currentTime > explodeTime)
         {
             Explode();
         }
@@ -35,11 +42,16 @@ public class Bomb : MonoBehaviour
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         Vector3 playerPos = player.transform.position;
         float distSquared = Mathf.Pow((transform.position.x - playerPos.x), 2f) + Mathf.Pow((transform.position.y - playerPos.y), 2f);
-        if(endRadius * endRadius > distSquared)
+        if(killRadius > distSquared)
         {
             Debug.Log("Bomb killed player from " + distSquared);
             player.GetComponent<Player>().die();
         }
         Destroy(gameObject);
     }
+
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.DrawWireSphere(transform.position, killRadius);
+    //}
 }

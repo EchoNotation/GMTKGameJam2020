@@ -2097,7 +2097,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1103691065}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 2040338048}
@@ -2958,12 +2958,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1893792105}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b065208dfff74adf92c7df42cc10ba7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 2040338048}
   Charger: {fileID: 968767475749786048, guid: 01fe0e7b0ce39f648a0931fc3b6b1d9d, type: 3}
   Gunner: {fileID: 968767475749786048, guid: 01fe0e7b0ce39f648a0931fc3b6b1d9d, type: 3}
   Bombmer: {fileID: 9050883846787087189, guid: 73b2e00caf7ef7c48ad2209849a09a89, type: 3}

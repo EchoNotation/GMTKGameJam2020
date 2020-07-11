@@ -142,6 +142,9 @@ public class Player : MonoBehaviour
         //prevent tank from moving after destroyed
         //it is, after all, a tank
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+        //transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        GameObject.FindWithTag("Controller").GetComponent<MenuControl>().GameOver();
+
     }
 
     public void AddScore(int newScore)

@@ -113,6 +113,13 @@ public class Enemy : MonoBehaviour
         Vector3 myPos = this.transform.position;
         Vector3 directionToPlayer = new Vector3(playerPos.x - myPos.x, playerPos.y - myPos.y, 0);
         Vector3 velocityToAdd = directionToPlayer.normalized * chargerSpeed * Time.deltaTime;
+
+        if (!player.GetComponent<Player>().alive)
+        {
+            rotateSaws(directionToPlayer);
+            return;
+        }
+
         rotateBody(directionToPlayer);
         rotateSaws(directionToPlayer);
 

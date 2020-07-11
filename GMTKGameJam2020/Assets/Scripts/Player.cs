@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     public static int ATTACK_DELAY = 20;
     private int atkTimer = 0;
     public GameObject Bullet;
-    private bool alive = true;
+    public bool alive = true;
     private float score = 0f;
     public int displayScore = 0;
     public Sprite destroyed;

@@ -210,10 +210,11 @@ public class Enemy : MonoBehaviour
         this.gameObject.transform.GetChild(1).transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
     }
 
-    private void OnDestroy()
+    private void die()
     {
         player.GetComponent<Player>().AddScore(100);
-        //Make sound or play particle effect or something.   
+        //Make sound or play particle effect or something. 
+        Destroy(this.gameObject);
     }
 
     private void rotateBody(Vector3 direction)
@@ -235,8 +236,8 @@ public class Enemy : MonoBehaviour
         switch(collision.tag)
         {
             case "Bullet":
-                Destroy(this.gameObject);
-                Destroy(collision.gameObject);
+                collision.gameObject.GetComponent<Bullet>().onHit();
+                die();
                 break;
             case "EnemyBullet":
             case "Powerup":

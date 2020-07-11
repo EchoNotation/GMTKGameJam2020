@@ -137,7 +137,7 @@ public class Player : MonoBehaviour
         switch(collision.tag)
         {
             case "EnemyBullet":
-                Destroy(collision.gameObject);
+                collision.gameObject.GetComponent<EnemyBullet>().onHit();
                 die();
                 break;
             case "Powerup":

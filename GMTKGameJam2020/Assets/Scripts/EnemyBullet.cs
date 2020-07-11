@@ -6,6 +6,7 @@ public class EnemyBullet : MonoBehaviour
 {
     private Vector3 direction;
     private float speed = 2f;
+    public GameObject explosion;
 
     // Start is called before the first frame update
     void Start()
@@ -31,5 +32,11 @@ public class EnemyBullet : MonoBehaviour
     public void addSpeed(float speedToAdd)
     {
         speed += speedToAdd;
+    }
+
+    public void onHit()
+    {
+        Instantiate(explosion, transform.position, Quaternion.identity);
+        Destroy(this.gameObject);
     }
 }

@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     //Control Types
     private bool isShootMode = false;
     public float timeToSwap;
-    private static int SWAP_DURATION = 60;
+    private static int SWAP_DURATION = 6;
 
     //Control Info
     private Vector3 shootDirection;
@@ -48,11 +48,8 @@ public class Player : MonoBehaviour
         }
         
         //Player Input
-        if (Input.GetMouseButtonDown(0))
-        {
-            Vector3 direction = Input.mousePosition - screenCenter;
-            OnInput(direction);
-        }
+        Vector3 direction = Input.mousePosition - screenCenter;
+        OnInput(direction);
 
         //Automatic Controls
         this.gameObject.transform.Translate(moveDirection * speed * Time.deltaTime);
@@ -72,12 +69,14 @@ public class Player : MonoBehaviour
         if (isShootMode)
         {
             shootDirection = direction.normalized;
-            Debug.Log(shootDirection);
-            this.gameObject.transform.GetChild(0).eulerAngles = new Vector3(0,0, Vector3.Angle(new Vector3(1, 0, 0), shootDirection));
+            float angle = Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg;
+            this.gameObject.transform.GetChild(0).rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
         }
         else
         {
             moveDirection = direction.normalized;
+            float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
+            this.gameObject.transform.GetChild(1).rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
         }
     }
 

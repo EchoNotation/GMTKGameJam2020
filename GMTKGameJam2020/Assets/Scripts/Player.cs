@@ -106,7 +106,7 @@ public class Player : MonoBehaviour
     }
 
 
-    private void die()
+    public void die()
     {
         if(!alive) return;
         Debug.Log("Player died!");

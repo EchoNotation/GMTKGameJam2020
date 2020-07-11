@@ -26,8 +26,8 @@ public class Enemy : MonoBehaviour
     private float chargerSpeed = 3f;
     private float gunnerSpeed = 3f;
 
-    private float gunnerMinDist = 0.4f;
-    private float gunnerMaxDist = 0.8f;
+    private float gunnerMinDist = 1f;
+    private float gunnerMaxDist = 1.4f;
 
     // Start is called before the first frame update
     void Start()

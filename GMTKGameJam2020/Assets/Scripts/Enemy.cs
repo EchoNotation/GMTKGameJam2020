@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour
     private int strafeDirection;
 
     private bool dodgingPit;
+    private bool dodgingLeft;
     private Vector3 pitDir;
     private Vector3 currentDir;
 
@@ -85,7 +86,9 @@ public class Enemy : MonoBehaviour
         Vector3 myPos = this.transform.position;
         Vector3 perpendicular = Vector3.Cross(pitDir, Vector3.forward);
         Vector3 velocityToAdd = perpendicular.normalized * speed * Time.deltaTime;
-        rotateBody(velocityToAdd);
+
+        if (dodgingLeft) velocityToAdd = -velocityToAdd;
+
         this.transform.position = new Vector3(myPos.x + velocityToAdd.x, myPos.y + velocityToAdd.y, 0);
 
         dodgeCounter--;
@@ -188,6 +191,7 @@ public class Enemy : MonoBehaviour
 
     private void rotateBody(Vector3 direction)
     {
+        if(dodgingPit) return;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         this.gameObject.transform.GetChild(0).transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
         currentDir = direction;
@@ -212,6 +216,15 @@ public class Enemy : MonoBehaviour
                 break;
             case "Pit":
                 dodgingPit = true;
+
+                ContactPoint2D[] contacts = new ContactPoint2D[1];
+                collision.GetContacts(contacts);
+                Vector3 toCollision = new Vector3(contacts[0].point.x, contacts[0].point.y, 0) - this.transform.position;
+                Vector3 toPitCenter = collision.gameObject.transform.position - this.transform.position;
+                float angle = Vector3.SignedAngle(toPitCenter, toCollision, Vector3.forward);
+                if (angle < 0) dodgingLeft = true;
+                else dodgingLeft = false;             
+
                 dodgeCounter = 20;
                 pitDir = currentDir;
                 break;
@@ -229,6 +242,15 @@ public class Enemy : MonoBehaviour
             {
                 dodgingPit = true;
                 pitDir = currentDir;
+
+                ContactPoint2D[] contacts = new ContactPoint2D[1];
+                collision.GetContacts(contacts);
+                Vector3 toCollision = new Vector3(contacts[0].point.x, contacts[0].point.y, 0) - this.transform.position;
+                Vector3 toPitCenter = collision.gameObject.transform.position - this.transform.position;
+                float angle = Vector3.SignedAngle(toPitCenter, toCollision, Vector3.forward);
+
+                if (angle < 0) dodgingLeft = true;
+                else dodgingLeft = false;
             }
 
             dodgeCounter += 2;

@@ -4,71 +4,76 @@ using UnityEngine;
 
 public class Gamecontroller : MonoBehaviour
 {
-    private int gameScore, waveCount, enemyCount;
-    private float halfWidth;
+    private int waveNumber, waveEnemyCount;
+    private ArrayList enemiesActive;
+    private float halfWidth, waveSpawnThreshold;
     public Camera mainCamera;
     public GameObject Charger, Gunner, Bombmer;
+    private int[] waveEnemyMix;
     public bool gamePaused;
     
     // Start is called before the first frame update
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);
+        enemiesActive = new ArrayList();
+        waveSpawnThreshold = 0.25f;
+        waveEnemyMix = new int[] {3, 0, 0};
         halfWidth = mainCamera.orthographicSize * mainCamera.aspect;
         Reset();
-        for (int i = 0; i < 10; i++) {
-            SpawNextWave();
-        }
     }
 
     // Update is called once per frame
     void Update()
     {
         if (!gamePaused) {
-            //TODO:add player and bullet updates?
+            if (enemiesActive.Count / waveEnemyCount < waveSpawnThreshold) {
+                SpawNextWave();
+            }
         }
     }
 
-    void GoToScene() {
-        //TODO: What should be passed here
-        //TODO: Make scenes (Title, Game, score – could be overlay, paused - could be overlay, Credits)
-    }
-
-    void Reset() {
-        gameScore = 0;
-        waveCount = 0;
+    public void Reset() {
+        waveNumber = 0;
         Pause();
     }
 
-    void Pause() {
+    private void SpawNextWave() {
+        for (int i = 0; i < 10; i++) {
+            Instantiate(Gunner, SpawnLocation(), Quaternion.identity);
+            waveEnemyCount++;
+        }
+
+        waveNumber++;
+    }
+
+    private Vector2 SpawnLocation() {
+        //TODO: validate Coords on map, change distribution?
+
+        Vector2 directionVector = Vector2.zero;
+        while (directionVector == Vector2.zero) {
+            directionVector = new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f));
+        }
+
+        directionVector = directionVector.normalized;
+        float magnitude = Random.Range(halfWidth, halfWidth * 6);
+
+        return directionVector * magnitude;
+    }
+
+    public void RegisterEnemy(GameObject newEnemy) {
+        enemiesActive.Add(newEnemy);
+    }
+    public void RemoveEnemy(GameObject deadEnemy) {
+        enemiesActive.Remove(deadEnemy);
+    }
+
+    public void Pause() {
         gamePaused = true;
     }
 
     public void Play() {
+        mainCamera = GameObject.FindGameObjectWithTag("Player").GetComponent<Camera>();
         gamePaused = false;
-    }
-
-    void SpawNextWave() {
-        Instantiate(Gunner, SpawnLocation(), Quaternion.identity);
-    }
-
-    private Vector2 SpawnLocation() {
-        Vector2 Direction_Vector = Vector2.zero;
-        while (Direction_Vector == Vector2.zero) {
-            Direction_Vector = new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f));
-        }
-        Direction_Vector = Direction_Vector.normalized;
-        float Magnitude = Random.Range(halfWidth, halfWidth * 6);
-
-        //TODO: Generate random offscreen coordinates, spaced from a previous coord set
-        return Direction_Vector * Magnitude;
-    }
-
-    public void RegisterEnemy(GameObject enemy) {
-        //TODO: track totoal and current enemies to know when to spwan next wave
-        enemyCount++;
-    }
-    public void RemoveEnemy(GameObject enemy) {
-        enemyCount--;
     }
 }

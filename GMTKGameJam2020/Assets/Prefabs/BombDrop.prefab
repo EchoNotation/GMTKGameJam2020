@@ -229,3 +229,5 @@ MonoBehaviour:
   maxTime: 8
   minTime: 5
   killRadius: 0.47
+  explosion: {fileID: 1291112504474677446, guid: bdc3ce7b8dd09fa45bfb9c62b3db0610,
+    type: 3}

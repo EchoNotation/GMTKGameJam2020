@@ -145,6 +145,8 @@ public class Player : MonoBehaviour
         //transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
         GameObject.FindWithTag("Controller").GetComponent<MenuControl>().GameOver(displayScore);
 
+        FindObjectOfType<CameraShake>().ShakeCameraHard();
+
     }
 
     public void AddScore(int newScore)

@@ -68,7 +68,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -232558359
-  m_SortingLayer: 5
+  m_SortingLayer: 4
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 1982f61a795ce4884ba4450b8c936610, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -149,7 +149,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -232558359
-  m_SortingLayer: 5
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: df87e44fb943d4b4686a42234c03047d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -211,7 +211,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyType: 1
   bodySprites:
-  - {fileID: 21300000, guid: df87e44fb943d4b4686a42234c03047d, type: 3}
+  - {fileID: 21300000, guid: f323cdb03cca64b828205dcb696cee88, type: 3}
   - {fileID: 21300000, guid: df87e44fb943d4b4686a42234c03047d, type: 3}
   barrelSprites:
   - {fileID: 0}

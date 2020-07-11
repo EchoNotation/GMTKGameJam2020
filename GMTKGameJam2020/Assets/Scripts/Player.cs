@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -42,6 +43,7 @@ public class Player : MonoBehaviour
         {
             //Manage Timing of Swapping Control Types
             timeToSwap -= Time.deltaTime;
+            transform.GetChild(3).GetChild(0).GetComponent<Scrollbar>().size = 1 - (timeToSwap / SWAP_DURATION);
             if (timeToSwap <= 0)
             {
                 timeToSwap = SWAP_DURATION;

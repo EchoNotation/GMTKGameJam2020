@@ -12,7 +12,10 @@ public class Player : MonoBehaviour
     //Control Info
     private Vector3 shootDirection;
     private Vector3 moveDirection;
-    public int speed = 3;
+    public float speed = .1f;
+    public static int ATTACK_DELAY = 20;
+    private int atkTimer = 0;
+    public GameObject Bullet;
 
     //Player Input
     private Vector3 screenCenter;
@@ -22,7 +25,7 @@ public class Player : MonoBehaviour
     {
         timeToSwap = SWAP_DURATION;
         screenCenter = new Vector3(Screen.width/2, Screen.height/2, 0);
-        shootDirection = Vector3.forward;
+        shootDirection = Vector3.up;
     }
 
     // Update is called once per frame
@@ -48,6 +51,16 @@ public class Player : MonoBehaviour
 
         //Automatic Controls
         this.gameObject.transform.Translate(moveDirection * speed * Time.deltaTime);
+        if (atkTimer <= 0)
+        {
+            atkTimer = ATTACK_DELAY;
+            GameObject shot = Instantiate(Bullet, transform.position, Quaternion.identity);
+            shot.GetComponent<Bullet>().setTrajectory(shootDirection);
+        }
+        else
+        {
+            atkTimer -= 1;
+        }
 
 
 

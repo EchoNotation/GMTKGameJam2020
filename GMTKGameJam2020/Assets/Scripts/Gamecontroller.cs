@@ -44,7 +44,7 @@ public class Gamecontroller : MonoBehaviour
         gamePaused = true;
     }
 
-    void Play() {
+    public void Play() {
         gamePaused = false;
     }
 

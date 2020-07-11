@@ -61,6 +61,7 @@ public class Player : MonoBehaviour
             score += 10*Time.deltaTime;
             displayScore = (int)score - ((int)score%10);
             transform.GetChild(3).GetChild(1).GetChild(0).GetComponent<Text>().text = displayScore.ToString();
+
             //Manage Timing of Swapping Control Types
             timeToSwap -= Time.deltaTime;
             transform.GetChild(3).GetChild(0).GetComponent<Scrollbar>().size = 1 - (timeToSwap / SWAP_DURATION);
@@ -144,6 +145,8 @@ public class Player : MonoBehaviour
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
         //transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
         GameObject.FindWithTag("Controller").GetComponent<MenuControl>().GameOver(displayScore);
+
+        FindObjectOfType<CameraShake>().ShakeCameraHard();
 
     }
 

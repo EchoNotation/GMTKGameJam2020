@@ -7,16 +7,21 @@ public class EnemyBullet : MonoBehaviour
     private Vector3 direction;
     private float speed = 2f;
     public GameObject explosion;
+    private System.Diagnostics.Stopwatch timer;
+    private long expireTime = 4000;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        timer = new System.Diagnostics.Stopwatch();
+        timer.Start();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (timer.ElapsedMilliseconds > expireTime) Destroy(this.gameObject);
+
         Vector3 current = this.transform.position;
         Vector3 velocityToAdd = direction.normalized * speed * Time.deltaTime;
         this.transform.position = new Vector3(current.x + velocityToAdd.x, current.y + velocityToAdd.y, 0);

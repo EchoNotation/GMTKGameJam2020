@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour
     private float speed = 2f;
     public GameObject explosion;
     private System.Diagnostics.Stopwatch timer;
-    private long expireTime = 7000;
+    private long expireTime = 4000;
 
     // Start is called before the first frame update
     void Start()

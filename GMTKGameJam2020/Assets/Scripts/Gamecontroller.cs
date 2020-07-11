@@ -15,10 +15,22 @@ public class Gamecontroller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (!gamePaused) {
+            //TODO:add player and bullet updates?
+        }
     }
 
-    void IncrementScore() {
+    void GoToScene() {
+        //TODO: What should be passed here
+        //TODO:Make scenes (Title, Game, score – could be overlay, paused - could be overlay, Credits)
+    }
+
+    void ExitGame() {
+        if(Application.platform == RuntimePlatform.WindowsPlayer) {
+            Application.Quit();
+        }
+    }
+    void CalcuateScore() {
 
     }
 
@@ -39,4 +51,7 @@ public class Gamecontroller : MonoBehaviour
         gamePaused = false;
     }
 
+    void SpawNextWave() {
+        
+    }
 }

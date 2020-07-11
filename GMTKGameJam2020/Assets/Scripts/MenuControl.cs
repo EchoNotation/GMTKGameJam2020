@@ -8,7 +8,7 @@ public class MenuControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        transform.GetChild(1).GetComponent<Canvas>().enabled = false;
     }
 
     // Update is called once per frame
@@ -29,6 +29,11 @@ public class MenuControl : MonoBehaviour
     {
         SceneManager.LoadSceneAsync(1);
         transform.GetComponent<Gamecontroller>().Play();
+    }
+
+    public void GameOver()
+    {
+        transform.GetChild(1).GetComponent<Canvas>().enabled = true;
     }
 
 }

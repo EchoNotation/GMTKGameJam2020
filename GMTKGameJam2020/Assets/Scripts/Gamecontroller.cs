@@ -11,7 +11,7 @@ public class Gamecontroller : MonoBehaviour
     private Camera mainCamera;
     public GameObject enemy, bombmer;
     private int[] waveEnemyMix;
-    public bool gamePaused, trickling;
+    private bool trickling;
 
     void Awake()
     {
@@ -28,7 +28,6 @@ public class Gamecontroller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Starting GameController!");
         DontDestroyOnLoad(this.gameObject);
         waveSpawnThreshold = 0.25f;
         enemiesActive = new ArrayList();
@@ -38,43 +37,34 @@ public class Gamecontroller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gamePaused == false)
+        if (mainCamera == null)
         {
-            if (mainCamera == null)
+            if (GameObject.FindGameObjectWithTag("Player") != null)
             {
-                Debug.Log("serching for camera");
-                if (GameObject.FindGameObjectWithTag("Player") != null)
-                {
-                    mainCamera = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Camera>();
-                    halfWidth = mainCamera.orthographicSize * mainCamera.aspect;
-                }
-            }
-            else
-            {
-                Debug.Log("Enemies: " + enemiesActive.Count);
-                if (enemiesActive.Count / waveEnemyCount < waveSpawnThreshold)
-                {
-                    SpawnNextWave();
-                }
-                if (!trickling)
-                {
-                    StartCoroutine(SpawnTrickle());
-                }
+                mainCamera = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Camera>();
+                halfWidth = mainCamera.orthographicSize * mainCamera.aspect;
             }
         }
         else
         {
-            Debug.Log("Game is Paused");
+            if (enemiesActive.Count / waveEnemyCount < waveSpawnThreshold)
+            {
+                SpawnNextWave();
+            }
+            if (!trickling)
+            {
+                StartCoroutine(SpawnTrickle());
+            }
         }
     }
 
     public void Reset()
     {
-        Pause();
         mainCamera = null;
         enemiesActive.Clear();
         waveNumber = 0;
         waveEnemyCount = 1;
+        StopAllCoroutines();
         trickling = false;
     }
     private IEnumerator SpawnTrickle()
@@ -125,16 +115,11 @@ public class Gamecontroller : MonoBehaviour
 
     public void Pause()
     {
-        gamePaused = true;
-        Debug.Log("Paused " + gamePaused);
-        StopAllCoroutines();
-        trickling = false;
+        
     }
 
     public void Play()
     {
-        gamePaused = false;
-        Debug.Log("Playing " + gamePaused);
     }
 
     public void SpawnEnemy(Enemies type, Vector3 position)

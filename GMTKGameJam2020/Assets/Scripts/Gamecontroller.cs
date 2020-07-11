@@ -10,23 +10,31 @@ public class Gamecontroller : MonoBehaviour
     public Camera mainCamera;
     public GameObject Charger, Gunner, Bombmer;
     private int[] waveEnemyMix;
-    public bool gamePaused;
+    private bool gamePaused;
     
     // Start is called before the first frame update
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);
+        mainCamera = null;
         enemiesActive = new ArrayList();
         waveSpawnThreshold = 0.25f;
         waveEnemyMix = new int[] {3, 0, 0};
-        halfWidth = mainCamera.orthographicSize * mainCamera.aspect;
         Reset();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!gamePaused) {
+        if (mainCamera == null) {
+            mainCamera = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Camera>();
+            if (mainCamera != null) {
+                halfWidth = mainCamera.orthographicSize * mainCamera.aspect;
+            }
+        }
+        else if (!gamePaused) {
+            Debug.Log("GameC update");
+            Debug.Log(enemiesActive.Count / waveEnemyCount < waveSpawnThreshold);
             if (enemiesActive.Count / waveEnemyCount < waveSpawnThreshold) {
                 SpawNextWave();
             }
@@ -35,7 +43,6 @@ public class Gamecontroller : MonoBehaviour
 
     public void Reset() {
         waveNumber = 0;
-        Pause();
     }
 
     private void SpawNextWave() {
@@ -62,6 +69,7 @@ public class Gamecontroller : MonoBehaviour
     }
 
     public void RegisterEnemy(GameObject newEnemy) {
+        Debug.Log("Enemy Registered");
         enemiesActive.Add(newEnemy);
     }
     public void RemoveEnemy(GameObject deadEnemy) {
@@ -73,7 +81,7 @@ public class Gamecontroller : MonoBehaviour
     }
 
     public void Play() {
-        mainCamera = GameObject.FindGameObjectWithTag("Player").GetComponent<Camera>();
+        Debug.Log("Playing");
         gamePaused = false;
     }
 }

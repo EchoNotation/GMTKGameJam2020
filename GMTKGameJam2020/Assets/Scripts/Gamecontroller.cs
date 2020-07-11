@@ -16,12 +16,8 @@ public class Gamecontroller : MonoBehaviour
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);
-        mainCamera = null;
-        enemiesActive = new ArrayList();
         waveSpawnThreshold = 0.25f;
         waveEnemyMix = new int[] {3, 0, 0};
-        waveEnemyCount = 1;
-        trickling = false;
         Reset();
     }
 
@@ -35,7 +31,6 @@ public class Gamecontroller : MonoBehaviour
             }
         }
         else if (!gamePaused) {
-            Debug.Log("enemies ratio: " + enemiesActive.Count / waveEnemyCount);
             if (enemiesActive.Count / waveEnemyCount < waveSpawnThreshold) {
                 SpawnNextWave();
             }
@@ -47,16 +42,18 @@ public class Gamecontroller : MonoBehaviour
     }
 
     public void Reset() {
-        waveNumber = 0;
         Pause();
+        mainCamera = null;
+        enemiesActive = new ArrayList();
+        waveNumber = 0;
+        waveEnemyCount = 1;
+        trickling = false;
     }
     private IEnumerator SpawnTrickle() {
         trickling = true;
-        yield return new WaitForSeconds(5.0f);
-        Debug.Log("trickeling");
+        yield return new WaitForSeconds(Random.Range(1,501) * 0.01f);
         Instantiate(Gunner, SpawnLocation(), Quaternion.identity);
         waveEnemyCount = enemiesActive.Count / ((enemiesActive.Count - 1) / waveEnemyCount);
-        Debug.Log("Edited Count: " + waveEnemyCount);
         trickling = false;
     }
     private void SpawnNextWave() {
@@ -99,4 +96,9 @@ public class Gamecontroller : MonoBehaviour
         gamePaused = false;
     }
 
+    public void SpawnEnemy(Enemies type, Vector3 position)
+    {
+        GameObject newEnemy = Instantiate(enemy, position, Quaternion.identity);
+        newEnemy.GetComponent<Enemy>().enemyType = type;
+    }
 }

@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     // 0 means no powerup active
     private int activePowerup = 0;
     // time left on the powerup timer
+    [SerializeField]
     private float powerUpTimeout = 0;
 
     // Start is called before the first frame update
@@ -55,11 +56,15 @@ public class Player : MonoBehaviour
         this.gameObject.transform.Translate(moveDirection * speed * Time.deltaTime);
 
 
-        //decrease active powerup
-        powerUpTimeout--;
-        if(powerUpTimeout <= 0)
+        if(powerUpTimeout > 0)
+        {
+            //decrease active powerup
+            powerUpTimeout -= Time.deltaTime;
+        }
+        else if(activePowerup != 0 && powerUpTimeout <= 0)
         {
             DeactivatePowerup();
+            powerUpTimeout = 0;
         }
 
     }
@@ -94,6 +99,9 @@ public class Player : MonoBehaviour
                 Destroy(collision.gameObject);
                 die();
                 break;
+            case "Powerup":
+            case "Bullet":
+                break;
             default:
                 Debug.Log("Unrecognized tag in OnTriggerEnter2D in Player! Tag: " + collision.tag);
                 break;
@@ -106,11 +114,12 @@ public class Player : MonoBehaviour
     public void ActivatePowerup(int powerup, float time)
     {
         //prevent powerup stacking, powerup = 0 means no powerup active
-        if(powerup != 0)
+        if(activePowerup != 0)
         {
             DeactivatePowerup();
         }
-        
+
+        activePowerup = powerup;
         switch(powerup)
         {
             //0 = no powerup, not sure how it would be called here
@@ -126,7 +135,6 @@ public class Player : MonoBehaviour
             default:
                 Debug.LogWarning("[Player]: Warning: Logic Error: powerup ID not recongized");
                 break;
-            
         }
 
         powerUpTimeout = time;
@@ -144,10 +152,12 @@ public class Player : MonoBehaviour
                 break;
 
             default:
-                Debug.LogWarning("Deactivating unrecognized powerup");
+                //Debug.LogWarning("Deactivating unrecognized powerup");
                 break;
         }
-
+        //Debug.Log("powerup expired");
+        activePowerup = 0;
+        powerUpTimeout = 0;
     }
 
 

@@ -32,13 +32,18 @@ public class Powerup : MonoBehaviour
                 powerupID = 1;
                 break;
         }
+        //Debug.Log("Start Powerup, " + powerupID);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Player"))
+        //Debug.Log("something entered the trigger");
+        if(collision.gameObject.CompareTag("Player"))
         {
+            //Debug.Log("That thing was the player");
             player.ActivatePowerup(powerupID, duration);
+
+            Destroy(gameObject);
         }
     }
 }

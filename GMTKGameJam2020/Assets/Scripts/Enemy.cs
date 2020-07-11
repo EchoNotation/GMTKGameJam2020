@@ -15,9 +15,11 @@ public class Enemy : MonoBehaviour
 {
     public Enemies enemyType;
     private int logicCounter, counterReq;
-    private int shotCounter, shotReq;
+    private int shotCounter;
     private int dodgeCounter;
     private GameObject player;
+
+    public int shotReq = 75;
 
     private int strafeDirection;
 

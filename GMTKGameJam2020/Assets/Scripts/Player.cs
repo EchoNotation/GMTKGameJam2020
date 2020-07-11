@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     private Vector3 shootDirection;
     private Vector3 moveDirection;
     public float speed = .1f;
-    public static int ATTACK_DELAY = 20;
+    public int ATTACK_DELAY = 20;
     private int atkTimer = 0;
     public GameObject Bullet;
     public bool alive = true;

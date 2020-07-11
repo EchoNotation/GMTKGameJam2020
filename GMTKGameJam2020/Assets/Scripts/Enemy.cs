@@ -28,6 +28,8 @@ public class Enemy : MonoBehaviour
     public Sprite[] bodySprites, toolSprites;
     public GameObject bullet;
 
+    public Transform EndOfTurret;
+
     private bool sawSwitch = true;
 
     private float chargerSpeed = 2.5f;
@@ -149,7 +151,7 @@ public class Enemy : MonoBehaviour
                 //Have a clear shot... fire!
                 //Debug.Log("Firing!");
                 shotCounter = 0;
-                GameObject projectile = Instantiate(bullet, this.transform.position, Quaternion.identity);
+                GameObject projectile = Instantiate(bullet, EndOfTurret.position, EndOfTurret.rotation);
                 projectile.GetComponent<EnemyBullet>().setTrajectory(directionToPlayer);
             }
             else

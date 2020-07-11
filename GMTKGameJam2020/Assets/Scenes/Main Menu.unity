@@ -323,7 +323,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1893792107}
-        m_MethodName: StartGame
+        m_MethodName: CloseGameOver
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -334,7 +334,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1893792107}
-        m_MethodName: CloseGameOver
+        m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3039,8 +3039,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1893792108}
-  - component: {fileID: 1893792107}
   - component: {fileID: 1893792106}
+  - component: {fileID: 1893792107}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Controller
@@ -3060,8 +3060,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b065208dfff74adf92c7df42cc10ba7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Charger: {fileID: 968767475749786048, guid: 01fe0e7b0ce39f648a0931fc3b6b1d9d, type: 3}
-  Gunner: {fileID: 968767475749786048, guid: 01fe0e7b0ce39f648a0931fc3b6b1d9d, type: 3}
+  waveNumber: 0
+  Enemy: {fileID: 968767475749786048, guid: 01fe0e7b0ce39f648a0931fc3b6b1d9d, type: 3}
   Bombmer: {fileID: 9050883846787087189, guid: 73b2e00caf7ef7c48ad2209849a09a89, type: 3}
 --- !u!114 &1893792107
 MonoBehaviour:
@@ -3418,7 +3418,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1893792107}
-        m_MethodName: MainMenu
+        m_MethodName: CloseGameOver
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3429,7 +3429,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1893792107}
-        m_MethodName: CloseGameOver
+        m_MethodName: MainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

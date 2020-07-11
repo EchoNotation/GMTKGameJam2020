@@ -109,7 +109,7 @@ public class Enemy : MonoBehaviour
         else
         {
             RaycastHit2D hit = Physics2D.Raycast(myPos, directionToPlayer);
-            Debug.Log("Raycasting!");
+            Debug.Log(hit.collider.tag);
 
             if(hit.collider.CompareTag("Player") && shotCounter >= shotReq)
             {
@@ -179,6 +179,7 @@ public class Enemy : MonoBehaviour
                 Destroy(collision.gameObject);
                 break;
             case "EnemyBullet":
+            case "Powerup":
                 break;
             default:
                 Debug.Log("Unrecognized tag in OnTriggerEnter2D in Enemy! Tag: " + collision.tag);

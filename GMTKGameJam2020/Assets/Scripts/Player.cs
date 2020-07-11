@@ -70,5 +70,24 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void die()
+    {
+        Debug.Log("Player died!");
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        switch(collision.tag)
+        {
+            case "EnemyBullet":
+                Destroy(collision.gameObject);
+                die();
+                break;
+            default:
+                Debug.Log("Unrecognized tag in OnTriggerEnter2D in Player! Tag: " + collision.tag);
+                break;
+        }
+    }
+
 
 }

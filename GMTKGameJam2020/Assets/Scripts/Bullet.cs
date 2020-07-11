@@ -25,7 +25,7 @@ public class Bullet : MonoBehaviour
         this.direction = direction;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    /*private void OnCollisionEnter2D(Collision2D collision)
     {
         switch(collision.collider.tag)
         {
@@ -43,5 +43,5 @@ public class Bullet : MonoBehaviour
                 Debug.Log("Unrecognized tag in Bullet! Collider tag: " + collision.collider.tag);
                 break;
         }
-    }
+    }*/
 }

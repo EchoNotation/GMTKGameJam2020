@@ -42,7 +42,7 @@ public class Bomber : MonoBehaviour
         {
             Vector2 temp = Random.insideUnitCircle * radius;
             Vector3 location = new Vector3(temp.x, temp.y) + transform.position;
-            Instantiate(bomb, location, Quaternion.identity);
+            Instantiate(bomb, location, Quaternion.Euler(0,0,Random.Range(0,180)));
         }
     }
 

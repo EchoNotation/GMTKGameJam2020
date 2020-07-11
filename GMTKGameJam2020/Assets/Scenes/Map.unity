@@ -133,6 +133,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pit (22)
       objectReference: {fileID: 0}
+    - target: {fileID: 6750258119556316667, guid: 96201fce5a58270439f0f450f0026120,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 8918832916567410172, guid: 96201fce5a58270439f0f450f0026120,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -201,6 +206,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pit (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6750258119556316667, guid: 96201fce5a58270439f0f450f0026120,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8918832916567410172, guid: 96201fce5a58270439f0f450f0026120,
         type: 3}
@@ -271,6 +281,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pit (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 6750258119556316667, guid: 96201fce5a58270439f0f450f0026120,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 8918832916567410172, guid: 96201fce5a58270439f0f450f0026120,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -339,6 +354,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pit (89)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6750258119556316667, guid: 96201fce5a58270439f0f450f0026120,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8918832916567410172, guid: 96201fce5a58270439f0f450f0026120,
         type: 3}
@@ -409,6 +429,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pit (87)
       objectReference: {fileID: 0}
+    - target: {fileID: 6750258119556316667, guid: 96201fce5a58270439f0f450f0026120,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 8918832916567410172, guid: 96201fce5a58270439f0f450f0026120,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -478,6 +503,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pit (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 6750258119556316667, guid: 96201fce5a58270439f0f450f0026120,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 8918832916567410172, guid: 96201fce5a58270439f0f450f0026120,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -546,6 +576,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pit (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6750258119556316667, guid: 96201fce5a58270439f0f450f0026120,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8918832916567410172, guid: 96201fce5a58270439f0f450f0026120,
         type: 3}
@@ -640,6 +675,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pit (84)
       objectReference: {fileID: 0}
+    - target: {fileID: 6750258119556316667, guid: 96201fce5a58270439f0f450f0026120,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 8918832916567410172, guid: 96201fce5a58270439f0f450f0026120,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -708,6 +748,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pit
+      objectReference: {fileID: 0}
+    - target: {fileID: 6750258119556316667, guid: 96201fce5a58270439f0f450f0026120,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8918832916567410172, guid: 96201fce5a58270439f0f450f0026120,
         type: 3}
@@ -778,6 +823,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pit (94)
       objectReference: {fileID: 0}
+    - target: {fileID: 6750258119556316667, guid: 96201fce5a58270439f0f450f0026120,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 8918832916567410172, guid: 96201fce5a58270439f0f450f0026120,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -846,6 +896,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pit (20)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6750258119556316667, guid: 96201fce5a58270439f0f450f0026120,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8918832916567410172, guid: 96201fce5a58270439f0f450f0026120,
         type: 3}
@@ -1021,6 +1076,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pit (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 6750258119556316667, guid: 96201fce5a58270439f0f450f0026120,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 8918832916567410172, guid: 96201fce5a58270439f0f450f0026120,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1095,6 +1155,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pit (78)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6750258119556316667, guid: 96201fce5a58270439f0f450f0026120,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8918832916567410172, guid: 96201fce5a58270439f0f450f0026120,
         type: 3}
@@ -10204,6 +10269,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pit (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 6750258119556316667, guid: 96201fce5a58270439f0f450f0026120,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 8918832916567410172, guid: 96201fce5a58270439f0f450f0026120,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10291,6 +10361,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pit (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 6750258119556316667, guid: 96201fce5a58270439f0f450f0026120,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 8918832916567410172, guid: 96201fce5a58270439f0f450f0026120,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10359,6 +10434,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pit (79)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6750258119556316667, guid: 96201fce5a58270439f0f450f0026120,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8918832916567410172, guid: 96201fce5a58270439f0f450f0026120,
         type: 3}
@@ -10429,6 +10509,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pit (85)
       objectReference: {fileID: 0}
+    - target: {fileID: 6750258119556316667, guid: 96201fce5a58270439f0f450f0026120,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 8918832916567410172, guid: 96201fce5a58270439f0f450f0026120,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10497,6 +10582,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pit (77)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6750258119556316667, guid: 96201fce5a58270439f0f450f0026120,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8918832916567410172, guid: 96201fce5a58270439f0f450f0026120,
         type: 3}
@@ -10573,6 +10663,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pit (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 6750258119556316667, guid: 96201fce5a58270439f0f450f0026120,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 8918832916567410172, guid: 96201fce5a58270439f0f450f0026120,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10641,6 +10736,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pit (93)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6750258119556316667, guid: 96201fce5a58270439f0f450f0026120,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8918832916567410172, guid: 96201fce5a58270439f0f450f0026120,
         type: 3}
@@ -10711,6 +10811,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pit (91)
       objectReference: {fileID: 0}
+    - target: {fileID: 6750258119556316667, guid: 96201fce5a58270439f0f450f0026120,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 8918832916567410172, guid: 96201fce5a58270439f0f450f0026120,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10779,6 +10884,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pit (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6750258119556316667, guid: 96201fce5a58270439f0f450f0026120,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8918832916567410172, guid: 96201fce5a58270439f0f450f0026120,
         type: 3}
@@ -10867,6 +10977,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pit (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 6750258119556316667, guid: 96201fce5a58270439f0f450f0026120,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 8918832916567410172, guid: 96201fce5a58270439f0f450f0026120,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10935,6 +11050,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pit (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6750258119556316667, guid: 96201fce5a58270439f0f450f0026120,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8918832916567410172, guid: 96201fce5a58270439f0f450f0026120,
         type: 3}
@@ -11008,7 +11128,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1066949574}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pits
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11091,6 +11211,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pit (96)
       objectReference: {fileID: 0}
+    - target: {fileID: 6750258119556316667, guid: 96201fce5a58270439f0f450f0026120,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 8918832916567410172, guid: 96201fce5a58270439f0f450f0026120,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11165,6 +11290,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pit (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6750258119556316667, guid: 96201fce5a58270439f0f450f0026120,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8918832916567410172, guid: 96201fce5a58270439f0f450f0026120,
         type: 3}
@@ -11291,6 +11421,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pit (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 6750258119556316667, guid: 96201fce5a58270439f0f450f0026120,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 8918832916567410172, guid: 96201fce5a58270439f0f450f0026120,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11359,6 +11494,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pit (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6750258119556316667, guid: 96201fce5a58270439f0f450f0026120,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8918832916567410172, guid: 96201fce5a58270439f0f450f0026120,
         type: 3}
@@ -11434,6 +11574,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pit (80)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6750258119556316667, guid: 96201fce5a58270439f0f450f0026120,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8918832916567410172, guid: 96201fce5a58270439f0f450f0026120,
         type: 3}
@@ -11516,6 +11661,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pit (100)
       objectReference: {fileID: 0}
+    - target: {fileID: 6750258119556316667, guid: 96201fce5a58270439f0f450f0026120,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 8918832916567410172, guid: 96201fce5a58270439f0f450f0026120,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11584,6 +11734,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pit (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6750258119556316667, guid: 96201fce5a58270439f0f450f0026120,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8918832916567410172, guid: 96201fce5a58270439f0f450f0026120,
         type: 3}
@@ -11678,6 +11833,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pit (88)
       objectReference: {fileID: 0}
+    - target: {fileID: 6750258119556316667, guid: 96201fce5a58270439f0f450f0026120,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 8918832916567410172, guid: 96201fce5a58270439f0f450f0026120,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11746,6 +11906,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pit (98)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6750258119556316667, guid: 96201fce5a58270439f0f450f0026120,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8918832916567410172, guid: 96201fce5a58270439f0f450f0026120,
         type: 3}
@@ -11904,6 +12069,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pit (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6750258119556316667, guid: 96201fce5a58270439f0f450f0026120,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 8918832916567410172, guid: 96201fce5a58270439f0f450f0026120,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11973,6 +12143,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pit (99)
       objectReference: {fileID: 0}
+    - target: {fileID: 6750258119556316667, guid: 96201fce5a58270439f0f450f0026120,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 8918832916567410172, guid: 96201fce5a58270439f0f450f0026120,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12041,6 +12216,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pit (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6750258119556316667, guid: 96201fce5a58270439f0f450f0026120,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8918832916567410172, guid: 96201fce5a58270439f0f450f0026120,
         type: 3}
@@ -12116,6 +12296,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pit (24)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6750258119556316667, guid: 96201fce5a58270439f0f450f0026120,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8918832916567410172, guid: 96201fce5a58270439f0f450f0026120,
         type: 3}
@@ -12198,6 +12383,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pit (76)
       objectReference: {fileID: 0}
+    - target: {fileID: 6750258119556316667, guid: 96201fce5a58270439f0f450f0026120,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 8918832916567410172, guid: 96201fce5a58270439f0f450f0026120,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12279,6 +12469,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pit (83)
       objectReference: {fileID: 0}
+    - target: {fileID: 6750258119556316667, guid: 96201fce5a58270439f0f450f0026120,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 8918832916567410172, guid: 96201fce5a58270439f0f450f0026120,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12347,6 +12542,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pit (95)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6750258119556316667, guid: 96201fce5a58270439f0f450f0026120,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8918832916567410172, guid: 96201fce5a58270439f0f450f0026120,
         type: 3}
@@ -12428,6 +12628,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pit (81)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6750258119556316667, guid: 96201fce5a58270439f0f450f0026120,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8918832916567410172, guid: 96201fce5a58270439f0f450f0026120,
         type: 3}
@@ -12615,6 +12820,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pit (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 6750258119556316667, guid: 96201fce5a58270439f0f450f0026120,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 8918832916567410172, guid: 96201fce5a58270439f0f450f0026120,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12690,6 +12900,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pit (86)
       objectReference: {fileID: 0}
+    - target: {fileID: 6750258119556316667, guid: 96201fce5a58270439f0f450f0026120,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 8918832916567410172, guid: 96201fce5a58270439f0f450f0026120,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12758,6 +12973,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pit (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6750258119556316667, guid: 96201fce5a58270439f0f450f0026120,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8918832916567410172, guid: 96201fce5a58270439f0f450f0026120,
         type: 3}
@@ -12828,6 +13048,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pit (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 6750258119556316667, guid: 96201fce5a58270439f0f450f0026120,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 8918832916567410172, guid: 96201fce5a58270439f0f450f0026120,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12896,6 +13121,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pit (97)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6750258119556316667, guid: 96201fce5a58270439f0f450f0026120,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8918832916567410172, guid: 96201fce5a58270439f0f450f0026120,
         type: 3}
@@ -12966,6 +13196,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pit (92)
       objectReference: {fileID: 0}
+    - target: {fileID: 6750258119556316667, guid: 96201fce5a58270439f0f450f0026120,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 8918832916567410172, guid: 96201fce5a58270439f0f450f0026120,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13034,6 +13269,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pit (90)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6750258119556316667, guid: 96201fce5a58270439f0f450f0026120,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8918832916567410172, guid: 96201fce5a58270439f0f450f0026120,
         type: 3}
@@ -13104,6 +13344,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pit (82)
       objectReference: {fileID: 0}
+    - target: {fileID: 6750258119556316667, guid: 96201fce5a58270439f0f450f0026120,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 8918832916567410172, guid: 96201fce5a58270439f0f450f0026120,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13172,6 +13417,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pit (23)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6750258119556316667, guid: 96201fce5a58270439f0f450f0026120,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8918832916567410172, guid: 96201fce5a58270439f0f450f0026120,
         type: 3}

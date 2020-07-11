@@ -320,7 +320,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToSwap: 0
-  speed: 3
+  speed: 0.1
+  Bullet: {fileID: 8936457666703336289, guid: fd457277523b23c47bd6b7f56ef676d5, type: 3}
 --- !u!50 &5443084832819860296
 Rigidbody2D:
   serializedVersion: 4

@@ -23,25 +23,7 @@ public class Bullet : MonoBehaviour
     public void setTrajectory(Vector3 direction)
     {
         this.direction = direction;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        this.gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
     }
-
-    /*private void OnCollisionEnter2D(Collision2D collision)
-    {
-        switch(collision.collider.tag)
-        {
-            case "Enemy":
-            case "EnemyBullet":
-                Destroy(collision.collider.gameObject);
-                Destroy(this.gameObject);
-                break;
-            case "Wall":
-            case "Forcefield":
-                Destroy(this.gameObject);
-                break;
-            case "Bullet":
-            default:
-                Debug.Log("Unrecognized tag in Bullet! Collider tag: " + collision.collider.tag);
-                break;
-        }
-    }*/
 }

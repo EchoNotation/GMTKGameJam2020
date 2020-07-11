@@ -153,12 +153,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 588d956366f9944739a72f8a677c9aa6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e44a98b3a59ed4eacabd7896b4c1c0c7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 0.32, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -303,9 +303,9 @@ BoxCollider2D:
     adaptiveTilingThreshold: 0
     drawMode: 0
     adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_AutoTiling: 1
   serializedVersion: 2
-  m_Size: {x: 0.2, y: 0.3}
+  m_Size: {x: 0.2, y: 0.25}
   m_EdgeRadius: 0
 --- !u!114 &6897681455049353044
 MonoBehaviour:
@@ -320,7 +320,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToSwap: 0
-  speed: 0.1
+  speed: 0.5
   Bullet: {fileID: 8936457666703336289, guid: fd457277523b23c47bd6b7f56ef676d5, type: 3}
   powerUpTimeout: 0
 --- !u!50 &5443084832819860296

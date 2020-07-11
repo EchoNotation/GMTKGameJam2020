@@ -23,6 +23,9 @@ public class Player : MonoBehaviour
     //Player Input
     private Vector3 screenCenter;
 
+    //spawn point for bullets
+    public Transform endOfTurret;
+
     // 0 means no powerup active
     private int activePowerup = 0;
     // time left on the powerup timer
@@ -67,7 +70,7 @@ public class Player : MonoBehaviour
             if (atkTimer <= 0)
             {
                 atkTimer = ATTACK_DELAY;
-                GameObject shot = Instantiate(Bullet, transform.position, Quaternion.identity);
+                GameObject shot = Instantiate(Bullet, endOfTurret.position, endOfTurret.rotation);
                 shot.GetComponent<Bullet>().setTrajectory(shootDirection);
                 shot.GetComponent<Bullet>().addSpeed(dotProduct(moveDirection, shootDirection));
             }

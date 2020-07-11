@@ -9,6 +9,7 @@ TagManager:
   - Wall
   - Forcefield
   - Enemy
+  - Powerup
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Powerup
   - 
   - 
   - 

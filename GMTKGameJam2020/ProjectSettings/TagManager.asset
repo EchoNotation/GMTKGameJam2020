@@ -9,6 +9,8 @@ TagManager:
   - Wall
   - Forcefield
   - Enemy
+  - Powerup
+  - Pit
   layers:
   - Default
   - TransparentFX
@@ -18,7 +20,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Powerup
   - 
   - 
   - 
@@ -45,4 +47,19 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Floor
+    uniqueID: 3075703305
+    locked: 0
+  - name: Pits
+    uniqueID: 3673257543
+    locked: 0
+  - name: Bullets
+    uniqueID: 2239074385
+    locked: 0
+  - name: Player
+    uniqueID: 2471175681
+    locked: 0
+  - name: Powerups
+    uniqueID: 593874219
     locked: 0

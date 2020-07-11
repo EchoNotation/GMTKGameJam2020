@@ -20,14 +20,14 @@ public class Enemy : MonoBehaviour
     private int strafeDirection;
 
     //0: Charger, 1: Gunner
-    public Sprite[] sprites;
+    public Sprite[] bodySprites, barrelSprites;
     public GameObject bullet;
 
     private float chargerSpeed = 3f;
     private float gunnerSpeed = 3f;
 
-    private float gunnerMinDist = 0.4f;
-    private float gunnerMaxDist = 0.8f;
+    private float gunnerMinDist = 1f;
+    private float gunnerMaxDist = 1.4f;
 
     // Start is called before the first frame update
     void Start()
@@ -75,6 +75,7 @@ public class Enemy : MonoBehaviour
         Vector3 myPos = this.transform.position;
         Vector3 directionToPlayer = new Vector3(playerPos.x - myPos.x, playerPos.y - myPos.y, 0);
         Vector3 velocityToAdd = directionToPlayer.normalized * chargerSpeed * Time.deltaTime;
+        rotateBody(directionToPlayer);
 
         this.transform.position = new Vector3(myPos.x + velocityToAdd.x, myPos.y + velocityToAdd.y, 0);
     }
@@ -86,27 +87,34 @@ public class Enemy : MonoBehaviour
         Vector3 myPos = this.transform.position;
         Vector3 directionToPlayer = new Vector3(playerPos.x - myPos.x, playerPos.y - myPos.y, 0);
         Vector3 velocityToAdd = new Vector3();
+        rotateBarrel(directionToPlayer);
         shotCounter++;
+
+        //Debug.Log(shotCounter);
 
         if(directionToPlayer.magnitude > gunnerMaxDist)
         {
             //Need to move into range!
             velocityToAdd = directionToPlayer.normalized * gunnerSpeed * Time.deltaTime;
+            rotateBody(velocityToAdd);
             this.transform.position = new Vector3(myPos.x + velocityToAdd.x, myPos.y + velocityToAdd.y, 0);
         }
         else if(directionToPlayer.magnitude < gunnerMinDist)
         {
             //Need to get away!
             velocityToAdd = directionToPlayer.normalized * -gunnerSpeed * Time.deltaTime;
+            rotateBody(velocityToAdd);
             this.transform.position = new Vector3(myPos.x + velocityToAdd.x, myPos.y + velocityToAdd.y, 0);
         }
         else
         {
             RaycastHit2D hit = Physics2D.Raycast(myPos, directionToPlayer);
+            Debug.Log(hit.collider.tag);
 
             if(hit.collider.CompareTag("Player") && shotCounter >= shotReq)
             {
                 //Have a clear shot... fire!
+                Debug.Log("Firing!");
                 shotCounter = 0;
                 GameObject projectile = Instantiate(bullet, this.transform.position, Quaternion.identity);
                 projectile.GetComponent<EnemyBullet>().setTrajectory(directionToPlayer);
@@ -122,6 +130,7 @@ public class Enemy : MonoBehaviour
                     velocityToAdd = -velocityToAdd;
                 }
 
+                rotateBody(velocityToAdd);
                 this.transform.position = new Vector3(myPos.x + velocityToAdd.x, myPos.y + velocityToAdd.y, 0);
             }
         }
@@ -132,10 +141,11 @@ public class Enemy : MonoBehaviour
         switch(enemyType)
         {
             case Enemies.CHARGER:
-                this.GetComponent<SpriteRenderer>().sprite = sprites[0];
+                this.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = bodySprites[0];
                 break;
             case Enemies.GUNNER:
-                this.GetComponent<SpriteRenderer>().sprite = sprites[1];
+                this.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = bodySprites[1];
+                this.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = barrelSprites[1];
                 break;
             default:
                 Debug.Log("Invalid enemyType in updateSprite! enemyType: " + enemyType);
@@ -148,6 +158,18 @@ public class Enemy : MonoBehaviour
         //Make sound or play particle effect or something.   
     }
 
+    private void rotateBody(Vector3 direction)
+    {
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        this.gameObject.transform.GetChild(0).transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
+    }
+
+    private void rotateBarrel(Vector3 direction)
+    {
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        this.gameObject.transform.GetChild(1).transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         switch(collision.tag)
@@ -155,6 +177,9 @@ public class Enemy : MonoBehaviour
             case "Bullet":
                 Destroy(this.gameObject);
                 Destroy(collision.gameObject);
+                break;
+            case "EnemyBullet":
+            case "Powerup":
                 break;
             default:
                 Debug.Log("Unrecognized tag in OnTriggerEnter2D in Enemy! Tag: " + collision.tag);

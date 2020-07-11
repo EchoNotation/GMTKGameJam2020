@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     public static int ATTACK_DELAY = 20;
     private int atkTimer = 0;
     public GameObject Bullet;
+    private bool alive = true;
 
     //Player Input
     private Vector3 screenCenter;
@@ -37,49 +38,52 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        //Manage Timing of Swapping Control Types
-        timeToSwap -= Time.deltaTime;
-        if (timeToSwap <= 0)
+        if (alive)
         {
-            timeToSwap = SWAP_DURATION;
-            if (isShootMode){
-                isShootMode = false;
+            //Manage Timing of Swapping Control Types
+            timeToSwap -= Time.deltaTime;
+            if (timeToSwap <= 0)
+            {
+                timeToSwap = SWAP_DURATION;
+                if (isShootMode)
+                {
+                    isShootMode = false;
+                }
+                else
+                {
+                    isShootMode = true;
+                }
             }
-            else{
-                isShootMode = true;
+
+            //Player Input
+            Vector3 direction = Input.mousePosition - screenCenter;
+            OnInput(direction);
+
+            //Automatic Controls
+            this.gameObject.transform.Translate(moveDirection * speed * Time.deltaTime);
+            if (atkTimer <= 0)
+            {
+                atkTimer = ATTACK_DELAY;
+                GameObject shot = Instantiate(Bullet, transform.position, Quaternion.identity);
+                shot.GetComponent<Bullet>().setTrajectory(shootDirection);
+            }
+            else
+            {
+                atkTimer -= 1;
+            }
+
+
+            if (powerUpTimeout > 0)
+            {
+                //decrease active powerup
+                powerUpTimeout -= Time.deltaTime;
+            }
+            else if (activePowerup != 0 && powerUpTimeout <= 0)
+            {
+                DeactivatePowerup();
+                powerUpTimeout = 0;
             }
         }
-        
-        //Player Input
-        Vector3 direction = Input.mousePosition - screenCenter;
-        OnInput(direction);
-
-        //Automatic Controls
-        this.gameObject.transform.Translate(moveDirection * speed * Time.deltaTime);
-        if (atkTimer <= 0)
-        {
-            atkTimer = ATTACK_DELAY;
-            GameObject shot = Instantiate(Bullet, transform.position, Quaternion.identity);
-            shot.GetComponent<Bullet>().setTrajectory(shootDirection);
-        }
-        else
-        {
-            atkTimer -= 1;
-        }
-
-
-        if(powerUpTimeout > 0)
-        {
-            //decrease active powerup
-            powerUpTimeout -= Time.deltaTime;
-        }
-        else if(activePowerup != 0 && powerUpTimeout <= 0)
-        {
-            DeactivatePowerup();
-            powerUpTimeout = 0;
-        }
-
     }
 
     private void OnInput(Vector2 direction)
@@ -102,6 +106,7 @@ public class Player : MonoBehaviour
     private void die()
     {
         Debug.Log("Player died!");
+        alive = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -114,6 +119,9 @@ public class Player : MonoBehaviour
                 break;
             case "Powerup":
             case "Bullet":
+                break;
+            case "Pit":
+                die();
                 break;
             default:
                 Debug.Log("Unrecognized tag in OnTriggerEnter2D in Player! Tag: " + collision.tag);
@@ -143,6 +151,11 @@ public class Player : MonoBehaviour
             //1 = more speed
             case 1:
                 speed *= 2;
+                break;
+
+            //2 = arc bullet
+            case 2:
+                //TODO for Thomas
                 break;
 
             default:

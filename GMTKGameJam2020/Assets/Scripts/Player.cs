@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -42,6 +44,7 @@ public class Player : MonoBehaviour
         {
             //Manage Timing of Swapping Control Types
             timeToSwap -= Time.deltaTime;
+            transform.GetChild(3).GetChild(0).GetComponent<Scrollbar>().size = 1 - (timeToSwap / SWAP_DURATION);
             if (timeToSwap <= 0)
             {
                 timeToSwap = SWAP_DURATION;
@@ -105,6 +108,7 @@ public class Player : MonoBehaviour
 
     public void die()
     {
+        if(!alive) return;
         Debug.Log("Player died!");
         alive = false;
     }
@@ -125,6 +129,21 @@ public class Player : MonoBehaviour
                 break;
             default:
                 Debug.Log("Unrecognized tag in OnTriggerEnter2D in Player! Tag: " + collision.tag);
+                break;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        switch(collision.collider.tag)
+        {
+            case "Enemy":
+                die();
+                break;
+            case "Wall":
+                break;
+            default:
+                Debug.Log("Unknown tag collided with Player! Tag: " + collision.collider.tag);
                 break;
         }
     }

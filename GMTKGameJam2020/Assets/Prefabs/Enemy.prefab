@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 917019}
   - component: {fileID: 917020}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -232558359
-  m_SortingLayer: 5
+  m_SortingLayer: 4
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 1982f61a795ce4884ba4450b8c936610, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -91,7 +91,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1317116268}
   - component: {fileID: 1317116269}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -232558359
-  m_SortingLayer: 5
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: df87e44fb943d4b4686a42234c03047d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -174,7 +174,7 @@ GameObject:
   - component: {fileID: -6013791490622621846}
   - component: {fileID: -7672041716614601225}
   - component: {fileID: 1661575066348849739}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -211,7 +211,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyType: 1
   bodySprites:
-  - {fileID: 21300000, guid: df87e44fb943d4b4686a42234c03047d, type: 3}
+  - {fileID: 21300000, guid: f323cdb03cca64b828205dcb696cee88, type: 3}
   - {fileID: 21300000, guid: df87e44fb943d4b4686a42234c03047d, type: 3}
   barrelSprites:
   - {fileID: 0}

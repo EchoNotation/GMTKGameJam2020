@@ -16,17 +16,24 @@ public class Enemy : MonoBehaviour
     public Enemies enemyType;
     private int logicCounter, counterReq;
     private int shotCounter, shotReq;
+    private int dodgeCounter;
 
     private int strafeDirection;
+
+    private bool dodgingPit;
+    private bool dodgingLeft;
+    private Vector3 pitDir;
+    private Vector3 currentDir;
 
     //0: Charger, 1: Gunner
     public Sprite[] bodySprites, barrelSprites;
     public GameObject bullet;
 
-    private float chargerSpeed = 3f;
-    private float gunnerSpeed = 3f;
+    private float chargerSpeed = 2f;
+    private float gunnerSpeed = 2f;
+    private float speed = 0.5f;
 
-    private float gunnerMinDist = 1f;
+    private float gunnerMinDist = 0.8f;
     private float gunnerMaxDist = 1.4f;
 
     // Start is called before the first frame update
@@ -36,6 +43,7 @@ public class Enemy : MonoBehaviour
         logicCounter = 0;
         shotCounter = 0;
         shotReq = 30;
+        dodgingPit = false;
 
         if(Random.Range(0, 2) == 1) strafeDirection = 1;
 
@@ -45,6 +53,11 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(dodgingPit)
+        {
+            dodgePit();
+        }
+
         if(logicCounter >= counterReq)
         {
             logicCounter = 0;
@@ -65,6 +78,24 @@ public class Enemy : MonoBehaviour
         else
         {
             logicCounter++;
+        }
+    }
+
+    void dodgePit()
+    {
+        Vector3 myPos = this.transform.position;
+        Vector3 perpendicular = Vector3.Cross(pitDir, Vector3.forward);
+        Vector3 velocityToAdd = perpendicular.normalized * speed * Time.deltaTime;
+
+        if (dodgingLeft) velocityToAdd = -velocityToAdd;
+
+        this.transform.position = new Vector3(myPos.x + velocityToAdd.x, myPos.y + velocityToAdd.y, 0);
+
+        dodgeCounter--;
+
+        if (dodgeCounter <= 0)
+        {
+            dodgingPit = false;
         }
     }
 
@@ -109,12 +140,12 @@ public class Enemy : MonoBehaviour
         else
         {
             RaycastHit2D hit = Physics2D.Raycast(myPos, directionToPlayer);
-            Debug.Log(hit.collider.tag);
+            //Debug.Log(hit.collider.tag);
 
             if(hit.collider.CompareTag("Player") && shotCounter >= shotReq)
             {
                 //Have a clear shot... fire!
-                Debug.Log("Firing!");
+                //Debug.Log("Firing!");
                 shotCounter = 0;
                 GameObject projectile = Instantiate(bullet, this.transform.position, Quaternion.identity);
                 projectile.GetComponent<EnemyBullet>().setTrajectory(directionToPlayer);
@@ -142,6 +173,7 @@ public class Enemy : MonoBehaviour
         {
             case Enemies.CHARGER:
                 this.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = bodySprites[0];
+                this.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = null;
                 break;
             case Enemies.GUNNER:
                 this.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = bodySprites[1];
@@ -160,8 +192,10 @@ public class Enemy : MonoBehaviour
 
     private void rotateBody(Vector3 direction)
     {
+        if(dodgingPit) return;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         this.gameObject.transform.GetChild(0).transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
+        currentDir = direction;
     }
 
     private void rotateBarrel(Vector3 direction)
@@ -181,10 +215,46 @@ public class Enemy : MonoBehaviour
             case "EnemyBullet":
             case "Powerup":
                 break;
+            case "Pit":
+                dodgingPit = true;
+
+                ContactPoint2D[] contacts = new ContactPoint2D[1];
+                collision.GetContacts(contacts);
+                Vector3 toCollision = new Vector3(contacts[0].point.x, contacts[0].point.y, 0) - this.transform.position;
+                Vector3 toPitCenter = collision.gameObject.transform.position - this.transform.position;
+                float angle = Vector3.SignedAngle(toPitCenter, toCollision, Vector3.forward);
+                if (angle < 0) dodgingLeft = true;
+                else dodgingLeft = false;             
+
+                dodgeCounter = 20;
+                pitDir = currentDir;
+                break;
             default:
                 Debug.Log("Unrecognized tag in OnTriggerEnter2D in Enemy! Tag: " + collision.tag);
                 break;
         }
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Pit"))
+        {
+            if(!dodgingPit)
+            {
+                dodgingPit = true;
+                pitDir = currentDir;
+
+                ContactPoint2D[] contacts = new ContactPoint2D[1];
+                collision.GetContacts(contacts);
+                Vector3 toCollision = new Vector3(contacts[0].point.x, contacts[0].point.y, 0) - this.transform.position;
+                Vector3 toPitCenter = collision.gameObject.transform.position - this.transform.position;
+                float angle = Vector3.SignedAngle(toPitCenter, toCollision, Vector3.forward);
+
+                if (angle < 0) dodgingLeft = true;
+                else dodgingLeft = false;
+            }
+
+            dodgeCounter += 2;
+        }
+    }
 }

@@ -16,6 +16,7 @@ public class Gamecontroller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        DontDestroyOnLoad(this.gameObject);
         halfWidth = mainCamera.orthographicSize * mainCamera.aspect;
         Reset();
         for (int i = 0; i < 10; i++) {

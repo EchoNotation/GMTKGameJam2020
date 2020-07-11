@@ -96,9 +96,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bomb: {fileID: 7539134827005026634, guid: 743b19251eb61fd46a4972c945478e58, type: 3}
   speed: 1
-  waitTime: 3
-  maxBombs: 5
-  minBombs: 0
-  minRadius: 0
-  maxRadius: 3
+  minWaitTime: 0.5
+  maxWaitTime: 3
+  minXoffset: -1
+  maxXoffset: 1
   lifetime: 35
+  offset: {x: 0, y: -0.5, z: 0}

@@ -6,8 +6,7 @@ public class Bomb : MonoBehaviour
 {
     public float endRadius = 3f;
     public float startRadius = 8f;
-    public float maxTime = 5f;
-    public float minTime = 3f;
+    public float fallTime = 4f;
 
     public float killRadius = 2f;
 
@@ -15,23 +14,20 @@ public class Bomb : MonoBehaviour
 
     float currentTime = 0f;
 
-    private float explodeTime;
-
     GameObject indicator;
 
     private void Start()
     {
-        explodeTime = Random.Range(minTime, maxTime);
         indicator = transform.GetChild(0).gameObject;
     }
 
     private void FixedUpdate()
     {
-        indicator.transform.localScale = Vector3.one * Mathf.Lerp(startRadius, endRadius, currentTime / explodeTime);
+        indicator.transform.localScale = Vector3.one * Mathf.Lerp(startRadius, endRadius, currentTime / fallTime);
 
         currentTime += Time.deltaTime;
 
-        if(currentTime > explodeTime)
+        if(currentTime > fallTime)
         {
             Explode();
         }

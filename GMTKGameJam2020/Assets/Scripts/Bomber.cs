@@ -7,12 +7,13 @@ public class Bomber : MonoBehaviour
     public GameObject bomb;
 
     public float speed = 1f;
-    public float waitTime = 5f;
-    public int maxBombs = 5;
-    public int minBombs = 0;
-    public float minRadius = 0f;
-    public float maxRadius = 3f;
+    public float minWaitTime = 1f;
+    public float maxWaitTime = 4f;
+    public float minXoffset = -1f;
+    public float maxXoffset = 1f;
     public float lifetime = 35f;
+
+    public Vector3 offset = Vector3.zero;
 
     public void Start()
     {
@@ -25,8 +26,8 @@ public class Bomber : MonoBehaviour
         //Debug.Log("Starting bombing run...");
         while(true)
         {
-            SpawnBombs(Random.Range(minBombs, maxBombs), Random.Range(minRadius, maxRadius));
-            yield return new WaitForSeconds(waitTime);
+            SpawnBomb(Random.Range(minXoffset, maxXoffset));
+            yield return new WaitForSeconds(Random.Range(minWaitTime, maxWaitTime));
         }
     }
 
@@ -35,15 +36,10 @@ public class Bomber : MonoBehaviour
         transform.Translate(transform.up * speed * Time.deltaTime);
     }
 
-    public void SpawnBombs(int count, float radius)
+    public void SpawnBomb(float radius)
     {
-        //Debug.Log("Dropping " + count + " bombs");
-        for(int i = 0; i <= count; i++)
-        {
-            Vector2 temp = Random.insideUnitCircle * radius;
-            Vector3 location = new Vector3(temp.x, temp.y) + transform.position;
-            Instantiate(bomb, location, Quaternion.Euler(0,0,Random.Range(0,180)));
-        }
+        Vector3 location = transform.position + offset + new Vector3(Random.Range(minXoffset, maxXoffset), 0, 0);
+        Instantiate(bomb, location, Quaternion.Euler(0,0,Random.Range(0,360)));
     }
 
     public void OnDestroy()

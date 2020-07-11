@@ -22,7 +22,7 @@ public class CameraShake : MonoBehaviour
         float duration = 0.5f;
         while(t < duration)
         {
-            Debug.Log("Shake " + t);
+            //Debug.Log("Shake " + t);
 
             float x = (Mathf.PerlinNoise(Time.time * freq, 0) - 0.5f) * intensity;
             float y = (Mathf.PerlinNoise(0, Time.time * freq) - 0.5f) * intensity;

@@ -96,4 +96,9 @@ public class Gamecontroller : MonoBehaviour
         gamePaused = false;
     }
 
+    public void SpawnEnemy(Enemies type, Vector3 position)
+    {
+        GameObject newEnemy = Instantiate(enemy, position, Quaternion.identity);
+        newEnemy.GetComponent<Enemy>().enemyType = type;
+    }
 }

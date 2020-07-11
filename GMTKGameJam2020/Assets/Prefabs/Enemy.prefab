@@ -241,6 +241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: 1
+  shotReq: 85
   bodySprites:
   - {fileID: 21300000, guid: f323cdb03cca64b828205dcb696cee88, type: 3}
   - {fileID: 21300000, guid: df87e44fb943d4b4686a42234c03047d, type: 3}

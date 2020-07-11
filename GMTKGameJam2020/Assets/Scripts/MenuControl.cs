@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuControl : MonoBehaviour
 {
@@ -31,10 +32,19 @@ public class MenuControl : MonoBehaviour
         transform.GetComponent<Gamecontroller>().Play();
     }
 
-    public void GameOver()
+    public void GameOver(int score)
     {
         transform.GetChild(1).GetComponent<Canvas>().enabled = true;
-        //Pause Game
+        transform.GetChild(1).GetChild(1).GetChild(0).GetComponent<Text>().text = score.ToString();
     }
 
+    public void CloseGameOver()
+    {
+        transform.GetChild(1).GetComponent<Canvas>().enabled = false;
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadSceneAsync(0);
+    }
 }

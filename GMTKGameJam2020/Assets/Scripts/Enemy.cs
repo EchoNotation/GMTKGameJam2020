@@ -114,7 +114,7 @@ public class Enemy : MonoBehaviour
             if(hit.collider.CompareTag("Player") && shotCounter >= shotReq)
             {
                 //Have a clear shot... fire!
-                Debug.Log("Firing!");
+                //Debug.Log("Firing!");
                 shotCounter = 0;
                 GameObject projectile = Instantiate(bullet, this.transform.position, Quaternion.identity);
                 projectile.GetComponent<EnemyBullet>().setTrajectory(directionToPlayer);

@@ -15,7 +15,7 @@ public class Powerup : MonoBehaviour
     public enum PowerupType
     {
         SPEED,
-        ARC
+        FIRE
     }
 
     int powerupID = 0;
@@ -32,7 +32,7 @@ public class Powerup : MonoBehaviour
             case PowerupType.SPEED:
                 powerupID = 1;
                 break;
-            case PowerupType.ARC:
+            case PowerupType.FIRE:
                 powerupID = 2;
                 break;
         }

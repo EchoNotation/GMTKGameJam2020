@@ -213,8 +213,9 @@ MonoBehaviour:
   bodySprites:
   - {fileID: 21300000, guid: f323cdb03cca64b828205dcb696cee88, type: 3}
   - {fileID: 21300000, guid: df87e44fb943d4b4686a42234c03047d, type: 3}
-  barrelSprites:
-  - {fileID: 0}
+  toolSprites:
+  - {fileID: 21300000, guid: 206cabc3529c34c41aef5d017f01e56c, type: 3}
+  - {fileID: 21300000, guid: 6e2b3845a82004b7cb7d107be3831701, type: 3}
   - {fileID: 21300000, guid: 1982f61a795ce4884ba4450b8c936610, type: 3}
   bullet: {fileID: 2811384657760440921, guid: 9af2a994e213f29468247d44617a1c76, type: 3}
 --- !u!61 &-7672041716614601225

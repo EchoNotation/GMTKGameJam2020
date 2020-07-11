@@ -10,6 +10,7 @@ TagManager:
   - Forcefield
   - Enemy
   - Powerup
+  - Pit
   layers:
   - Default
   - TransparentFX

@@ -151,6 +151,8 @@ public class Player : MonoBehaviour
         //transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
         GameObject.FindWithTag("Controller").GetComponent<MenuControl>().GameOver(displayScore);
 
+        FindObjectOfType<CameraShake>().ShakeCameraHard();
+
     }
 
     public void AddScore(int newScore)
@@ -217,9 +219,9 @@ public class Player : MonoBehaviour
                 speed *= 2;
                 break;
 
-            //2 = arc bullet
+            //2 = firing speed
             case 2:
-                //TODO for Thomas
+                ATTACK_DELAY = ATTACK_DELAY / 2;
                 break;
 
             default:
@@ -239,6 +241,10 @@ public class Player : MonoBehaviour
 
             case 1:
                 speed /= 2;
+                break;
+
+            case 2:
+                ATTACK_DELAY = ATTACK_DELAY * 2;
                 break;
 
             default:

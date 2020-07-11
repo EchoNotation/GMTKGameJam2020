@@ -4,20 +4,31 @@ using UnityEngine;
 
 public class Gamecontroller : MonoBehaviour
 {
-    private int waveNumber;
+    public static Gamecontroller instance = null;
+    public int waveNumber;
     private ArrayList enemiesActive;
     private float halfWidth, waveSpawnThreshold, waveEnemyCount;
     private Camera mainCamera;
-    public GameObject Charger, Gunner, Bombmer;
+    public GameObject enemy, bombmer;
     private int[] waveEnemyMix;
     private bool gamePaused, trickling;
+
+    void Awake() {
+        if (instance == null) {
+            instance = this;
+        }
+        else if (instance != this){
+            Destroy(this.gameObject);
+        }
+    }
     
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("Booting GameController");
         DontDestroyOnLoad(this.gameObject);
         waveSpawnThreshold = 0.25f;
-        waveEnemyMix = new int[] {3, 0, 0};
+        enemiesActive = new ArrayList();
         Reset();
     }
 
@@ -44,23 +55,23 @@ public class Gamecontroller : MonoBehaviour
     public void Reset() {
         Pause();
         mainCamera = null;
-        enemiesActive = new ArrayList();
+        enemiesActive.Clear();
         waveNumber = 0;
         waveEnemyCount = 1;
         trickling = false;
     }
     private IEnumerator SpawnTrickle() {
         trickling = true;
-        yield return new WaitForSeconds(Random.Range(1,501) * 0.01f);
-        Instantiate(Gunner, SpawnLocation(), Quaternion.identity);
+        yield return new WaitForSeconds(Random.Range(100,501) * 0.01f);
+        Instantiate(enemy, SpawnLocation(), Quaternion.identity);
         waveEnemyCount = enemiesActive.Count / ((enemiesActive.Count - 1) / waveEnemyCount);
         trickling = false;
     }
     private void SpawnNextWave() {
         waveEnemyCount = 0;
         for (int i = 0; i < 10; i++) {
-            Instantiate(Gunner, SpawnLocation(), Quaternion.identity);
             waveEnemyCount++;
+            Instantiate(enemy, SpawnLocation(), Quaternion.identity);
         }
 
         waveNumber++;
@@ -90,10 +101,17 @@ public class Gamecontroller : MonoBehaviour
 
     public void Pause() {
         gamePaused = true;
+        StopAllCoroutines();
+        trickling = false;
     }
 
     public void Play() {
         gamePaused = false;
     }
 
+    public void SpawnEnemy(Enemies type, Vector3 position)
+    {
+        GameObject newEnemy = Instantiate(enemy, position, Quaternion.identity);
+        newEnemy.GetComponent<Enemy>().enemyType = type;
+    }
 }

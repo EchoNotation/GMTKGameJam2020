@@ -138,6 +138,10 @@ public class Player : MonoBehaviour
         Instantiate(explosion, this.transform.position, Quaternion.identity);
         transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = destroyed;
         transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = greenTurret;
+
+        //prevent tank from moving after destroyed
+        //it is, after all, a tank
+        GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
     }
 
     public void AddScore(int newScore)

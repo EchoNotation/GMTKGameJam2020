@@ -25,9 +25,10 @@ public class Enemy : MonoBehaviour
     private Vector3 pitDir;
     private Vector3 currentDir;
 
-    //0: Charger, 1: Gunner
-    public Sprite[] bodySprites, barrelSprites;
+    public Sprite[] bodySprites, toolSprites;
     public GameObject bullet;
+
+    private bool sawSwitch = true;
 
     private float chargerSpeed = 2f;
     private float gunnerSpeed = 2f;
@@ -107,6 +108,7 @@ public class Enemy : MonoBehaviour
         Vector3 directionToPlayer = new Vector3(playerPos.x - myPos.x, playerPos.y - myPos.y, 0);
         Vector3 velocityToAdd = directionToPlayer.normalized * chargerSpeed * Time.deltaTime;
         rotateBody(directionToPlayer);
+        rotateSaws(directionToPlayer);
 
         this.transform.position = new Vector3(myPos.x + velocityToAdd.x, myPos.y + velocityToAdd.y, 0);
     }
@@ -173,16 +175,36 @@ public class Enemy : MonoBehaviour
         {
             case Enemies.CHARGER:
                 this.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = bodySprites[0];
-                this.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = null;
+                this.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = toolSprites[0];
                 break;
             case Enemies.GUNNER:
                 this.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = bodySprites[1];
-                this.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = barrelSprites[1];
+                this.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = toolSprites[2];
                 break;
             default:
                 Debug.Log("Invalid enemyType in updateSprite! enemyType: " + enemyType);
                 break;
         }
+    }
+
+    void rotateSaws(Vector3 direction)
+    {
+        Sprite temp;
+
+        if (sawSwitch)
+        {
+            temp = toolSprites[0];
+            sawSwitch = false;
+        }
+        else
+        {
+            temp = toolSprites[1];
+            sawSwitch = true;
+        }
+
+        this.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = temp;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        this.gameObject.transform.GetChild(1).transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
     }
 
     private void OnDestroy()

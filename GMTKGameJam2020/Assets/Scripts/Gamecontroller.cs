@@ -29,7 +29,6 @@ public class Gamecontroller : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
         waveSpawnThreshold = 0.25f;
         enemiesActive = new ArrayList();
-        waveEnemyMix = new int[] {3, 0, 0};
         Reset();
     }
 
@@ -76,7 +75,7 @@ public class Gamecontroller : MonoBehaviour
         }
 
         waveNumber++;
-        //Debug.Log("Wave " + waveNumber + " Spawned");
+        Debug.Log("Wave " + waveNumber + " Spawned");
     }
 
     private Vector2 SpawnLocation() {

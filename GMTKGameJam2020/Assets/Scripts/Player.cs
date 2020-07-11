@@ -61,6 +61,7 @@ public class Player : MonoBehaviour
             score += 10*Time.deltaTime;
             displayScore = (int)score - ((int)score%10);
             transform.GetChild(3).GetChild(1).GetChild(0).GetComponent<Text>().text = displayScore.ToString();
+
             //Manage Timing of Swapping Control Types
             timeToSwap -= Time.deltaTime;
             transform.GetChild(3).GetChild(0).GetComponent<Scrollbar>().size = 1 - (timeToSwap / SWAP_DURATION);

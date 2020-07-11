@@ -43,6 +43,8 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameObject.FindGameObjectWithTag("Controller").GetComponent<Gamecontroller>().RegisterEnemy(this.gameObject);
+
         counterReq = 3;
         logicCounter = 0;
         shotCounter = 0;
@@ -213,6 +215,7 @@ public class Enemy : MonoBehaviour
     private void die()
     {
         player.GetComponent<Player>().AddScore(100);
+        GameObject.FindGameObjectWithTag("Controller").GetComponent<Gamecontroller>().RemoveEnemy(this.gameObject);
         //Make sound or play particle effect or something. 
         Destroy(this.gameObject);
     }

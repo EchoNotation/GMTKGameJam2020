@@ -48,4 +48,9 @@ public class MenuControl : MonoBehaviour
     {
         SceneManager.LoadSceneAsync(0);
     }
+
+    public void Credits()
+    {
+        SceneManager.LoadSceneAsync(2);
+    }
 }

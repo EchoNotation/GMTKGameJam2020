@@ -24,6 +24,11 @@ public class Player : MonoBehaviour
     public Sprite destroyed;
     public GameObject explosion;
 
+    public Sprite grayBody;
+    public Sprite grayTurret;
+    public Sprite greenBody;
+    public Sprite greenTurret;
+
     //Player Input
     private Vector3 screenCenter;
 
@@ -33,7 +38,7 @@ public class Player : MonoBehaviour
     // 0 means no powerup active
     private int activePowerup = 0;
     // time left on the powerup timer
-    [SerializeField]
+    //[SerializeField]
     private float powerUpTimeout = 0;
 
     // Start is called before the first frame update
@@ -42,6 +47,9 @@ public class Player : MonoBehaviour
         timeToSwap = SWAP_DURATION;
         screenCenter = new Vector3(Screen.width/2, Screen.height/2, 0);
         shootDirection = Vector3.up;
+        isShootMode = false;
+        transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = grayTurret;
+        transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = greenBody;
     }
 
     // Update is called once per frame
@@ -62,10 +70,14 @@ public class Player : MonoBehaviour
                 if (isShootMode)
                 {
                     isShootMode = false;
+                    transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = grayTurret;
+                    transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = greenBody;
                 }
                 else
                 {
                     isShootMode = true;
+                    transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = greenTurret;
+                    transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = grayBody;
                 }
             }
 
@@ -125,6 +137,7 @@ public class Player : MonoBehaviour
         alive = false;
         Instantiate(explosion, this.transform.position, Quaternion.identity);
         transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = destroyed;
+        transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = greenTurret;
     }
 
     public void AddScore(int newScore)

@@ -138,6 +138,7 @@ public class Player : MonoBehaviour
         Instantiate(explosion, this.transform.position, Quaternion.identity);
         transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = destroyed;
         transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = greenTurret;
+        GameObject.FindWithTag("Controller").GetComponent<MenuControl>().GameOver();
     }
 
     public void AddScore(int newScore)

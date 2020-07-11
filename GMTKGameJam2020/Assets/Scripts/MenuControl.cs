@@ -34,6 +34,7 @@ public class MenuControl : MonoBehaviour
     public void GameOver()
     {
         transform.GetChild(1).GetComponent<Canvas>().enabled = true;
+        //Pause Game
     }
 
 }

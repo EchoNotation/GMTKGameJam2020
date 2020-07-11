@@ -27,10 +27,12 @@ public class Gamecontroller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameObject.FindGameObjectWithTag("Player") != null) {
-            mainCamera = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Camera>();
-            halfWidth = mainCamera.orthographicSize * mainCamera.aspect;
-            Debug.Log("Camera Locked with mesure of :" + halfWidth);
+        if (mainCamera == null) {
+            if (GameObject.FindGameObjectWithTag("Player") != null) {
+                mainCamera = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Camera>();
+                halfWidth = mainCamera.orthographicSize * mainCamera.aspect;
+                Debug.Log("Camera Locked with mesure of :" + halfWidth);
+            }
         }
         else if (!gamePaused) {
             Debug.Log("GameC update | " + (enemiesActive.Count / waveEnemyCount < waveSpawnThreshold));

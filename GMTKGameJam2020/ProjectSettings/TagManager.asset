@@ -9,6 +9,8 @@ TagManager:
   - Wall
   - Forcefield
   - Enemy
+  - Powerup
+  - Pit
   layers:
   - Default
   - TransparentFX
@@ -18,7 +20,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Powerup
   - 
   - 
   - 

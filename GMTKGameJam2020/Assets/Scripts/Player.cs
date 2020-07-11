@@ -120,6 +120,9 @@ public class Player : MonoBehaviour
             case "Powerup":
             case "Bullet":
                 break;
+            case "Pit":
+                die();
+                break;
             default:
                 Debug.Log("Unrecognized tag in OnTriggerEnter2D in Player! Tag: " + collision.tag);
                 break;

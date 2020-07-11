@@ -148,4 +148,18 @@ public class Enemy : MonoBehaviour
         //Make sound or play particle effect or something.   
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        switch(collision.tag)
+        {
+            case "Bullet":
+                Destroy(this.gameObject);
+                Destroy(collision.gameObject);
+                break;
+            default:
+                Debug.Log("Unrecognized tag in OnTriggerEnter2D in Enemy! Tag: " + collision.tag);
+                break;
+        }
+    }
+
 }

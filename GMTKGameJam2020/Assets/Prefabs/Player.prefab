@@ -256,6 +256,7 @@ GameObject:
   - component: {fileID: 8062237659169003914}
   - component: {fileID: 2849451631857685849}
   - component: {fileID: 6897681455049353044}
+  - component: {fileID: 5443084832819860296}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -319,5 +320,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToSwap: 0
-  speed: 3
-  mapSize: 10
+  speed: 0.1
+  Bullet: {fileID: 8936457666703336289, guid: fd457277523b23c47bd6b7f56ef676d5, type: 3}
+--- !u!50 &5443084832819860296
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5298879519524774285}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

@@ -92,7 +92,7 @@ public class Player : MonoBehaviour
                 atkTimer = ATTACK_DELAY;
                 GameObject shot = Instantiate(Bullet, endOfTurret.position, endOfTurret.rotation);
                 shot.GetComponent<Bullet>().setTrajectory(shootDirection);
-                shot.GetComponent<Bullet>().addSpeed(dotProduct(moveDirection, shootDirection));
+                //shot.GetComponent<Bullet>().addSpeed(dotProduct(moveDirection, shootDirection));
             }
             else
             {

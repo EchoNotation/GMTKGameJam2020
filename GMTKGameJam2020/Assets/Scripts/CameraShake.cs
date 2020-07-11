@@ -17,7 +17,7 @@ public class CameraShake : MonoBehaviour
 
     IEnumerator ShakeHard()
     {
-        float intensity = 1.5f;
+        float intensity = 1.0f;
         float freq = 9.5f;
         float duration = 0.5f;
         while(t < duration)

@@ -4,14 +4,10 @@ using UnityEngine;
 
 public class Gamecontroller : MonoBehaviour
 {
-    private int gameScore;
-    private Vector2 Direction_Vector = Vector2.zero;
-    private float halfWidth, Magnitude;
+    private int gameScore, waveCount, enemyCount;
+    private float halfWidth;
     public Camera mainCamera;
-    private int waveCount;
-    public GameObject Charger;
-    public GameObject Gunner;
-    public GameObject Bombmer;
+    public GameObject Charger, Gunner, Bombmer;
     public bool gamePaused;
     // Start is called before the first frame update
     void Start()
@@ -69,14 +65,22 @@ public class Gamecontroller : MonoBehaviour
     }
 
     private Vector2 SpawnLocation() {
-        Direction_Vector = Vector2.zero;
+        Vector2 Direction_Vector = Vector2.zero;
         while (Direction_Vector == Vector2.zero) {
             Direction_Vector = new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f));
         }
         Direction_Vector = Direction_Vector.normalized;
-        Magnitude = Random.Range(halfWidth, halfWidth * 6);
+        float Magnitude = Random.Range(halfWidth, halfWidth * 6);
 
         //TODO: Generate random offscreen coordinates, spaced from a previous coord set
         return Direction_Vector * Magnitude;
+    }
+
+    public void RegisterEnemy(GameObject enemy) {
+        //TODO: track totoal and current enemies to know when to spwan next wave
+        enemyCount++;
+    }
+    public void RemoveEnemy(GameObject enemy) {
+        enemyCount--;
     }
 }

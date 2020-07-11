@@ -22,7 +22,7 @@ public class Bomber : MonoBehaviour
 
     IEnumerator DoBombingRun()
     {
-        Debug.Log("Starting bombing run...");
+        //Debug.Log("Starting bombing run...");
         while(true)
         {
             SpawnBombs(Random.Range(minBombs, maxBombs), Random.Range(minRadius, maxRadius));
@@ -37,7 +37,7 @@ public class Bomber : MonoBehaviour
 
     public void SpawnBombs(int count, float radius)
     {
-        Debug.Log("Dropping " + count + " bombs");
+        //Debug.Log("Dropping " + count + " bombs");
         for(int i = 0; i <= count; i++)
         {
             Vector2 temp = Random.insideUnitCircle * radius;

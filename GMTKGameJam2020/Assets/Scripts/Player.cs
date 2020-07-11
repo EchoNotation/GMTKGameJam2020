@@ -21,6 +21,8 @@ public class Player : MonoBehaviour
     private bool alive = true;
     private float score = 0f;
     public int displayScore = 0;
+    public Sprite destroyed;
+    public GameObject explosion;
 
     //Player Input
     private Vector3 screenCenter;
@@ -121,6 +123,8 @@ public class Player : MonoBehaviour
         if(!alive) return;
         Debug.Log("Player died!");
         alive = false;
+        Instantiate(explosion, this.transform.position, Quaternion.identity);
+        transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = destroyed;
     }
 
     public void AddScore(int newScore)

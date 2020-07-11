@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
     private int logicCounter, counterReq;
     private int shotCounter, shotReq;
     private int dodgeCounter;
+    private GameObject player;
 
     private int strafeDirection;
 
@@ -47,8 +48,9 @@ public class Enemy : MonoBehaviour
         shotCounter = 0;
         shotReq = 30;
         dodgingPit = false;
+        player = GameObject.FindGameObjectWithTag("Player");
 
-        if(Random.Range(0, 2) == 1) strafeDirection = 1;
+        if (Random.Range(0, 2) == 1) strafeDirection = 1;
 
         updateSprite();
     }
@@ -117,7 +119,6 @@ public class Enemy : MonoBehaviour
 
     void gunnerLogic()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
         Vector3 playerPos = player.transform.position;
         Vector3 myPos = this.transform.position;
         Vector3 directionToPlayer = new Vector3(playerPos.x - myPos.x, playerPos.y - myPos.y, 0);
@@ -211,6 +212,7 @@ public class Enemy : MonoBehaviour
 
     private void OnDestroy()
     {
+        player.GetComponent<Player>().AddScore(100);
         //Make sound or play particle effect or something.   
     }
 

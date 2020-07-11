@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
 {
     private Vector3 direction;
     private float speed = 2f;
+    public GameObject explosion;
 
     // Start is called before the first frame update
     void Start()
@@ -30,5 +31,11 @@ public class Bullet : MonoBehaviour
     public void addSpeed(float speedToAdd)
     {
         speed += speedToAdd;
+    }
+
+    void OnDestroy()
+    {
+        Debug.Log("Spawn Explosion");
+        Instantiate(explosion, transform.position, Quaternion.identity);
     }
 }

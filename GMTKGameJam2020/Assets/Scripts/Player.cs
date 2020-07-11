@@ -19,6 +19,8 @@ public class Player : MonoBehaviour
     private int atkTimer = 0;
     public GameObject Bullet;
     private bool alive = true;
+    private float score = 0f;
+    public int displayScore = 0;
 
     //Player Input
     private Vector3 screenCenter;
@@ -45,6 +47,10 @@ public class Player : MonoBehaviour
     {
         if (alive)
         {
+            //manage scoring
+            score += 10*Time.deltaTime;
+            displayScore = (int)score - ((int)score%10);
+            transform.GetChild(3).GetChild(1).GetChild(0).GetComponent<Text>().text = displayScore.ToString();
             //Manage Timing of Swapping Control Types
             timeToSwap -= Time.deltaTime;
             transform.GetChild(3).GetChild(0).GetComponent<Scrollbar>().size = 1 - (timeToSwap / SWAP_DURATION);
@@ -115,6 +121,11 @@ public class Player : MonoBehaviour
         if(!alive) return;
         Debug.Log("Player died!");
         alive = false;
+    }
+
+    public void AddScore(int newScore)
+    {
+        score += newScore;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

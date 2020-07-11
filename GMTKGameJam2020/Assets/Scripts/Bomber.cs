@@ -46,4 +46,9 @@ public class Bomber : MonoBehaviour
         }
     }
 
+    public void OnDestroy()
+    {
+        StopAllCoroutines();
+    }
+
 }

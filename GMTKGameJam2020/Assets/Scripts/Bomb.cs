@@ -11,6 +11,8 @@ public class Bomb : MonoBehaviour
 
     public float killRadius = 2f;
 
+    public GameObject explosion;
+
     float currentTime = 0f;
 
     private float explodeTime;
@@ -47,6 +49,7 @@ public class Bomb : MonoBehaviour
             Debug.Log("Bomb killed player from " + distSquared);
             player.GetComponent<Player>().die();
         }
+        Instantiate(explosion, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 

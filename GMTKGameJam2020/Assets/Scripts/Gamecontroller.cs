@@ -9,6 +9,7 @@ public class Gamecontroller : MonoBehaviour
     public Camera mainCamera;
     public GameObject Charger, Gunner, Bombmer;
     public bool gamePaused;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -30,20 +31,7 @@ public class Gamecontroller : MonoBehaviour
 
     void GoToScene() {
         //TODO: What should be passed here
-        //TODO:Make scenes (Title, Game, score – could be overlay, paused - could be overlay, Credits)
-    }
-
-    void ExitGame() {
-        if(Application.platform == RuntimePlatform.WindowsPlayer) {
-            Application.Quit();
-        }
-    }
-    void CalcuateScore() {
-
-    }
-
-    int GetScore() {
-        return gameScore;
+        //TODO: Make scenes (Title, Game, score – could be overlay, paused - could be overlay, Credits)
     }
 
     void Reset() {

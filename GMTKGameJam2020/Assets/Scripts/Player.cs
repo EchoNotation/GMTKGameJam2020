@@ -153,6 +153,11 @@ public class Player : MonoBehaviour
                 speed *= 2;
                 break;
 
+            //2 = arc bullet
+            case 2:
+                //TODO for Thomas
+                break;
+
             default:
                 Debug.LogWarning("[Player]: Warning: Logic Error: powerup ID not recongized");
                 break;

@@ -153,7 +153,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7b2600b9399f34e6bab706e1e662db73, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 588d956366f9944739a72f8a677c9aa6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -322,6 +322,7 @@ MonoBehaviour:
   timeToSwap: 0
   speed: 0.1
   Bullet: {fileID: 8936457666703336289, guid: fd457277523b23c47bd6b7f56ef676d5, type: 3}
+  powerUpTimeout: 0
 --- !u!50 &5443084832819860296
 Rigidbody2D:
   serializedVersion: 4

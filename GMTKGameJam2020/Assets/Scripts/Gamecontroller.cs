@@ -9,7 +9,7 @@ public class Gamecontroller : MonoBehaviour
     private ArrayList enemiesActive;
     private float halfWidth, waveSpawnThreshold, waveEnemyCount;
     private Camera mainCamera;
-    public GameObject Enemy, Bombmer;
+    public GameObject enemy, bombmer;
     private int[] waveEnemyMix;
     private bool gamePaused, trickling;
 
@@ -64,7 +64,7 @@ public class Gamecontroller : MonoBehaviour
     private IEnumerator SpawnTrickle() {
         trickling = true;
         yield return new WaitForSeconds(Random.Range(100,501) * 0.01f);
-        Instantiate(Enemy, SpawnLocation(), Quaternion.identity);
+        Instantiate(enemy, SpawnLocation(), Quaternion.identity);
         waveEnemyCount = enemiesActive.Count / ((enemiesActive.Count - 1) / waveEnemyCount);
         trickling = false;
     }
@@ -72,7 +72,7 @@ public class Gamecontroller : MonoBehaviour
         waveEnemyCount = 0;
         for (int i = 0; i < 10; i++) {
             waveEnemyCount++;
-            Instantiate(Enemy, SpawnLocation(), Quaternion.identity);
+            Instantiate(enemy, SpawnLocation(), Quaternion.identity);
         }
 
         waveNumber++;

@@ -248,7 +248,7 @@ public class Enemy : MonoBehaviour
         switch(collision.tag)
         {
             case "Bullet":
-                collision.gameObject.GetComponent<Bullet>().onHit();
+                collision.gameObject.GetComponent<Bullet>().onHit(false);
                 die();
                 break;
             case "EnemyBullet":

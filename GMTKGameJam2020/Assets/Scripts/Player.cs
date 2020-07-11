@@ -29,6 +29,8 @@ public class Player : MonoBehaviour
     public Sprite greenBody;
     public Sprite greenTurret;
 
+    public AudioSource source;
+
     //Player Input
     private Vector3 screenCenter;
 
@@ -93,6 +95,9 @@ public class Player : MonoBehaviour
                 atkTimer = ATTACK_DELAY;
                 GameObject shot = Instantiate(Bullet, endOfTurret.position, endOfTurret.rotation);
                 shot.GetComponent<Bullet>().setTrajectory(shootDirection);
+
+                if (source.isPlaying) source.Stop();
+                source.Play();
                 //shot.GetComponent<Bullet>().addSpeed(dotProduct(moveDirection, shootDirection));
             }
             else

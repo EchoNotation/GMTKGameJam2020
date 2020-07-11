@@ -11,6 +11,9 @@ public class Bomb : MonoBehaviour
     public float killRadius = 2f;
 
     public GameObject explosion;
+    public AudioSource source;
+
+    private bool hasExploded;
 
     float currentTime = 0f;
 
@@ -27,15 +30,18 @@ public class Bomb : MonoBehaviour
 
         currentTime += Time.deltaTime;
 
-        if(currentTime > fallTime)
+        if(currentTime > fallTime && !hasExploded)
         {
             Explode();
         }
+
+        if (hasExploded & !source.isPlaying) Destroy(this.gameObject);
     }
 
     void Explode()
     {
         //boom
+        hasExploded = true;
 
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         Vector3 playerPos = player.transform.position;
@@ -46,7 +52,9 @@ public class Bomb : MonoBehaviour
             player.GetComponent<Player>().die();
         }
         Instantiate(explosion, transform.position, Quaternion.identity);
-        Destroy(gameObject);
+        transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
+        transform.GetChild(1).GetComponent<SpriteRenderer>().enabled = false;
+        source.Play();
     }
 
     //private void OnDrawGizmos()

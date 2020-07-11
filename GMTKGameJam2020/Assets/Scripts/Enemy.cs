@@ -173,6 +173,7 @@ public class Enemy : MonoBehaviour
         {
             case Enemies.CHARGER:
                 this.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = bodySprites[0];
+                this.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = null;
                 break;
             case Enemies.GUNNER:
                 this.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = bodySprites[1];

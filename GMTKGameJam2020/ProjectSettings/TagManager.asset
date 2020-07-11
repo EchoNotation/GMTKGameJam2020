@@ -22,7 +22,7 @@ TagManager:
   - 
   - Powerup
   - Pits
-  - 
+  - Enemies
   - 
   - 
   - 
@@ -65,4 +65,7 @@ TagManager:
     locked: 0
   - name: Powerups
     uniqueID: 593874219
+    locked: 0
+  - name: Bomber
+    uniqueID: 1630872825
     locked: 0

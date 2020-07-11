@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Gamecontroller : MonoBehaviour
 {
-    private int waveNumber, waveEnemyCount;
+    private int waveNumber;
     private ArrayList enemiesActive;
-    private float halfWidth, waveSpawnThreshold;
+    private float halfWidth, waveSpawnThreshold, waveEnemyCount;
     private Camera mainCamera;
     public GameObject Charger, Gunner, Bombmer;
     private int[] waveEnemyMix;
-    private bool gamePaused;
+    private bool gamePaused, trickling;
     
     // Start is called before the first frame update
     void Start()
@@ -20,7 +20,8 @@ public class Gamecontroller : MonoBehaviour
         enemiesActive = new ArrayList();
         waveSpawnThreshold = 0.25f;
         waveEnemyMix = new int[] {3, 0, 0};
-        waveEnemyCount = 3;
+        waveEnemyCount = 1;
+        trickling = false;
         Reset();
     }
 
@@ -31,14 +32,17 @@ public class Gamecontroller : MonoBehaviour
             if (GameObject.FindGameObjectWithTag("Player") != null) {
                 mainCamera = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Camera>();
                 halfWidth = mainCamera.orthographicSize * mainCamera.aspect;
-                Debug.Log("Camera Locked with mesure of :" + halfWidth);
             }
         }
         else if (!gamePaused) {
-            Debug.Log("GameC update | " + (enemiesActive.Count / waveEnemyCount < waveSpawnThreshold));
+            Debug.Log("enemies ratio: " + enemiesActive.Count / waveEnemyCount);
             if (enemiesActive.Count / waveEnemyCount < waveSpawnThreshold) {
-                SpawNextWave();
+                SpawnNextWave();
             }
+            if (!trickling) {
+                StartCoroutine(SpawnTrickle());
+            }
+
         }
     }
 
@@ -46,8 +50,16 @@ public class Gamecontroller : MonoBehaviour
         waveNumber = 0;
         Pause();
     }
-
-    private void SpawNextWave() {
+    private IEnumerator SpawnTrickle() {
+        trickling = true;
+        yield return new WaitForSeconds(5.0f);
+        Debug.Log("trickeling");
+        Instantiate(Gunner, SpawnLocation(), Quaternion.identity);
+        waveEnemyCount = enemiesActive.Count / ((enemiesActive.Count - 1) / waveEnemyCount);
+        Debug.Log("Edited Count: " + waveEnemyCount);
+        trickling = false;
+    }
+    private void SpawnNextWave() {
         waveEnemyCount = 0;
         for (int i = 0; i < 10; i++) {
             Instantiate(Gunner, SpawnLocation(), Quaternion.identity);
@@ -55,6 +67,7 @@ public class Gamecontroller : MonoBehaviour
         }
 
         waveNumber++;
+        Debug.Log("Wave " + waveNumber + " Spawned");
     }
 
     private Vector2 SpawnLocation() {
@@ -72,7 +85,6 @@ public class Gamecontroller : MonoBehaviour
     }
 
     public void RegisterEnemy(GameObject newEnemy) {
-        Debug.Log("Enemy Registered");
         enemiesActive.Add(newEnemy);
     }
     public void RemoveEnemy(GameObject deadEnemy) {
@@ -84,7 +96,7 @@ public class Gamecontroller : MonoBehaviour
     }
 
     public void Play() {
-        Debug.Log("Playing");
         gamePaused = false;
     }
+
 }

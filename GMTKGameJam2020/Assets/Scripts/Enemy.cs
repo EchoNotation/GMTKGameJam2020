@@ -279,4 +279,9 @@ public class Enemy : MonoBehaviour
             dodgeCounter += 2;
         }
     }
+
+    private float dotProduct(Vector3 v1, Vector3 v2)
+    {
+        return (v1.x * v2.x) + (v1.y * v2.y) + (v1.z * v2.z);
+    }
 }

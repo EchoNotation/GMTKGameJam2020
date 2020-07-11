@@ -69,6 +69,7 @@ public class Player : MonoBehaviour
                 atkTimer = ATTACK_DELAY;
                 GameObject shot = Instantiate(Bullet, transform.position, Quaternion.identity);
                 shot.GetComponent<Bullet>().setTrajectory(shootDirection);
+                shot.GetComponent<Bullet>().addSpeed(dotProduct(moveDirection, shootDirection));
             }
             else
             {
@@ -203,6 +204,11 @@ public class Player : MonoBehaviour
         //Debug.Log("powerup expired");
         activePowerup = 0;
         powerUpTimeout = 0;
+    }
+
+    private float dotProduct(Vector3 v1, Vector3 v2)
+    {
+        return (v1.x * v2.x) + (v1.y * v2.y) + (v1.z * v2.z);
     }
 
 

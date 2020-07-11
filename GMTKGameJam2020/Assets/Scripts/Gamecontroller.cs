@@ -7,26 +7,33 @@ public class Gamecontroller : MonoBehaviour
     private int waveNumber, waveEnemyCount;
     private ArrayList enemiesActive;
     private float halfWidth, waveSpawnThreshold;
-    public Camera mainCamera;
+    private Camera mainCamera;
     public GameObject Charger, Gunner, Bombmer;
     private int[] waveEnemyMix;
-    public bool gamePaused;
+    private bool gamePaused;
     
     // Start is called before the first frame update
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);
+        mainCamera = null;
         enemiesActive = new ArrayList();
         waveSpawnThreshold = 0.25f;
         waveEnemyMix = new int[] {3, 0, 0};
-        halfWidth = mainCamera.orthographicSize * mainCamera.aspect;
+        waveEnemyCount = 3;
         Reset();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!gamePaused) {
+        if (GameObject.FindGameObjectWithTag("Player") != null) {
+            mainCamera = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Camera>();
+            halfWidth = mainCamera.orthographicSize * mainCamera.aspect;
+            Debug.Log("Camera Locked with mesure of :" + halfWidth);
+        }
+        else if (!gamePaused) {
+            Debug.Log("GameC update | " + (enemiesActive.Count / waveEnemyCount < waveSpawnThreshold));
             if (enemiesActive.Count / waveEnemyCount < waveSpawnThreshold) {
                 SpawNextWave();
             }
@@ -39,6 +46,7 @@ public class Gamecontroller : MonoBehaviour
     }
 
     private void SpawNextWave() {
+        waveEnemyCount = 0;
         for (int i = 0; i < 10; i++) {
             Instantiate(Gunner, SpawnLocation(), Quaternion.identity);
             waveEnemyCount++;
@@ -62,6 +70,7 @@ public class Gamecontroller : MonoBehaviour
     }
 
     public void RegisterEnemy(GameObject newEnemy) {
+        Debug.Log("Enemy Registered");
         enemiesActive.Add(newEnemy);
     }
     public void RemoveEnemy(GameObject deadEnemy) {
@@ -73,7 +82,7 @@ public class Gamecontroller : MonoBehaviour
     }
 
     public void Play() {
-        mainCamera = GameObject.FindGameObjectWithTag("Player").GetComponent<Camera>();
+        Debug.Log("Playing");
         gamePaused = false;
     }
 }

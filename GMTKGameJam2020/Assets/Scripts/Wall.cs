@@ -18,8 +18,6 @@ public class Wall : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Triggered!");
-
         switch(collision.tag)
         {
             case "Bullet":

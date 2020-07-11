@@ -103,7 +103,7 @@ public class Player : MonoBehaviour
     }
 
 
-    private void die()
+    public void die()
     {
         Debug.Log("Player died!");
         alive = false;

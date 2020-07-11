@@ -29,12 +29,16 @@ public class MenuControl : MonoBehaviour
     {
         SceneManager.LoadSceneAsync(1);
         transform.GetComponent<Gamecontroller>().Play();
+        transform.GetChild(1).GetComponent<Canvas>().enabled = false;
     }
 
     public void GameOver()
     {
         transform.GetChild(1).GetComponent<Canvas>().enabled = true;
-        //Pause Game
     }
 
+    public void MainMenu()
+    {
+        SceneManager.LoadSceneAsync(0);
+    }
 }

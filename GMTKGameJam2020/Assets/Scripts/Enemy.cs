@@ -156,6 +156,8 @@ public class Enemy : MonoBehaviour
                 Destroy(this.gameObject);
                 Destroy(collision.gameObject);
                 break;
+            case "EnemyBullet":
+                break;
             default:
                 Debug.Log("Unrecognized tag in OnTriggerEnter2D in Enemy! Tag: " + collision.tag);
                 break;

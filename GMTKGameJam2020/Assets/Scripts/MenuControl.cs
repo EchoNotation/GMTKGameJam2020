@@ -41,6 +41,7 @@ public class MenuControl : MonoBehaviour
     public void CloseGameOver()
     {
         transform.GetChild(1).GetComponent<Canvas>().enabled = false;
+        GetComponent<Gamecontroller>().Reset();
     }
 
     public void MainMenu()

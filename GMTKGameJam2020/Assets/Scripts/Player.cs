@@ -17,6 +17,11 @@ public class Player : MonoBehaviour
     //Player Input
     private Vector3 screenCenter;
 
+    // 0 means no powerup active
+    private int activePowerup = 0;
+    // time left on the powerup timer
+    private float powerUpTimeout = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -53,6 +58,12 @@ public class Player : MonoBehaviour
         this.gameObject.transform.Translate(moveDirection * speed * Time.deltaTime);
 
 
+        //decrease active powerup
+        powerUpTimeout--;
+        if(powerUpTimeout <= 0)
+        {
+            DeactivatePowerup();
+        }
 
     }
 
@@ -70,5 +81,54 @@ public class Player : MonoBehaviour
         }
     }
 
+    //yes I know I am very lazy with this code, but hey game jam - CG
+    //this function is activated by a powerup
+    public void ActivatePowerup(int powerup, float time)
+    {
+        //prevent powerup stacking, powerup = 0 means no powerup active
+        if(powerup != 0)
+        {
+            DeactivatePowerup();
+        }
+        
+        switch(powerup)
+        {
+            //0 = no powerup, not sure how it would be called here
+            case 0:
+                Debug.LogWarning("[Player]: Logic error: somehow activated no powerup");
+                break;
+            
+            //1 = more speed
+            case 1:
+                speed *= 2;
+                break;
+
+            default:
+                Debug.LogWarning("[Player]: Warning: Logic Error: powerup ID not recongized");
+                break;
+            
+        }
+
+        powerUpTimeout = time;
+    }
+
+    private void DeactivatePowerup()
+    {
+        switch(activePowerup)
+        {
+            case 0:
+                break;
+
+            case 1:
+                speed /= 2;
+                break;
+
+            default:
+                Debug.LogWarning("Deactivating unrecognized powerup");
+                break;
+        }
+
+    }
 
 }
+

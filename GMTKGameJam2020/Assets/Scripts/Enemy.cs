@@ -225,6 +225,12 @@ public class Enemy : MonoBehaviour
     {
         if(collision.CompareTag("Pit"))
         {
+            if(!dodgingPit)
+            {
+                dodgingPit = true;
+                pitDir = currentDir;
+            }
+
             dodgeCounter += 2;
         }
     }

@@ -12,13 +12,10 @@ public class Player : MonoBehaviour
     //Control Info
     private Vector3 shootDirection;
     private Vector3 moveDirection;
-    private int speed = 10;
+    public int speed = 3;
 
     //Player Input
     private Vector3 screenCenter;
-
-    //Map Size Controls
-    public int mapSize = 40;
 
     // Start is called before the first frame update
     void Start()

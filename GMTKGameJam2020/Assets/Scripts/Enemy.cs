@@ -17,6 +17,8 @@ public class Enemy : MonoBehaviour
     private int logicCounter, counterReq;
     private int shotCounter, shotReq;
 
+    private int strafeDirection;
+
     //0: Charger, 1: Gunner
     public Sprite[] sprites;
     public GameObject bullet;
@@ -34,6 +36,9 @@ public class Enemy : MonoBehaviour
         logicCounter = 0;
         shotCounter = 0;
         shotReq = 30;
+
+        if(Random.Range(0, 2) == 1) strafeDirection = 1;
+
         updateSprite();
     }
 
@@ -112,7 +117,7 @@ public class Enemy : MonoBehaviour
                 velocityToAdd = Vector3.Cross(directionToPlayer, new Vector3(0, 0, 1));
                 velocityToAdd = velocityToAdd.normalized * gunnerSpeed * Time.deltaTime;
 
-                if(Random.Range(0, 1) == 0)
+                if(strafeDirection == 0)
                 {
                     velocityToAdd = -velocityToAdd;
                 }
@@ -142,4 +147,5 @@ public class Enemy : MonoBehaviour
     {
         //Make sound or play particle effect or something.   
     }
+
 }

@@ -30,7 +30,7 @@ public class Enemy : MonoBehaviour
 
     private bool sawSwitch = true;
 
-    private float chargerSpeed = 2f;
+    private float chargerSpeed = 2.5f;
     private float gunnerSpeed = 2f;
     private float speed = 0.5f;
 

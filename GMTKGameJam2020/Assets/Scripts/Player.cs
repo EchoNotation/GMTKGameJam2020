@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     public float speed = .75f;
     public int ATTACK_DELAY = 20;
     private int atkTimer = 0;
-    public GameObject Bullet;
+    public GameObject Bullet, piercingBullet;
     public bool alive = true;
     private float score = 0f;
     public int displayScore = 0;
@@ -93,8 +93,18 @@ public class Player : MonoBehaviour
             if (atkTimer <= 0)
             {
                 atkTimer = ATTACK_DELAY;
-                GameObject shot = Instantiate(Bullet, endOfTurret.position, endOfTurret.rotation);
-                shot.GetComponent<PiercingBullet>().setTrajectory(shootDirection);
+
+                if(activePowerup == 3)
+                {
+                    GameObject shot = Instantiate(piercingBullet, endOfTurret.position, endOfTurret.rotation);
+                    shot.GetComponent<PiercingBullet>().setTrajectory(shootDirection);
+                }
+                else
+                {
+                    GameObject shot = Instantiate(Bullet, endOfTurret.position, endOfTurret.rotation);
+                    shot.GetComponent<Bullet>().setTrajectory(shootDirection);
+                }
+                
 
                 if (source.isPlaying) source.Stop();
                 source.Play();

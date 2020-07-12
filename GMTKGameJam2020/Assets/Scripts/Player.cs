@@ -94,7 +94,7 @@ public class Player : MonoBehaviour
             {
                 atkTimer = ATTACK_DELAY;
                 GameObject shot = Instantiate(Bullet, endOfTurret.position, endOfTurret.rotation);
-                shot.GetComponent<Bullet>().setTrajectory(shootDirection);
+                shot.GetComponent<PiercingBullet>().setTrajectory(shootDirection);
 
                 if (source.isPlaying) source.Stop();
                 source.Play();
@@ -170,6 +170,7 @@ public class Player : MonoBehaviour
                 break;
             case "Powerup":
             case "Bullet":
+            case "PiercingBullet":
                 break;
             default:
                 Debug.Log("Unrecognized tag in OnTriggerEnter2D in Player! Tag: " + collision.tag);

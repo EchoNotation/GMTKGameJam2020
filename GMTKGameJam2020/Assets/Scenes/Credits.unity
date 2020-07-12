@@ -1290,7 +1290,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Emilio \u2013 Game controller and spawing"
+  m_Text: "Emilio \u2013 Game controller and spawing\nThomas - Enemies and sound
+    effects"
 --- !u!222 &1293869354
 CanvasRenderer:
   m_ObjectHideFlags: 0

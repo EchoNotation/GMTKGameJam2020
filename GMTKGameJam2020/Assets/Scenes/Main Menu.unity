@@ -729,6 +729,41 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 20}
+--- !u!1 &906212281 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4845354057098078743, guid: aede8eef9b1db1c449283b97d5339a82,
+    type: 3}
+  m_PrefabInstance: {fileID: 1800712900}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &906212283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 906212281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 77f5b1d285adc42babde22fbd3ad835f, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &922203517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1701,6 +1736,16 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0.388
       objectReference: {fileID: 0}
+    - target: {fileID: 4845354057098078736, guid: aede8eef9b1db1c449283b97d5339a82,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -26.690979
+      objectReference: {fileID: 0}
+    - target: {fileID: 4845354057098078736, guid: aede8eef9b1db1c449283b97d5339a82,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 53.381348
+      objectReference: {fileID: 0}
     - target: {fileID: 4845354057098078737, guid: aede8eef9b1db1c449283b97d5339a82,
         type: 3}
       propertyPath: m_FontData.m_Font
@@ -1824,7 +1869,8 @@ PrefabInstance:
       propertyPath: quitButton
       value: 
       objectReference: {fileID: 1275452465}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4845354057098078737, guid: aede8eef9b1db1c449283b97d5339a82, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: aede8eef9b1db1c449283b97d5339a82, type: 3}
 --- !u!1001 &1895643471
 PrefabInstance:

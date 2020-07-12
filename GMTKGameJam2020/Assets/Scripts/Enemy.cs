@@ -35,8 +35,8 @@ public class Enemy : MonoBehaviour
 
     private bool sawSwitch = true;
 
-    private float chargerSpeed = 2.5f;
-    private float gunnerSpeed = 2f;
+    private float chargerSpeed = 3.2f;
+    private float gunnerSpeed = 3.8f;
     private float speed = 0.5f;
 
     private float gunnerMinDist = 0.8f;
@@ -60,7 +60,7 @@ public class Enemy : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if(dodgingPit)
         {

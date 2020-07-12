@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     //Control Info
     private Vector3 shootDirection;
     private Vector3 moveDirection;
-    public float speed = .1f;
+    public float speed = .75f;
     public int ATTACK_DELAY = 20;
     private int atkTimer = 0;
     public GameObject Bullet;
@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (alive)
         {

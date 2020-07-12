@@ -36,7 +36,7 @@ public class Gamecontroller : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (mainCamera == null)
         {

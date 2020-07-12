@@ -616,7 +616,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToSwap: 0
   speed: 0.75
-  ATTACK_DELAY: 75
+  ATTACK_DELAY: 70
   Bullet: {fileID: 8936457666703336289, guid: fd457277523b23c47bd6b7f56ef676d5, type: 3}
   alive: 1
   displayScore: 0

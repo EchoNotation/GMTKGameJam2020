@@ -9,6 +9,9 @@ public class EnemyBullet : MonoBehaviour
     public GameObject explosion;
     private System.Diagnostics.Stopwatch timer;
     private long expireTime = 4000;
+    public AudioSource[] sources;
+    private int sourceNum;
+    private bool hitSomething = false;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +28,8 @@ public class EnemyBullet : MonoBehaviour
         Vector3 current = this.transform.position;
         Vector3 velocityToAdd = direction.normalized * speed * Time.deltaTime;
         this.transform.position = new Vector3(current.x + velocityToAdd.x, current.y + velocityToAdd.y, 0);
+
+        if (hitSomething && !sources[sourceNum].isPlaying) Destroy(this.gameObject);
     }
 
     public void setTrajectory(Vector3 direction)
@@ -39,9 +44,25 @@ public class EnemyBullet : MonoBehaviour
         speed += speedToAdd;
     }
 
-    public void onHit()
+    public void onHit(bool hitRock)
     {
         Instantiate(explosion, transform.position, Quaternion.identity);
-        Destroy(this.gameObject);
+        hitSomething = true;
+        transform.GetComponent<SpriteRenderer>().enabled = false;
+        transform.GetComponent<BoxCollider2D>().enabled = false;
+
+        if (hitRock)
+        {
+            if (UnityEngine.Random.Range(0, 2) == 0)
+            {
+                sourceNum = 0;
+            }
+            else
+            {
+                sourceNum = 1;
+            }
+
+            sources[sourceNum].Play();
+        }
     }
 }

@@ -52,11 +52,7 @@ public class MenuControl : MonoBehaviour
 
     public void MainMenu()
     {
-        SceneManager.LoadSceneAsync(0);
-        if (Application.platform != RuntimePlatform.WindowsPlayer)
-        {
-            quitButton.SetActive(false);
-        }
+        SceneManager.LoadScene(0);
     }
 
     public void Credits()

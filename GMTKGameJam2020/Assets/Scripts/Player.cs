@@ -30,7 +30,9 @@ public class Player : MonoBehaviour
     public Sprite greenBody;
     public Sprite greenTurret;
 
-    public AudioSource source;
+    //Audio
+    public AudioSource[] sources;
+    private bool swapSoundSafety = true;
 
     //Player Input
     private Vector3 screenCenter;
@@ -70,8 +72,16 @@ public class Player : MonoBehaviour
             //Manage Timing of Swapping Control Types
             timeToSwap -= Time.deltaTime;
             transform.GetChild(3).GetChild(0).GetComponent<Scrollbar>().size = 1 - (timeToSwap / SWAP_DURATION);
+
+            if(timeToSwap <= 2 && swapSoundSafety)
+            {
+                swapSoundSafety = false;
+                sources[3].Play();
+            }
+
             if (timeToSwap <= 0)
             {
+                swapSoundSafety = true;
                 timeToSwap = SWAP_DURATION;
                 if (isShootMode)
                 {
@@ -109,8 +119,8 @@ public class Player : MonoBehaviour
                 }
                 
 
-                if (source.isPlaying) source.Stop();
-                source.Play();
+                if (sources[0].isPlaying) sources[0].Stop();
+                sources[0].Play();
                 //shot.GetComponent<Bullet>().addSpeed(dotProduct(moveDirection, shootDirection));
             }
             else
@@ -154,6 +164,8 @@ public class Player : MonoBehaviour
         if(!alive) return;
         Debug.Log("Player died!");
         alive = false;
+
+        sources[4].Play();
         Instantiate(explosion, this.transform.position, Quaternion.identity);
         transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = destroyed;
         transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = greenTurret;
@@ -164,7 +176,7 @@ public class Player : MonoBehaviour
         //transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
         GameObject.FindWithTag("Controller").GetComponent<MenuControl>().GameOver(displayScore);
 
-        FindObjectOfType<CameraShake>().ShakeCameraHard();
+        //FindObjectOfType<CameraShake>().ShakeCameraHard();
 
     }
 
@@ -178,7 +190,7 @@ public class Player : MonoBehaviour
         switch(collision.tag)
         {
             case "EnemyBullet":
-                collision.gameObject.GetComponent<EnemyBullet>().onHit();
+                collision.gameObject.GetComponent<EnemyBullet>().onHit(false);
                 die();
                 break;
             case "Powerup":
@@ -219,6 +231,9 @@ public class Player : MonoBehaviour
     //this function is activated by a powerup
     public void ActivatePowerup(int powerup, float time)
     {
+        if (sources[1].isPlaying) sources[1].Stop();
+        sources[1].Play();
+
         //prevent powerup stacking, powerup = 0 means no powerup active
         if(activePowerup != 0)
         {
@@ -262,6 +277,9 @@ public class Player : MonoBehaviour
 
     private void DeactivatePowerup()
     {
+        if (sources[2].isPlaying) sources[2].Stop();
+        sources[2].Play();
+
         switch(activePowerup)
         {
             case 0:

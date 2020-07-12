@@ -247,6 +247,7 @@ public class Player : MonoBehaviour
 
             case 3:
                 //piercing bullet
+                SetPowerupUI("Piercing Bullets", time);
                 break;
 
             default:

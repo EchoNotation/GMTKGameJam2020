@@ -100,7 +100,7 @@ public class Gamecontroller : MonoBehaviour
         }
 
         directionVector = directionVector.normalized;
-        float magnitude = Random.Range(halfWidth, halfWidth * 4);
+        float magnitude = Random.Range(halfWidth * 2f, halfWidth * 4);
 
         return directionVector * magnitude;
     }

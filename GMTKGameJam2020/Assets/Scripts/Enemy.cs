@@ -36,8 +36,8 @@ public class Enemy : MonoBehaviour
 
     private bool sawSwitch = true;
 
-    private float chargerSpeed = 3.2f;
-    private float gunnerSpeed = 3.8f;
+    private float chargerSpeed = 0.8f;
+    private float gunnerSpeed = 0.95f;
     private float speed = 0.5f;
 
     private float gunnerMinDist = 0.8f;
@@ -48,10 +48,10 @@ public class Enemy : MonoBehaviour
     {
         GameObject.FindGameObjectWithTag("Controller").GetComponent<Gamecontroller>().RegisterEnemy(this.gameObject);
 
-        counterReq = 3;
+        counterReq = 0;
         logicCounter = 0;
         shotCounter = 0;
-        shotReq = 30;
+        shotReq = 120;
         dodgingPit = false;
         player = GameObject.FindGameObjectWithTag("Player");
 

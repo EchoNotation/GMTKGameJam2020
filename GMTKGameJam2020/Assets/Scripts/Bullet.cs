@@ -51,9 +51,9 @@ public class Bullet : MonoBehaviour
         transform.GetComponent<SpriteRenderer>().enabled = false;
         transform.GetComponent<BoxCollider2D>().enabled = false;
 
-        if(hitRock)
+        if (hitRock)
         {
-            if(UnityEngine.Random.Range(0, 2) == 0)
+            if (UnityEngine.Random.Range(0, 2) == 0)
             {
                 sourceNum = 0;
             }

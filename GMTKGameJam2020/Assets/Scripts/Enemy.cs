@@ -63,16 +63,16 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(dodgingPit)
+        if (dodgingPit)
         {
             dodgePit();
         }
 
-        if(logicCounter >= counterReq)
+        if (logicCounter >= counterReq)
         {
             logicCounter = 0;
 
-            switch(enemyType)
+            switch (enemyType)
             {
                 case Enemies.CHARGER:
                     chargerLogic();
@@ -140,14 +140,14 @@ public class Enemy : MonoBehaviour
 
         //Debug.Log(shotCounter);
 
-        if(directionToPlayer.magnitude > gunnerMaxDist)
+        if (directionToPlayer.magnitude > gunnerMaxDist)
         {
             //Need to move into range!
             velocityToAdd = directionToPlayer.normalized * gunnerSpeed * Time.deltaTime;
             rotateBody(velocityToAdd);
             this.transform.position = new Vector3(myPos.x + velocityToAdd.x, myPos.y + velocityToAdd.y, 0);
         }
-        else if(directionToPlayer.magnitude < gunnerMinDist)
+        else if (directionToPlayer.magnitude < gunnerMinDist)
         {
             //Need to get away!
             velocityToAdd = directionToPlayer.normalized * -gunnerSpeed * Time.deltaTime;
@@ -159,7 +159,7 @@ public class Enemy : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(myPos, directionToPlayer);
             //Debug.Log(hit.collider.tag);
 
-            if(hit.collider.CompareTag("Player") && shotCounter >= shotReq)
+            if (hit.collider.CompareTag("Player") && shotCounter >= shotReq)
             {
                 //Have a clear shot... fire!
                 //Debug.Log("Firing!");
@@ -174,7 +174,7 @@ public class Enemy : MonoBehaviour
                 velocityToAdd = Vector3.Cross(directionToPlayer, new Vector3(0, 0, 1));
                 velocityToAdd = velocityToAdd.normalized * gunnerSpeed * Time.deltaTime;
 
-                if(strafeDirection == 0)
+                if (strafeDirection == 0)
                 {
                     velocityToAdd = -velocityToAdd;
                 }
@@ -187,7 +187,7 @@ public class Enemy : MonoBehaviour
 
     void updateSprite()
     {
-        switch(enemyType)
+        switch (enemyType)
         {
             case Enemies.CHARGER:
                 this.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = bodySprites[0];
@@ -230,13 +230,14 @@ public class Enemy : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    void OnDestroy() {
+    void OnDestroy()
+    {
         GameObject.FindGameObjectWithTag("Controller").GetComponent<Gamecontroller>().RemoveEnemy(this.gameObject);
     }
 
     private void rotateBody(Vector3 direction)
     {
-        if(dodgingPit) return;
+        if (dodgingPit) return;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         this.gameObject.transform.GetChild(0).transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
         currentDir = direction;
@@ -250,7 +251,7 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        switch(collision.tag)
+        switch (collision.tag)
         {
             case "Bullet":
                 collision.gameObject.GetComponent<Bullet>().onHit(false);
@@ -272,7 +273,7 @@ public class Enemy : MonoBehaviour
                 Vector3 toPitCenter = collision.gameObject.transform.position - this.transform.position;
                 float angle = Vector3.SignedAngle(toPitCenter, toCollision, Vector3.forward);
                 if (angle < 0) dodgingLeft = true;
-                else dodgingLeft = false;             
+                else dodgingLeft = false;
 
                 dodgeCounter = 20;
                 pitDir = currentDir;
@@ -285,9 +286,9 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.CompareTag("Pit"))
+        if (collision.CompareTag("Pit"))
         {
-            if(!dodgingPit)
+            if (!dodgingPit)
             {
                 dodgingPit = true;
                 pitDir = currentDir;

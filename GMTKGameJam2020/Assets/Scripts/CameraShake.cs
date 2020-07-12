@@ -20,7 +20,7 @@ public class CameraShake : MonoBehaviour
         float intensity = 1.0f;
         float freq = 9.5f;
         float duration = 0.5f;
-        while(t < duration)
+        while (t < duration)
         {
             //Debug.Log("Shake " + t);
 

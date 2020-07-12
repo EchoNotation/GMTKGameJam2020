@@ -12,7 +12,7 @@ public class Gamecontroller : MonoBehaviour
     private Camera mainCamera;
     public GameObject enemy, bombmer;
     private int[] waveEnemyMix;
-    private bool trickling;
+    private bool tricklActive, waveSpawnActive;
 
     void Awake()
     {
@@ -48,11 +48,11 @@ public class Gamecontroller : MonoBehaviour
         }
         else
         {
-            if (enemiesActive.Count / waveEnemyCount < waveSpawnThreshold)
+            if (enemiesActive.Count / waveEnemyCount < waveSpawnThreshold & !waveSpawnActive)
             {
-                SpawnNextWave();
+                StartCoroutine(SpawnNextWave());
             }
-            if (!trickling)
+            if (!tricklActive)
             {
                 StartCoroutine(SpawnTrickle());
             }
@@ -65,28 +65,30 @@ public class Gamecontroller : MonoBehaviour
         waveNumber = 0;
         waveEnemyCount = 1;
         StopAllCoroutines();
-        trickling = false;
+        tricklActive = false;
+        waveSpawnActive = false;
     }
     private IEnumerator SpawnTrickle()
     {
-        trickling = true;
+        tricklActive = true;
         yield return new WaitForSeconds(Random.Range(200, 601) * 0.01f);
         SpawnEnemy(SpawnLocation());
         waveEnemyCount = enemiesActive.Count / ((enemiesActive.Count - 1) / waveEnemyCount);
-        trickling = false;
+        tricklActive = false;
     }
 
-    private void SpawnNextWave()
+    private IEnumerator SpawnNextWave()
     {
         waveEnemyCount = 0;
+        waveNumber++;
+        GameObject.FindWithTag("Wave Counter").GetComponent<Text>().text = "Wave: " + waveNumber;
+
         for (int i = 0; i < 10; i++)
         {
             SpawnEnemy(SpawnLocation());
             waveEnemyCount++;
+            yield return new WaitForSeconds(Random.Range(50, 151) * 0.01f);
         }
-
-        waveNumber++;
-        GameObject.FindWithTag("Wave Counter").GetComponent<Text>().text = "Wave: " + waveNumber;
     }
 
     private Vector2 SpawnLocation()

@@ -70,7 +70,7 @@ public class Gamecontroller : MonoBehaviour
     private IEnumerator SpawnTrickle()
     {
         trickling = true;
-        yield return new WaitForSeconds(Random.Range(100, 501) * 0.01f);
+        yield return new WaitForSeconds(Random.Range(200, 601) * 0.01f);
         SpawnEnemy(SpawnLocation());
         waveEnemyCount = enemiesActive.Count / ((enemiesActive.Count - 1) / waveEnemyCount);
         trickling = false;

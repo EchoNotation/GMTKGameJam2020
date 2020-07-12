@@ -7,12 +7,11 @@ public class Gamecontroller : MonoBehaviour
 {
     public static Gamecontroller instance = null;
     public int waveNumber;
-    private ArrayList enemiesActive;
     private float halfWidth, waveSpawnThreshold, waveEnemyCount;
+    private bool tricklActive, waveSpawnActive;
+    private ArrayList enemiesActive;
     private Camera mainCamera;
     public GameObject enemy, bombmer;
-    private int[] waveEnemyMix;
-    private bool tricklActive, waveSpawnActive;
 
     public Vector2 powerUpSpawnXBounds = Vector2.zero;
     public Vector2 powerUpSpawnYBounds = Vector2.zero;
@@ -61,9 +60,9 @@ public class Gamecontroller : MonoBehaviour
             {
                 StartCoroutine(SpawnNextWave());
                 SpawnPowerup();
-                if(!spawnedPowerups)
+                if (!spawnedPowerups)
                 {
-                    for(int i = 0; i < startNumPowerups; i++)
+                    for (int i = 0; i < startNumPowerups; i++)
                     {
                         SpawnPowerup();
                     }
@@ -94,7 +93,6 @@ public class Gamecontroller : MonoBehaviour
         SpawnEnemy(SpawnLocation());
         tricklActive = false;
     }
-
     private IEnumerator SpawnNextWave()
     {
         waveSpawnActive = true;
@@ -103,7 +101,7 @@ public class Gamecontroller : MonoBehaviour
         GameObject.FindWithTag("Wave Counter").GetComponent<Text>().text = "Wave: " + waveNumber;
         for (int i = 0; i < Mathf.Pow(2, waveNumber); i++)
         {
-            if(i % 5 == 0)
+            if (i % 5 == 0)
             {
                 SpawnBomber();
             }
@@ -112,9 +110,7 @@ public class Gamecontroller : MonoBehaviour
             yield return new WaitForSeconds(Random.Range(50, 101) * 0.01f);
         }
         waveSpawnActive = false;
-        Debug.Log("Wave " + waveNumber + " Spawned");
     }
-
     public void SpawnPowerup()
     {
         float x = 0f;
@@ -134,7 +130,6 @@ public class Gamecontroller : MonoBehaviour
 
         Instantiate(powerups[i], new Vector3(x, y, 0), Quaternion.identity);
     }
-
     private Vector2 SpawnLocation()
     {
         //TODO: validate Coords on map, change distribution?
@@ -148,9 +143,8 @@ public class Gamecontroller : MonoBehaviour
         directionVector = directionVector.normalized;
         float magnitude = Random.Range(halfWidth * 1.5f, halfWidth * 4);
 
-        return directionVector * magnitude + (Vector2) GameObject.FindGameObjectWithTag("Player").transform.position;
+        return directionVector * magnitude + (Vector2)GameObject.FindGameObjectWithTag("Player").transform.position;
     }
-
     public void RegisterEnemy(GameObject newEnemy)
     {
         enemiesActive.Add(newEnemy);
@@ -172,7 +166,6 @@ public class Gamecontroller : MonoBehaviour
             newEnemy.GetComponent<Enemy>().enemyType = Enemies.GUNNER;
         }
     }
-
     public void SpawnBomber()
     {
         //set to whatever

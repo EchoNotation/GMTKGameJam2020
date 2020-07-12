@@ -1199,7 +1199,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 4845354057653537807, guid: aede8eef9b1db1c449283b97d5339a82,
+          type: 3}
         m_MethodName: ExitGame
         m_Mode: 1
         m_Arguments:

@@ -131,4 +131,14 @@ public class Gamecontroller : MonoBehaviour
             newEnemy.GetComponent<Enemy>().enemyType = Enemies.GUNNER;
         }
     }
+
+    public void SpawnBomber()
+    {
+        //set to whatever
+        float radius = 15f;
+        Vector3 location = Random.onUnitSphere * radius;
+        location.z = 0;
+
+        Instantiate(bombmer, location, Quaternion.identity);
+    }
 }

@@ -1284,14 +1284,26 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Emilio \u2013 Game controller and spawing\nThomas - Enemies and sound
-    effects"
+  m_Text: 'Programmers:
+
+    Emilio Alvarez - Game controller and Spawing
+
+    Thomas
+    Hugart - Enemies and Sound Effects
+
+    Zack Johnson - Player and User Interface
+
+
+    Art:
+
+    Lucy
+    Griswold'
 --- !u!222 &1293869354
 CanvasRenderer:
   m_ObjectHideFlags: 0

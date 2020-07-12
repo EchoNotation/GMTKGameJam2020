@@ -11,7 +11,7 @@ public class Bomb : MonoBehaviour
     public float killRadius = 2f;
 
     public GameObject explosion;
-    public AudioSource source;
+    public AudioSource[] sources;
 
     private bool hasExploded;
 
@@ -22,6 +22,7 @@ public class Bomb : MonoBehaviour
     private void Start()
     {
         indicator = transform.GetChild(0).gameObject;
+        sources[0].Play();
     }
 
     private void FixedUpdate()
@@ -35,7 +36,7 @@ public class Bomb : MonoBehaviour
             Explode();
         }
 
-        if (hasExploded & !source.isPlaying) Destroy(this.gameObject);
+        if (hasExploded & !sources[1].isPlaying) Destroy(this.gameObject);
     }
 
     void Explode()
@@ -54,7 +55,9 @@ public class Bomb : MonoBehaviour
         Instantiate(explosion, transform.position, Quaternion.identity);
         transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
         transform.GetChild(1).GetComponent<SpriteRenderer>().enabled = false;
-        source.Play();
+
+        sources[0].Stop();
+        sources[1].Play();
     }
 
     //private void OnDrawGizmos()

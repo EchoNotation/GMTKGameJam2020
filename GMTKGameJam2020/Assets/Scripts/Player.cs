@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     private int atkTimer = 0;
     public GameObject Bullet;
     public GameObject piercingBullet;
+    public GameObject explosiveBullet;
     public bool alive = true;
     private float score = 0f;
     public int displayScore = 0;
@@ -117,6 +118,11 @@ public class Player : MonoBehaviour
                     GameObject shot = Instantiate(piercingBullet, endOfTurret.position, endOfTurret.rotation);
                     shot.GetComponent<PiercingBullet>().setTrajectory(shootDirection);
                 }
+                else if(activePowerup == 4)
+                {
+                    GameObject shot = Instantiate(explosiveBullet, endOfTurret.position, endOfTurret.rotation);
+                    shot.GetComponent<ExplosiveBullet>().setTrajectory(shootDirection);
+                }
                 else
                 {
                     GameObject shot = Instantiate(Bullet, endOfTurret.position, endOfTurret.rotation);
@@ -200,6 +206,7 @@ public class Player : MonoBehaviour
             case "Powerup":
             case "Bullet":
             case "PiercingBullet":
+            case "ExplosiveBullet":
                 break;
             default:
                 Debug.Log("Unrecognized tag in OnTriggerEnter2D in Player! Tag: " + collision.tag);
@@ -270,6 +277,11 @@ public class Player : MonoBehaviour
                 SetPowerupUI("Piercing Bullets", time);
                 break;
 
+            case 4:
+                //explosive bullet
+                SetPowerupUI("Explosive Bullets", time);
+                break;
+
             default:
                 Debug.LogWarning("[Player]: Warning: Logic Error: powerup ID not recongized");
                 break;
@@ -296,6 +308,12 @@ public class Player : MonoBehaviour
 
             case 2:
                 ATTACK_DELAY = ATTACK_DELAY * 2;
+                break;
+
+            case 3:
+                break;
+
+            case 4:
                 break;
 
             default:

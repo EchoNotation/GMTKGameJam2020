@@ -16,7 +16,8 @@ public class Powerup : MonoBehaviour
     {
         SPEED,
         FIRE,
-        PIERCE
+        PIERCE,
+        EXPLOSIVE
     }
 
     int powerupID = 0;
@@ -38,6 +39,9 @@ public class Powerup : MonoBehaviour
                 break;
             case PowerupType.PIERCE:
                 powerupID = 3;
+                break;
+            case PowerupType.EXPLOSIVE:
+                powerupID = 4;
                 break;
         }
         //Debug.Log("Start Powerup, " + powerupID);

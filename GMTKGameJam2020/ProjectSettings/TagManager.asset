@@ -15,6 +15,7 @@ TagManager:
   - Wave Counter
   - Main Menu
   - PiercingBullet
+  - ExplosiveBullet
   layers:
   - Default
   - TransparentFX

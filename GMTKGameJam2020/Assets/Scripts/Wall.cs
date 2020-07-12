@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class Wall : MonoBehaviour
@@ -28,6 +29,9 @@ public class Wall : MonoBehaviour
                 break;
             case "EnemyBullet":
                 collision.gameObject.GetComponent<EnemyBullet>().onHit(true);
+                break;
+            case "ExplosiveBullet":
+                collision.gameObject.GetComponent<ExplosiveBullet>().onHit();
                 break;
             default:
                 break;

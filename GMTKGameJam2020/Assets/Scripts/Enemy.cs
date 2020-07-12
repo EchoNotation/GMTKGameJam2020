@@ -261,6 +261,9 @@ public class Enemy : MonoBehaviour
                 collision.gameObject.GetComponent<PiercingBullet>().onHit(false);
                 die();
                 break;
+            case "ExplosiveBullet":
+                collision.gameObject.GetComponent<ExplosiveBullet>().onHit();
+                break;
             case "EnemyBullet":
             case "Powerup":
                 break;

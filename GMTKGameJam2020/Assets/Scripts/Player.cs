@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     public int ATTACK_DELAY = 20;
     private int atkTimer = 0;
     public GameObject Bullet;
+    public GameObject piercingBullet;
     public bool alive = true;
     private float score = 0f;
     public int displayScore = 0;
@@ -93,8 +94,18 @@ public class Player : MonoBehaviour
             if (atkTimer <= 0)
             {
                 atkTimer = ATTACK_DELAY;
-                GameObject shot = Instantiate(Bullet, endOfTurret.position, endOfTurret.rotation);
-                shot.GetComponent<Bullet>().setTrajectory(shootDirection);
+
+                if(activePowerup == 3)
+                {
+                    GameObject shot = Instantiate(piercingBullet, endOfTurret.position, endOfTurret.rotation);
+                    shot.GetComponent<PiercingBullet>().setTrajectory(shootDirection);
+                }
+                else
+                {
+                    GameObject shot = Instantiate(Bullet, endOfTurret.position, endOfTurret.rotation);
+                    shot.GetComponent<Bullet>().setTrajectory(shootDirection);
+                }
+                
 
                 if (source.isPlaying) source.Stop();
                 source.Play();
@@ -170,6 +181,7 @@ public class Player : MonoBehaviour
                 break;
             case "Powerup":
             case "Bullet":
+            case "PiercingBullet":
                 break;
             default:
                 Debug.Log("Unrecognized tag in OnTriggerEnter2D in Player! Tag: " + collision.tag);

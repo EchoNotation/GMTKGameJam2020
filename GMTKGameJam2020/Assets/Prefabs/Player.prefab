@@ -592,6 +592,8 @@ MonoBehaviour:
   speed: 0.75
   ATTACK_DELAY: 60
   Bullet: {fileID: 8936457666703336289, guid: fd457277523b23c47bd6b7f56ef676d5, type: 3}
+  piercingBullet: {fileID: 7293527161350411870, guid: 74bb4b6e17f0d8f48a1d7e985ed04b3e,
+    type: 3}
   alive: 1
   displayScore: 0
   destroyed: {fileID: 21300000, guid: 8774cb07ec0b04586813a025b3937372, type: 3}

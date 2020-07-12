@@ -254,6 +254,10 @@ public class Enemy : MonoBehaviour
                 collision.gameObject.GetComponent<Bullet>().onHit(false);
                 die();
                 break;
+            case "PiercingBullet":
+                collision.gameObject.GetComponent<PiercingBullet>().onHit(false);
+                die();
+                break;
             case "EnemyBullet":
             case "Powerup":
                 break;

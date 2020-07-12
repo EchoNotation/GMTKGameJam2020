@@ -23,6 +23,9 @@ public class Wall : MonoBehaviour
             case "Bullet":
                 collision.gameObject.GetComponent<Bullet>().onHit(true);
                 break;
+            case "PiercingBullet":
+                collision.gameObject.GetComponent<PiercingBullet>().onHit(true);
+                break;
             case "EnemyBullet":
                 collision.gameObject.GetComponent<EnemyBullet>().onHit();
                 break;

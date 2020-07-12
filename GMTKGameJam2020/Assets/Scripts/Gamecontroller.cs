@@ -48,7 +48,8 @@ public class Gamecontroller : MonoBehaviour
         }
         else
         {
-            if (enemiesActive.Count / waveEnemyCount < waveSpawnThreshold & !waveSpawnActive)
+            Debug.Log(enemiesActive.Count / waveEnemyCount);
+            if (enemiesActive.Count / waveEnemyCount <= waveSpawnThreshold & !waveSpawnActive)
             {
                 StartCoroutine(SpawnNextWave());
             }
@@ -71,7 +72,7 @@ public class Gamecontroller : MonoBehaviour
     private IEnumerator SpawnTrickle()
     {
         tricklActive = true;
-        yield return new WaitForSeconds(Random.Range(200, 601) * 0.01f);
+        yield return new WaitForSeconds(Random.Range(250, 601) * 0.01f);
         SpawnEnemy(SpawnLocation());
         waveEnemyCount = enemiesActive.Count / ((enemiesActive.Count - 1) / waveEnemyCount);
         tricklActive = false;
@@ -79,16 +80,18 @@ public class Gamecontroller : MonoBehaviour
 
     private IEnumerator SpawnNextWave()
     {
+        waveSpawnActive = true;
         waveEnemyCount = 0;
         waveNumber++;
         GameObject.FindWithTag("Wave Counter").GetComponent<Text>().text = "Wave: " + waveNumber;
-
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 2 * waveNumber; i++)
         {
             SpawnEnemy(SpawnLocation());
             waveEnemyCount++;
-            yield return new WaitForSeconds(Random.Range(50, 151) * 0.01f);
+            yield return new WaitForSeconds(Random.Range(50, 101) * 0.01f);
         }
+        waveSpawnActive = false;
+        Debug.Log("Wave " + waveNumber + " Spawned");
     }
 
     private Vector2 SpawnLocation()
@@ -102,9 +105,9 @@ public class Gamecontroller : MonoBehaviour
         }
 
         directionVector = directionVector.normalized;
-        float magnitude = Random.Range(halfWidth * 2f, halfWidth * 4);
+        float magnitude = Random.Range(halfWidth * 1.5f, halfWidth * 4);
 
-        return directionVector * magnitude;
+        return directionVector * magnitude + (Vector2) GameObject.FindGameObjectWithTag("Player").transform.position;
     }
 
     public void RegisterEnemy(GameObject newEnemy)

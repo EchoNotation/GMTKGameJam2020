@@ -1299,11 +1299,13 @@ MonoBehaviour:
 
     Zack Johnson - Player and User Interface
 
+    Caden
+    Gunnarson - Enemies and power ups
+
 
     Art:
 
-    Lucy
-    Griswold'
+    Lucy Griswold'
 --- !u!222 &1293869354
 CanvasRenderer:
   m_ObjectHideFlags: 0

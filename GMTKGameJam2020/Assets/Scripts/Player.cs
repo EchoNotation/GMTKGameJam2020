@@ -30,6 +30,7 @@ public class Player : MonoBehaviour
     public Sprite grayTurret;
     public Sprite greenBody;
     public Sprite greenTurret;
+    public GameObject HUD;
 
     public Animation smokePuffAnim;
 
@@ -184,6 +185,7 @@ public class Player : MonoBehaviour
         Instantiate(explosion, this.transform.position, Quaternion.identity);
         transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = destroyed;
         transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = greenTurret;
+        HUD.SetActive(false);
 
         //prevent tank from moving after destroyed
         //it is, after all, a tank

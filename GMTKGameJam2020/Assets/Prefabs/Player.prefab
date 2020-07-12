@@ -957,6 +957,7 @@ MonoBehaviour:
   grayTurret: {fileID: 21300000, guid: 4207c372e080c624e88699dd5fd4fc98, type: 3}
   greenBody: {fileID: 21300000, guid: e44a98b3a59ed4eacabd7896b4c1c0c7, type: 3}
   greenTurret: {fileID: 21300000, guid: d1e6e8509e9b240b5949f31bfce258fa, type: 3}
+  HUD: {fileID: 867698197}
   smokePuffAnim: {fileID: 1901983024}
   sources:
   - {fileID: 1256862398857650964}

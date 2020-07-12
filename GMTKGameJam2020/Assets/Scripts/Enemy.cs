@@ -223,7 +223,7 @@ public class Enemy : MonoBehaviour
         this.gameObject.transform.GetChild(1).transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
     }
 
-    private void die()
+    public void die()
     {
         player.GetComponent<Player>().AddScore(100);
         //Make sound or play particle effect or something. 

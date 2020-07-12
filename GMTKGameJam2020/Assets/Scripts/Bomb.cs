@@ -44,17 +44,23 @@ public class Bomb : MonoBehaviour
         //boom
         hasExploded = true;
 
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        Vector3 playerPos = player.transform.position;
-        float distSquared = Mathf.Pow((transform.position.x - playerPos.x), 2f) + Mathf.Pow((transform.position.y - playerPos.y), 2f);
-        if(killRadius > distSquared)
-        {
-            Debug.Log("Bomb killed player from " + distSquared);
-            player.GetComponent<Player>().die();
-        }
         Instantiate(explosion, transform.position, Quaternion.identity);
         transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
         transform.GetChild(1).GetComponent<SpriteRenderer>().enabled = false;
+
+        //kill stuff in radius
+        Collider2D[] hits = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y), killRadius);
+        foreach(Collider2D col in hits)
+        {
+            if(col.CompareTag("Enemy"))
+            {
+                col.gameObject.GetComponent<Enemy>().die();
+            }
+            else if(col.CompareTag("Player"))
+            {
+                col.gameObject.GetComponent<Player>().die();
+            }
+        }
 
         sources[0].Stop();
         sources[1].Play();

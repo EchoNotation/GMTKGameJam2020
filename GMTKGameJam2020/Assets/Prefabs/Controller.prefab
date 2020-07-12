@@ -1199,6 +1199,7 @@ MonoBehaviour:
   - {fileID: 1690322160597970700, guid: a80247574a8b31c4f82e8eb6c5735ad3, type: 3}
   - {fileID: 1690322160597970700, guid: c56eaf3e66de1c04f91000154dee08f6, type: 3}
   - {fileID: 5603474655764101022, guid: c672c78dfed8fa949b3166f9c7383627, type: 3}
+  - {fileID: 4769573983517564877, guid: 1edee4739ada13444b4029b5aa164088, type: 3}
   startNumPowerups: 15
 --- !u!114 &4845354057653537807
 MonoBehaviour:

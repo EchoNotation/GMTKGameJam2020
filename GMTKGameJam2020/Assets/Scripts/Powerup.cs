@@ -17,7 +17,8 @@ public class Powerup : MonoBehaviour
         SPEED,
         FIRE,
         PIERCE,
-        EXPLOSIVE
+        EXPLOSIVE,
+        MULTISHOT
     }
 
     int powerupID = 0;
@@ -42,6 +43,12 @@ public class Powerup : MonoBehaviour
                 break;
             case PowerupType.EXPLOSIVE:
                 powerupID = 4;
+                break;
+            case PowerupType.MULTISHOT:
+                powerupID = 5;
+                break;
+            default:
+                Debug.Log("Invalid PowerupType in Powerup! Type: " + powerupType);
                 break;
         }
         //Debug.Log("Start Powerup, " + powerupID);

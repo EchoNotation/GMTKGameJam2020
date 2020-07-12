@@ -126,6 +126,18 @@ public class Player : MonoBehaviour
                     GameObject shot = Instantiate(explosiveBullet, endOfTurret.position, endOfTurret.rotation);
                     shot.GetComponent<ExplosiveBullet>().setTrajectory(shootDirection);
                 }
+                else if(activePowerup == 5)
+                {
+                    GameObject[] shots = new GameObject[3];
+                    Vector3 traj1 = Quaternion.Euler(0, 0, -10) * shootDirection;
+                    shots[0] = Instantiate(Bullet, endOfTurret.position, Quaternion.Euler(0, 0, -10));
+                    shots[0].GetComponent<Bullet>().setTrajectory(traj1);
+                    shots[1] = Instantiate(Bullet, endOfTurret.position, endOfTurret.rotation);
+                    shots[1].GetComponent<Bullet>().setTrajectory(shootDirection);
+                    Vector3 traj2 = Quaternion.Euler(0, 0, 10) * shootDirection;
+                    shots[2] = Instantiate(Bullet, endOfTurret.position, Quaternion.Euler(0, 0, 10));
+                    shots[2].GetComponent<Bullet>().setTrajectory(traj2);
+                }
                 else
                 {
                     GameObject shot = Instantiate(Bullet, endOfTurret.position, endOfTurret.rotation);
@@ -289,6 +301,11 @@ public class Player : MonoBehaviour
                 SetPowerupUI("Explosive Bullets", time);
                 break;
 
+            case 5:
+                //multishot
+                SetPowerupUI("Multi-Shot", time);
+                break;
+
             default:
                 Debug.LogWarning("[Player]: Warning: Logic Error: powerup ID not recongized");
                 break;
@@ -321,6 +338,9 @@ public class Player : MonoBehaviour
                 break;
 
             case 4:
+                break;
+
+            case 5:
                 break;
 
             default:

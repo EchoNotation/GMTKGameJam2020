@@ -1290,20 +1290,21 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Programmers:
+  m_Text: 'Programmers
 
-    Emilio Alvarez - Game controller and Spawing
+    Emilio Alvarez
 
-    Thomas
-    Hugart - Enemies and Sound Effects
+    Thomas Hugart
 
-    Zack Johnson - Player and User Interface
+    Zack Johnson
+
+    Caden
+    Gunnarson
 
 
     Art:
 
-    Lucy
-    Griswold'
+    Lucy Griswold'
 --- !u!222 &1293869354
 CanvasRenderer:
   m_ObjectHideFlags: 0

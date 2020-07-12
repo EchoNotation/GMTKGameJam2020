@@ -86,6 +86,10 @@ public class Gamecontroller : MonoBehaviour
         GameObject.FindWithTag("Wave Counter").GetComponent<Text>().text = "Wave: " + waveNumber;
         for (int i = 0; i < 2 * waveNumber; i++)
         {
+            if(i % 5 == 0)
+            {
+                SpawnBomber();
+            }
             SpawnEnemy(SpawnLocation());
             waveEnemyCount++;
             yield return new WaitForSeconds(Random.Range(50, 101) * 0.01f);

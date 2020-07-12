@@ -24,12 +24,27 @@ public class Bomber : MonoBehaviour
 
     private Vector3 target = Vector3.zero;
 
+    public AnimationClip flyOut;
+
     public void Start()
     {
         StartCoroutine("DoBombingRun");
-        Destroy(gameObject, lifetime);
+        StartCoroutine("CountDown");
         bombs = Random.Range(minBombs, maxBombs);
         SetTarget(GameObject.FindGameObjectWithTag("Player").transform.position);
+    }
+
+    IEnumerator CountDown()
+    {
+        yield return new WaitForSeconds(lifetime);
+        Animation anim = GetComponent<Animation>();
+        anim.clip = flyOut;
+        anim.Play();
+        while(anim.isPlaying)
+        {
+            yield return new WaitForSeconds(1f);
+        }
+        Destroy(gameObject);
     }
 
     public void SetTarget(Vector3 target)

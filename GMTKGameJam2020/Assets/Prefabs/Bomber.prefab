@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9050883846787087191}
   - component: {fileID: 9050883846787087190}
   - component: {fileID: 9050883846787087176}
+  - component: {fileID: 3085047342388885543}
   m_Layer: 0
   m_Name: Bomber
   m_TagString: Untagged
@@ -101,4 +102,25 @@ MonoBehaviour:
   minXoffset: -1
   maxXoffset: 1
   lifetime: 35
+  minBombs: 3
+  maxBombs: 5
+  bombDropRange: 5
   offset: {x: 0, y: -0.5, z: 0}
+  flyOut: {fileID: 7400000, guid: 561d3a14a3765a3499ed1247c2f7830f, type: 2}
+--- !u!111 &3085047342388885543
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9050883846787087189}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: a45eac9c4c1c3984194d24d7aab2ac71, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: a45eac9c4c1c3984194d24d7aab2ac71, type: 2}
+  - {fileID: 7400000, guid: 561d3a14a3765a3499ed1247c2f7830f, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0

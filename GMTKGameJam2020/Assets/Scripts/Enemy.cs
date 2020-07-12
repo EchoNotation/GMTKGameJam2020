@@ -224,9 +224,12 @@ public class Enemy : MonoBehaviour
     private void die()
     {
         player.GetComponent<Player>().AddScore(100);
-        GameObject.FindGameObjectWithTag("Controller").GetComponent<Gamecontroller>().RemoveEnemy(this.gameObject);
         //Make sound or play particle effect or something. 
         Destroy(this.gameObject);
+    }
+
+    void OnDestroy() {
+        GameObject.FindGameObjectWithTag("Controller").GetComponent<Gamecontroller>().RemoveEnemy(this.gameObject);
     }
 
     private void rotateBody(Vector3 direction)

@@ -48,7 +48,6 @@ public class Gamecontroller : MonoBehaviour
         }
         else
         {
-            Debug.Log(enemiesActive.Count / waveEnemyCount);
             if (enemiesActive.Count / waveEnemyCount < waveSpawnThreshold)
             {
                 SpawnNextWave();
@@ -63,7 +62,6 @@ public class Gamecontroller : MonoBehaviour
     public void Reset()
     {
         mainCamera = null;
-        enemiesActive.Clear();
         waveNumber = 0;
         waveEnemyCount = 1;
         StopAllCoroutines();

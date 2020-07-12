@@ -67,7 +67,12 @@ public class Player : MonoBehaviour
             score += 10*Time.deltaTime;
             displayScore = (int)score - ((int)score%10);
             transform.GetChild(3).GetChild(1).GetChild(0).GetComponent<Text>().text = displayScore.ToString();
-            transform.GetChild(3).GetChild(3).GetComponent<Scrollbar>().size = 1 - (powerUpTimeout /currentPowerupDuration);
+
+
+            GameObject powerUpObject = transform.GetChild(3).GetChild(3).gameObject;
+            Scrollbar powerUpIndicator = powerUpObject.GetComponent<Scrollbar>();
+            powerUpObject.GetComponent<Image>().color = (powerUpTimeout / currentPowerupDuration < 0.20) ? Color.red : Color.green;
+            powerUpIndicator.size = 1 - (powerUpTimeout /currentPowerupDuration);
 
             //Manage Timing of Swapping Control Types
             timeToSwap -= Time.deltaTime;

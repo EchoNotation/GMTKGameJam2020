@@ -19,6 +19,10 @@ public class Gamecontroller : MonoBehaviour
 
     public GameObject[] powerups;
 
+    public int startNumPowerups = 15;
+
+    private bool spawnedPowerups = false;
+
     void Awake()
     {
         if (instance == null)
@@ -57,6 +61,14 @@ public class Gamecontroller : MonoBehaviour
             if (enemiesActive.Count / waveEnemyCount <= waveSpawnThreshold & !waveSpawnActive)
             {
                 StartCoroutine(SpawnNextWave());
+                SpawnPowerup();
+                if(!spawnedPowerups)
+                {
+                    for(int i = 0; i < startNumPowerups; i++)
+                    {
+                        SpawnPowerup();
+                    }
+                }
             }
             if (!tricklActive)
             {
@@ -73,6 +85,7 @@ public class Gamecontroller : MonoBehaviour
         StopAllCoroutines();
         tricklActive = false;
         waveSpawnActive = false;
+        spawnedPowerups = false;
     }
     private IEnumerator SpawnTrickle()
     {

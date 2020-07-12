@@ -51,7 +51,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         timeToSwap = SWAP_DURATION;
-        screenCenter = new Vector3(Screen.width/2, Screen.height/2, 0);
+        screenCenter = new Vector3(Screen.width / 2, Screen.height / 2, 0);
         shootDirection = Vector3.up;
         isShootMode = false;
         transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = grayTurret;
@@ -64,8 +64,8 @@ public class Player : MonoBehaviour
         if (alive)
         {
             //manage scoring
-            score += 10*Time.deltaTime;
-            displayScore = (int)score - ((int)score%10);
+            score += 10 * Time.deltaTime;
+            displayScore = (int)score - ((int)score % 10);
             transform.GetChild(3).GetChild(1).GetChild(0).GetComponent<Text>().text = displayScore.ToString();
 
 
@@ -78,7 +78,7 @@ public class Player : MonoBehaviour
             timeToSwap -= Time.deltaTime;
             transform.GetChild(3).GetChild(0).GetComponent<Scrollbar>().size = 1 - (timeToSwap / SWAP_DURATION);
 
-            if(timeToSwap <= 2 && swapSoundSafety)
+            if (timeToSwap <= 2 && swapSoundSafety)
             {
                 swapSoundSafety = false;
                 sources[3].Play();
@@ -112,7 +112,7 @@ public class Player : MonoBehaviour
             {
                 atkTimer = ATTACK_DELAY;
 
-                if(activePowerup == 3)
+                if (activePowerup == 3)
                 {
                     GameObject shot = Instantiate(piercingBullet, endOfTurret.position, endOfTurret.rotation);
                     shot.GetComponent<PiercingBullet>().setTrajectory(shootDirection);
@@ -122,7 +122,7 @@ public class Player : MonoBehaviour
                     GameObject shot = Instantiate(Bullet, endOfTurret.position, endOfTurret.rotation);
                     shot.GetComponent<Bullet>().setTrajectory(shootDirection);
                 }
-                
+
 
                 if (sources[0].isPlaying) sources[0].Stop();
                 sources[0].Play();
@@ -166,8 +166,7 @@ public class Player : MonoBehaviour
 
     public void die()
     {
-        if(!alive) return;
-        Debug.Log("Player died!");
+        if (!alive) return;
         alive = false;
 
         sources[4].Play();
@@ -192,7 +191,7 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        switch(collision.tag)
+        switch (collision.tag)
         {
             case "EnemyBullet":
                 collision.gameObject.GetComponent<EnemyBullet>().onHit(false);
@@ -210,7 +209,7 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        switch(collision.collider.tag)
+        switch (collision.collider.tag)
         {
             case "Enemy":
                 die();
@@ -241,19 +240,19 @@ public class Player : MonoBehaviour
         sources[1].Play();
 
         //prevent powerup stacking, powerup = 0 means no powerup active
-        if(activePowerup != 0)
+        if (activePowerup != 0)
         {
             DeactivatePowerup();
         }
 
         activePowerup = powerup;
-        switch(powerup)
+        switch (powerup)
         {
             //0 = no powerup, not sure how it would be called here
             case 0:
                 Debug.LogWarning("[Player]: Logic error: somehow activated no powerup");
                 break;
-            
+
             //1 = more speed
             case 1:
                 speed *= 2;
@@ -286,7 +285,7 @@ public class Player : MonoBehaviour
         if (sources[2].isPlaying) sources[2].Stop();
         sources[2].Play();
 
-        switch(activePowerup)
+        switch (activePowerup)
         {
             case 0:
                 break;

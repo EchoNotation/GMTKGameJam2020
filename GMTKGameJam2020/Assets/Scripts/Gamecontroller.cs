@@ -98,7 +98,9 @@ public class Gamecontroller : MonoBehaviour
         waveSpawnActive = true;
         waveEnemyCount = 0;
         waveNumber++;
-        GameObject.FindWithTag("Wave Counter").GetComponent<Text>().text = "Wave: " + waveNumber;
+        if (GameObject.FindGameObjectWithTag("Wave Counter") != null) {
+            GameObject.FindGameObjectWithTag("Wave Counter").GetComponent<Text>().text = "Wave: " + waveNumber;
+        }
         for (int i = 0; i < Mathf.Pow(2, waveNumber); i++)
         {
             if (i % 5 == 0)

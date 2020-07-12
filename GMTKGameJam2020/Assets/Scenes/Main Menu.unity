@@ -1868,6 +1868,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 12800000, guid: e894c94b16ec8254c903c3c4c3b09a48,
         type: 3}
+    - target: {fileID: 4845354057381000411, guid: aede8eef9b1db1c449283b97d5339a82,
+        type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 4845354057516785158, guid: aede8eef9b1db1c449283b97d5339a82,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -1914,6 +1919,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 12800000, guid: e894c94b16ec8254c903c3c4c3b09a48,
         type: 3}
+    - target: {fileID: 4845354057630347212, guid: aede8eef9b1db1c449283b97d5339a82,
+        type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 4845354057653537800, guid: aede8eef9b1db1c449283b97d5339a82,
         type: 3}
       propertyPath: m_LocalPosition.x

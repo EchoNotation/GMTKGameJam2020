@@ -57,7 +57,6 @@ public class Gamecontroller : MonoBehaviour
         }
         else
         {
-            //Debug.Log(enemiesActive.Count / waveEnemyCount);
             if (enemiesActive.Count / waveEnemyCount <= waveSpawnThreshold & !waveSpawnActive)
             {
                 StartCoroutine(SpawnNextWave());
@@ -71,10 +70,10 @@ public class Gamecontroller : MonoBehaviour
                     spawnedPowerups = true;
                 }
             }
-            if (!tricklActive)
-            {
-                StartCoroutine(SpawnTrickle());
-            }
+            // if (!tricklActive & !waveSpawnActive)
+            // {
+            //     StartCoroutine(SpawnTrickle());
+            // }
         }
     }
 
@@ -93,7 +92,6 @@ public class Gamecontroller : MonoBehaviour
         tricklActive = true;
         yield return new WaitForSeconds(Random.Range(250, 601) * 0.01f);
         SpawnEnemy(SpawnLocation());
-        waveEnemyCount = enemiesActive.Count / ((enemiesActive.Count - 1) / waveEnemyCount);
         tricklActive = false;
     }
 
@@ -103,7 +101,7 @@ public class Gamecontroller : MonoBehaviour
         waveEnemyCount = 0;
         waveNumber++;
         GameObject.FindWithTag("Wave Counter").GetComponent<Text>().text = "Wave: " + waveNumber;
-        for (int i = 0; i < 2 * waveNumber; i++)
+        for (int i = 0; i < Mathf.Pow(2, waveNumber); i++)
         {
             if(i % 5 == 0)
             {

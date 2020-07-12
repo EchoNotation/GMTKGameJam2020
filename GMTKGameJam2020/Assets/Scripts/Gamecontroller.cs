@@ -169,8 +169,8 @@ public class Gamecontroller : MonoBehaviour
     public void SpawnBomber()
     {
         //set to whatever
-        float radius = 15f;
-        Vector3 location = Random.onUnitSphere * radius;
+        float radius = 20f;
+        Vector3 location = Random.onUnitSphere * radius + GameObject.FindGameObjectWithTag("Player").transform.position;
         location.z = 0;
 
         Instantiate(bombmer, location, Quaternion.identity);

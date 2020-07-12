@@ -224,6 +224,10 @@ public class Player : MonoBehaviour
                 ATTACK_DELAY = ATTACK_DELAY / 2;
                 break;
 
+            case 3:
+                //piercing bullet
+                break;
+
             default:
                 Debug.LogWarning("[Player]: Warning: Logic Error: powerup ID not recongized");
                 break;

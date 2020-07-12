@@ -1561,6 +1561,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7139289021651549352, guid: 2236d7c119a1b2240b77c7356c00d197,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wave Counter
+      objectReference: {fileID: 0}
     - target: {fileID: 8062237659169003914, guid: 2236d7c119a1b2240b77c7356c00d197,
         type: 3}
       propertyPath: m_LocalPosition.x

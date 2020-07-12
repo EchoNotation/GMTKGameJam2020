@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Gamecontroller : MonoBehaviour
 {
@@ -47,6 +48,7 @@ public class Gamecontroller : MonoBehaviour
         }
         else
         {
+            Debug.Log(enemiesActive.Count / waveEnemyCount);
             if (enemiesActive.Count / waveEnemyCount < waveSpawnThreshold)
             {
                 SpawnNextWave();
@@ -86,7 +88,7 @@ public class Gamecontroller : MonoBehaviour
         }
 
         waveNumber++;
-        Debug.Log("Wave " + waveNumber + " Spawned");
+        GameObject.FindWithTag("Wave Counter").GetComponent<Text>().text = "Wave: " + waveNumber;
     }
 
     private Vector2 SpawnLocation()
@@ -100,7 +102,7 @@ public class Gamecontroller : MonoBehaviour
         }
 
         directionVector = directionVector.normalized;
-        float magnitude = Random.Range(halfWidth, halfWidth * 6);
+        float magnitude = Random.Range(halfWidth, halfWidth * 4);
 
         return directionVector * magnitude;
     }
@@ -113,28 +115,18 @@ public class Gamecontroller : MonoBehaviour
     {
         enemiesActive.Remove(deadEnemy);
     }
-
-    public void Pause()
-    {
-        
-    }
-
-    public void Play()
-    {
-    }
-
     public void SpawnEnemy(Vector3 position)
     {
         GameObject newEnemy = Instantiate(enemy, position, Quaternion.identity); ;
         int seed = Random.Range(0, 100);
-        if (seed <= 55)
         {
-            newEnemy.GetComponent<Enemy>().enemyType = Enemies.GUNNER;
-        }
         else
-        {
-            newEnemy.GetComponent<Enemy>().enemyType = Enemies.CHARGER;
         }
+            newEnemy.GetComponent<Enemy>().enemyType = Enemies.GUNNER;
+        {
+        if (seed <= 55)
+        }
+            newEnemy.GetComponent<Enemy>().enemyType = Enemies.CHARGER;
         
     }
 }

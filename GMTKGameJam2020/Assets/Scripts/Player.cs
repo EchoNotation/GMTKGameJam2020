@@ -43,6 +43,7 @@ public class Player : MonoBehaviour
     // time left on the powerup timer
     //[SerializeField]
     private float powerUpTimeout = 0;
+    private float currentPowerupDuration = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -64,6 +65,7 @@ public class Player : MonoBehaviour
             score += 10*Time.deltaTime;
             displayScore = (int)score - ((int)score%10);
             transform.GetChild(3).GetChild(1).GetChild(0).GetComponent<Text>().text = displayScore.ToString();
+            transform.GetChild(3).GetChild(3).GetComponent<Scrollbar>().size = 1 - (powerUpTimeout /currentPowerupDuration);
 
             //Manage Timing of Swapping Control Types
             timeToSwap -= Time.deltaTime;
@@ -207,6 +209,11 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void SetPowerupUI(string name, float duration)
+    {
+        transform.GetChild(3).GetChild(3).GetChild(1).GetComponent<Text>().text = name;
+        currentPowerupDuration = duration;
+    }
 
     //yes I know I am very lazy with this code, but hey game jam - CG
     //this function is activated by a powerup
@@ -229,15 +236,18 @@ public class Player : MonoBehaviour
             //1 = more speed
             case 1:
                 speed *= 2;
+                SetPowerupUI("Double Speed", time);
                 break;
 
             //2 = firing speed
             case 2:
                 ATTACK_DELAY = ATTACK_DELAY / 2;
+                SetPowerupUI("Double Fire Rate", time);
                 break;
 
             case 3:
                 //piercing bullet
+                SetPowerupUI("Piercing Bullets", time);
                 break;
 
             default:
@@ -270,6 +280,7 @@ public class Player : MonoBehaviour
         //Debug.Log("powerup expired");
         activePowerup = 0;
         powerUpTimeout = 0;
+        transform.GetChild(3).GetChild(3).GetChild(1).GetComponent<Text>().text = "No Power Up";
     }
 
     private float dotProduct(Vector3 v1, Vector3 v2)

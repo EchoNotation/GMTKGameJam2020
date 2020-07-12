@@ -1551,33 +1551,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1877959934, guid: 2236d7c119a1b2240b77c7356c00d197, type: 3}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: e894c94b16ec8254c903c3c4c3b09a48,
-        type: 3}
-    - target: {fileID: 1923554254, guid: 2236d7c119a1b2240b77c7356c00d197, type: 3}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: e894c94b16ec8254c903c3c4c3b09a48,
-        type: 3}
-    - target: {fileID: 2211670781815715806, guid: 2236d7c119a1b2240b77c7356c00d197,
-        type: 3}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: e894c94b16ec8254c903c3c4c3b09a48,
-        type: 3}
     - target: {fileID: 2646179016245905172, guid: 2236d7c119a1b2240b77c7356c00d197,
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4791031844280738020, guid: 2236d7c119a1b2240b77c7356c00d197,
-        type: 3}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: e894c94b16ec8254c903c3c4c3b09a48,
-        type: 3}
     - target: {fileID: 5298879519524774285, guid: 2236d7c119a1b2240b77c7356c00d197,
         type: 3}
       propertyPath: m_Name
@@ -1598,17 +1576,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7139289021651549352, guid: 2236d7c119a1b2240b77c7356c00d197,
-        type: 3}
-      propertyPath: m_TagString
-      value: Wave Counter
-      objectReference: {fileID: 0}
-    - target: {fileID: 7866734579859279233, guid: 2236d7c119a1b2240b77c7356c00d197,
-        type: 3}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: e894c94b16ec8254c903c3c4c3b09a48,
-        type: 3}
     - target: {fileID: 8062237659169003914, guid: 2236d7c119a1b2240b77c7356c00d197,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16434,24 +16401,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66c755dbbaed66844a57c61113912ae7, type: 3}
---- !u!1 &1437796888 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2688543344561612668, guid: 2236d7c119a1b2240b77c7356c00d197,
-    type: 3}
-  m_PrefabInstance: {fileID: 479313148}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1437796890
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1437796888}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c51aa0c753040004182c8d1e0b9e7a1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1443323296 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2199316560959681355, guid: 1a8ec935b926110409b64673f5460c10,

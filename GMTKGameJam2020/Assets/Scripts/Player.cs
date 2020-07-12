@@ -31,6 +31,8 @@ public class Player : MonoBehaviour
     public Sprite greenBody;
     public Sprite greenTurret;
 
+    public Animation smokePuffAnim;
+
     //Audio
     public AudioSource[] sources;
     private bool swapSoundSafety = true;
@@ -132,6 +134,9 @@ public class Player : MonoBehaviour
 
                 if (sources[0].isPlaying) sources[0].Stop();
                 sources[0].Play();
+
+                smokePuffAnim.Play();
+
                 //shot.GetComponent<Bullet>().addSpeed(dotProduct(moveDirection, shootDirection));
             }
             else

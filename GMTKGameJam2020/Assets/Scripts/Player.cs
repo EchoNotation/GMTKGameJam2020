@@ -256,6 +256,8 @@ public class Player : MonoBehaviour
         }
 
         powerUpTimeout = time;
+
+        FindObjectOfType<Gamecontroller>().SpawnPowerup();
     }
 
     private void DeactivatePowerup()

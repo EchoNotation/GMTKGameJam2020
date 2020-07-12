@@ -14,6 +14,11 @@ public class Gamecontroller : MonoBehaviour
     private int[] waveEnemyMix;
     private bool tricklActive, waveSpawnActive;
 
+    public Vector2 powerUpSpawnXBounds = Vector2.zero;
+    public Vector2 powerUpSpawnYBounds = Vector2.zero;
+
+    public GameObject[] powerups;
+
     void Awake()
     {
         if (instance == null)
@@ -48,7 +53,7 @@ public class Gamecontroller : MonoBehaviour
         }
         else
         {
-            Debug.Log(enemiesActive.Count / waveEnemyCount);
+            //Debug.Log(enemiesActive.Count / waveEnemyCount);
             if (enemiesActive.Count / waveEnemyCount <= waveSpawnThreshold & !waveSpawnActive)
             {
                 StartCoroutine(SpawnNextWave());
@@ -96,6 +101,26 @@ public class Gamecontroller : MonoBehaviour
         }
         waveSpawnActive = false;
         Debug.Log("Wave " + waveNumber + " Spawned");
+    }
+
+    public void SpawnPowerup()
+    {
+        float x = 0f;
+        float y = 0f;
+        bool valid = false;
+        while (!valid)
+        {
+            x = Random.Range(powerUpSpawnXBounds.x, powerUpSpawnXBounds.y);
+            y = Random.Range(powerUpSpawnYBounds.x, powerUpSpawnYBounds.y);
+
+            //Debug.Log("testing point " + x + " " + y);
+
+            valid = Physics2D.OverlapBox(new Vector2(x, y), new Vector2(1f, 1f), 0f) == null;
+        }
+
+        int i = Random.Range(0, powerups.Length);
+
+        Instantiate(powerups[i], new Vector3(x, y, 0), Quaternion.identity);
     }
 
     private Vector2 SpawnLocation()

@@ -1192,6 +1192,12 @@ MonoBehaviour:
   waveNumber: 0
   enemy: {fileID: 968767475749786048, guid: 01fe0e7b0ce39f648a0931fc3b6b1d9d, type: 3}
   bombmer: {fileID: 9050883846787087189, guid: 73b2e00caf7ef7c48ad2209849a09a89, type: 3}
+  powerUpSpawnXBounds: {x: -10, y: 10}
+  powerUpSpawnYBounds: {x: -10, y: 10}
+  powerups:
+  - {fileID: 1690322160597970700, guid: 1f5b80583090382469cc89c4d87eba67, type: 3}
+  - {fileID: 1690322160597970700, guid: a80247574a8b31c4f82e8eb6c5735ad3, type: 3}
+  - {fileID: 1690322160597970700, guid: c56eaf3e66de1c04f91000154dee08f6, type: 3}
 --- !u!114 &4845354057653537807
 MonoBehaviour:
   m_ObjectHideFlags: 0

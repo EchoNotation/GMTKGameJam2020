@@ -171,9 +171,6 @@ public class Player : MonoBehaviour
             case "Powerup":
             case "Bullet":
                 break;
-            case "Pit":
-                die();
-                break;
             default:
                 Debug.Log("Unrecognized tag in OnTriggerEnter2D in Player! Tag: " + collision.tag);
                 break;
@@ -188,6 +185,9 @@ public class Player : MonoBehaviour
                 die();
                 break;
             case "Wall":
+                break;
+            case "Pit":
+                die();
                 break;
             default:
                 Debug.Log("Unknown tag collided with Player! Tag: " + collision.collider.tag);

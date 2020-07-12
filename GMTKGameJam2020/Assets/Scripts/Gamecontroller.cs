@@ -83,8 +83,8 @@ public class Gamecontroller : MonoBehaviour
         waveEnemyCount = 0;
         for (int i = 0; i < 10; i++)
         {
-            waveEnemyCount++;
             SpawnEnemy(SpawnLocation());
+            waveEnemyCount++;
         }
 
         waveNumber++;
@@ -119,14 +119,13 @@ public class Gamecontroller : MonoBehaviour
     {
         GameObject newEnemy = Instantiate(enemy, position, Quaternion.identity); ;
         int seed = Random.Range(0, 100);
-        {
-        else
-        }
-            newEnemy.GetComponent<Enemy>().enemyType = Enemies.GUNNER;
-        {
         if (seed <= 55)
-        }
+        {
             newEnemy.GetComponent<Enemy>().enemyType = Enemies.CHARGER;
-        
+        }
+        else
+        {
+            newEnemy.GetComponent<Enemy>().enemyType = Enemies.GUNNER;
+        }
     }
 }

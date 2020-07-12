@@ -71,17 +71,18 @@ public class Gamecontroller : MonoBehaviour
     {
         trickling = true;
         yield return new WaitForSeconds(Random.Range(100, 501) * 0.01f);
-        Instantiate(enemy, SpawnLocation(), Quaternion.identity);
+        SpawnEnemy(SpawnLocation());
         waveEnemyCount = enemiesActive.Count / ((enemiesActive.Count - 1) / waveEnemyCount);
         trickling = false;
     }
+
     private void SpawnNextWave()
     {
         waveEnemyCount = 0;
         for (int i = 0; i < 10; i++)
         {
             waveEnemyCount++;
-            Instantiate(enemy, SpawnLocation(), Quaternion.identity);
+            SpawnEnemy(SpawnLocation());
         }
 
         waveNumber++;
@@ -122,9 +123,18 @@ public class Gamecontroller : MonoBehaviour
     {
     }
 
-    public void SpawnEnemy(Enemies type, Vector3 position)
+    public void SpawnEnemy(Vector3 position)
     {
-        GameObject newEnemy = Instantiate(enemy, position, Quaternion.identity);
-        newEnemy.GetComponent<Enemy>().enemyType = type;
+        GameObject newEnemy = Instantiate(enemy, position, Quaternion.identity); ;
+        int seed = Random.Range(0, 100);
+        if (seed <= 55)
+        {
+            newEnemy.GetComponent<Enemy>().enemyType = Enemies.GUNNER;
+        }
+        else
+        {
+            newEnemy.GetComponent<Enemy>().enemyType = Enemies.CHARGER;
+        }
+        
     }
 }

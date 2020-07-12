@@ -29,7 +29,6 @@ public class MenuControl : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadSceneAsync(1);
-        transform.GetComponent<Gamecontroller>().Play();
     }
 
     public void GameOver(int score)

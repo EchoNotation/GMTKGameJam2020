@@ -12,6 +12,7 @@ TagManager:
   - Powerup
   - Pit
   - Controller
+  - Wave Counter
   layers:
   - Default
   - TransparentFX

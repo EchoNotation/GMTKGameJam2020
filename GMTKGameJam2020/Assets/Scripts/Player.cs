@@ -17,7 +17,8 @@ public class Player : MonoBehaviour
     public float speed = .75f;
     public int ATTACK_DELAY = 20;
     private int atkTimer = 0;
-    public GameObject Bullet, piercingBullet;
+    public GameObject Bullet;
+    public GameObject piercingBullet;
     public bool alive = true;
     private float score = 0f;
     public int displayScore = 0;

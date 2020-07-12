@@ -68,6 +68,7 @@ public class Gamecontroller : MonoBehaviour
                     {
                         SpawnPowerup();
                     }
+                    spawnedPowerups = true;
                 }
             }
             if (!tricklActive)

@@ -31,6 +31,7 @@ public class Enemy : MonoBehaviour
     public Sprite[] bodySprites, toolSprites;
     public GameObject bullet;
 
+    public AudioSource source;
     public Transform EndOfTurret;
 
     private bool sawSwitch = true;
@@ -165,6 +166,7 @@ public class Enemy : MonoBehaviour
                 shotCounter = 0;
                 GameObject projectile = Instantiate(bullet, EndOfTurret.position, EndOfTurret.rotation);
                 projectile.GetComponent<EnemyBullet>().setTrajectory(directionToPlayer);
+                source.Play();
             }
             else
             {

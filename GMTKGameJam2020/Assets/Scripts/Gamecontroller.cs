@@ -94,17 +94,22 @@ public class Gamecontroller : MonoBehaviour
     private Vector2 SpawnLocation()
     {
         //TODO: validate Coords on map, change distribution?
+        float minRadius = 10f;
+        float maxRadius = 25f;
 
-        Vector2 directionVector = Vector2.zero;
-        while (directionVector == Vector2.zero)
-        {
-            directionVector = new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f));
-        }
+        float xDirUnsigned = Random.Range(minRadius, maxRadius);
+        float xDirSigned = Random.Range(0, 2) == 0 ? xDirUnsigned : -xDirUnsigned;
 
-        directionVector = directionVector.normalized;
-        float magnitude = Random.Range(halfWidth, halfWidth * 4);
+        float yDirUnsigned = Random.Range(minRadius, maxRadius);
+        float yDirSigned = Random.Range(0, 2) == 0 ? yDirUnsigned : -yDirUnsigned;
 
-        return directionVector * magnitude;
+        Vector2 directionVector = new Vector2(xDirSigned, yDirSigned);
+
+        //directionVector = directionVector.normalized;
+        //float magnitude = Random.Range(halfWidth, halfWidth * 4);
+
+        //return directionVector * magnitude;
+        return directionVector;
     }
 
     public void RegisterEnemy(GameObject newEnemy)

@@ -42,7 +42,7 @@ public class Bomber : MonoBehaviour
 
     IEnumerator DoBombingRun()
     {
-        while(true)
+        while (true)
         {
             if (Vector3.Distance(target, transform.position) < bombDropRange)
             {
@@ -66,7 +66,7 @@ public class Bomber : MonoBehaviour
     public void SpawnBomb(float radius)
     {
         Vector3 location = transform.position + offset + new Vector3(Random.Range(minXoffset, maxXoffset), 0, 0);
-        Instantiate(bomb, location, Quaternion.Euler(0,0,Random.Range(0,360)));
+        Instantiate(bomb, location, Quaternion.Euler(0, 0, Random.Range(0, 360)));
     }
 
     public void OnDestroy()

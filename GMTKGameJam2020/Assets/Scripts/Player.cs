@@ -236,6 +236,7 @@ public class Player : MonoBehaviour
     //this function is activated by a powerup
     public void ActivatePowerup(int powerup, float time)
     {
+        score += 50;
         if (sources[1].isPlaying) sources[1].Stop();
         sources[1].Play();
 

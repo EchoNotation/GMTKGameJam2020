@@ -27,8 +27,8 @@ public class Powerup : MonoBehaviour
     void Start()
     {
         player = FindObjectOfType<Player>();
-        
-        switch(powerupType)
+
+        switch (powerupType)
         {
             case PowerupType.SPEED:
                 powerupID = 1;
@@ -46,7 +46,7 @@ public class Powerup : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         //Debug.Log("something entered the trigger");
-        if(collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             //Debug.Log("That thing was the player");
             player.ActivatePowerup(powerupID, duration);

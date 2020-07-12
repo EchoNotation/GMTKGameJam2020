@@ -36,7 +36,7 @@ public class Bomb : MonoBehaviour
             Explode();
         }
 
-        if (hasExploded & !sources[1].isPlaying) Destroy(this.gameObject);
+        if (hasExploded && !sources[1].isPlaying && !sources[2].isPlaying) Destroy(this.gameObject);
     }
 
     void Explode()
@@ -55,6 +55,7 @@ public class Bomb : MonoBehaviour
             if(col.CompareTag("Enemy"))
             {
                 col.gameObject.GetComponent<Enemy>().die();
+                sources[2].Play();
             }
             else if(col.CompareTag("Player"))
             {

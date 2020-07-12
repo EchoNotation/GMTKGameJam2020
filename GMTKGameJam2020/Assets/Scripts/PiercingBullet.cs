@@ -46,12 +46,12 @@ public class PiercingBullet : MonoBehaviour
         Instantiate(explosion, transform.position, Quaternion.identity);
         numberOfHits--;
 
-        if(hitRock || numberOfHits <= 0)
+        if (hitRock || numberOfHits <= 0)
         {
             transform.GetComponent<SpriteRenderer>().enabled = false;
             transform.GetComponent<BoxCollider2D>().enabled = false;
         }
-        
+
         if (hitRock)
         {
             hitWall = true;

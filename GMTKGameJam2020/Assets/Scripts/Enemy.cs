@@ -167,6 +167,7 @@ public class Enemy : MonoBehaviour
                 GameObject projectile = Instantiate(bullet, EndOfTurret.position, EndOfTurret.rotation);
                 projectile.GetComponent<EnemyBullet>().setTrajectory(directionToPlayer);
                 source.Play();
+                transform.GetChild(1).GetChild(1).GetComponent<Animation>().Play();
             }
             else
             {
@@ -192,6 +193,7 @@ public class Enemy : MonoBehaviour
             case Enemies.CHARGER:
                 this.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = bodySprites[0];
                 this.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = toolSprites[0];
+                this.transform.GetChild(1).GetChild(1).gameObject.SetActive(false);
                 break;
             case Enemies.GUNNER:
                 this.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = bodySprites[1];

@@ -13,6 +13,7 @@ TagManager:
   - Pit
   - Controller
   - Wave Counter
+  - Main Menu
   layers:
   - Default
   - TransparentFX

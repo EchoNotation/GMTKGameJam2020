@@ -15,7 +15,8 @@ public class Powerup : MonoBehaviour
     public enum PowerupType
     {
         SPEED,
-        FIRE
+        FIRE,
+        PIERCE
     }
 
     int powerupID = 0;
@@ -34,6 +35,9 @@ public class Powerup : MonoBehaviour
                 break;
             case PowerupType.FIRE:
                 powerupID = 2;
+                break;
+            case PowerupType.PIERCE:
+                powerupID = 3;
                 break;
         }
         //Debug.Log("Start Powerup, " + powerupID);

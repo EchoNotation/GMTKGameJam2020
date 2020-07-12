@@ -6,10 +6,17 @@ using UnityEngine.UI;
 
 public class MenuControl : MonoBehaviour
 {
+
+    public GameObject quitButton;
+
     // Start is called before the first frame update
     void Start()
     {
         transform.GetChild(1).GetComponent<Canvas>().enabled = false;
+        if (Application.platform != RuntimePlatform.WindowsPlayer)
+        {
+            quitButton.SetActive(false);
+        }
     }
 
     // Update is called once per frame

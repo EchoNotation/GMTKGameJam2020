@@ -936,7 +936,7 @@ GameObject:
   - component: {fileID: 1103691066}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: Main Menu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1399,61 +1399,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4845354055619084193, guid: aede8eef9b1db1c449283b97d5339a82,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4845354056382519972, guid: aede8eef9b1db1c449283b97d5339a82,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4845354056382519975, guid: aede8eef9b1db1c449283b97d5339a82,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4845354057098078736, guid: aede8eef9b1db1c449283b97d5339a82,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.61950976
-      objectReference: {fileID: 0}
-    - target: {fileID: 4845354057098078736, guid: aede8eef9b1db1c449283b97d5339a82,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0.85820514
-      objectReference: {fileID: 0}
-    - target: {fileID: 4845354057098078736, guid: aede8eef9b1db1c449283b97d5339a82,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4845354057098078736, guid: aede8eef9b1db1c449283b97d5339a82,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4845354057098078736, guid: aede8eef9b1db1c449283b97d5339a82,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4845354057098078736, guid: aede8eef9b1db1c449283b97d5339a82,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4845354057098078736, guid: aede8eef9b1db1c449283b97d5339a82,
-        type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0.38049033
-      objectReference: {fileID: 0}
-    - target: {fileID: 4845354057098078736, guid: aede8eef9b1db1c449283b97d5339a82,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0.7622052
-      objectReference: {fileID: 0}
     - target: {fileID: 4845354057653537800, guid: aede8eef9b1db1c449283b97d5339a82,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1514,6 +1459,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Controller
       objectReference: {fileID: 0}
+    - target: {fileID: 4845354057653537807, guid: aede8eef9b1db1c449283b97d5339a82,
+        type: 3}
+      propertyPath: quitButton
+      value: 
+      objectReference: {fileID: 1275452465}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aede8eef9b1db1c449283b97d5339a82, type: 3}
 --- !u!1001 &1895643471

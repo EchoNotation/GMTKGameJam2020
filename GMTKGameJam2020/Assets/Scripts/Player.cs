@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     //Control Types
     private bool isShootMode = false;
     public float timeToSwap;
-    private static int SWAP_DURATION = 6;
+    private static int SWAP_DURATION = 3;
 
     //Control Info
     private Vector3 shootDirection;

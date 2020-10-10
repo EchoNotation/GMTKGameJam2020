@@ -101,7 +101,7 @@ public class Gamecontroller : MonoBehaviour
         if (GameObject.FindGameObjectWithTag("Wave Counter") != null) {
             GameObject.FindGameObjectWithTag("Wave Counter").GetComponent<Text>().text = "Wave: " + waveNumber;
         }
-        for (int i = 0; i < Mathf.Pow(2, waveNumber); i++)
+        for (int i = 0; i < (waveNumber*2) + 2; i++)
         {
             if (i % 5 == 0)
             {
@@ -109,7 +109,7 @@ public class Gamecontroller : MonoBehaviour
             }
             SpawnEnemy(SpawnLocation());
             waveEnemyCount++;
-            yield return new WaitForSeconds(Random.Range(50, 101) * 0.01f);
+            yield return new WaitForSeconds(Random.Range(50, 101) * 0.1f);
         }
         waveSpawnActive = false;
     }
